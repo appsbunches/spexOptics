@@ -1,0 +1,83 @@
+ <div class="profile-box  d-flex flex-column align-items-center align-items-md-start gap-3 gap-md-4 p-4 mt-5">
+        <div class="user-icon d-flex justify-content-center align-items-center">
+         <svg width="22" height="27" viewBox="0 0 22 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20.3334 25.5V22.8333C20.3334 21.4188 19.7715 20.0623 18.7713 19.0621C17.7711 18.0619 16.4146 17.5 15.0001 17.5H7.00008C5.58559 17.5 4.22904 18.0619 3.22884 19.0621C2.22865 20.0623 1.66675 21.4188 1.66675 22.8333V25.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M11.0001 12.1667C13.9456 12.1667 16.3334 9.77885 16.3334 6.83333C16.3334 3.88781 13.9456 1.5 11.0001 1.5C8.05456 1.5 5.66675 3.88781 5.66675 6.83333C5.66675 9.77885 8.05456 12.1667 11.0001 12.1667Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="welcome">{{ locals.profile.welcome }}</span>
+        <div class="d-flex flex-column w-100 flex-md-row justify-content-between align-items-center gap-4 customer">
+           <h2>{{ customer.name }}</h2>
+           <button type="button" class="btn btn-primary gap-2 d-flex align-items-center gap-2 py-2 px-4 radius30" data-bs-toggle="offcanvas" data-bs-target="#editProfile" aria-controls="offcanvasRight">
+                <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9.49996 21.5H5.58996C4.04496 21.5 2.81596 20.748 1.71296 19.697C-0.547038 17.544 3.16296 15.824 4.57796 14.982C7.12796 13.462 10.206 13.112 13 13.928M15.5 6C15.5 7.19347 15.0259 8.33807 14.1819 9.18198C13.338 10.0259 12.1934 10.5 11 10.5C9.80649 10.5 8.66189 10.0259 7.81798 9.18198C6.97407 8.33807 6.49996 7.19347 6.49996 6C6.49996 4.80653 6.97407 3.66193 7.81798 2.81802C8.66189 1.97411 9.80649 1.5 11 1.5C12.1934 1.5 13.338 1.97411 14.1819 2.81802C15.0259 3.66193 15.5 4.80653 15.5 6ZM17.433 13.349C17.768 12.985 17.936 12.803 18.114 12.697C18.3247 12.5716 18.5646 12.5038 18.8098 12.5003C19.055 12.4968 19.2967 12.5577 19.511 12.677C19.691 12.777 19.865 12.954 20.211 13.307C20.556 13.66 20.729 13.837 20.827 14.021C21.065 14.468 21.057 15.009 20.807 15.448C20.703 15.63 20.525 15.801 20.169 16.144L15.938 20.219C15.264 20.869 14.927 21.193 14.506 21.358C14.085 21.522 13.621 21.51 12.696 21.486L12.569 21.483C12.287 21.475 12.147 21.471 12.065 21.378C11.983 21.285 11.994 21.142 12.016 20.855L12.028 20.699C12.091 19.891 12.123 19.486 12.281 19.123C12.438 18.76 12.711 18.465 13.255 17.875L17.433 13.349Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+             <span>{{ locals.profile.edit_profile }}</span>
+           </button>
+        </div>
+        {# profile popup #}
+        <div class="offcanvas offcanvas-start offcanvas-profile-edit" tabindex="-1" id="editProfile" aria-labelledby="offcanvasRightLabel" style="z-index: 9999;">
+
+            <div class="header_profile_offcanfas d-flex justify-content-between items-center gap-3 py-4 px-4">
+               <h2>{{ locals.profile.edit_profile }}</h2>
+               <button class="close-btn d-flex justify-content-center align-items-center" type="button" data-bs-dismiss="offcanvas" aria-label="Close">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M2.41877 0.833188C2.2055 0.634468 1.92343 0.526283 1.63198 0.531425C1.34053 0.536568 1.06245 0.654636 0.856333 0.860755C0.650214 1.06687 0.532146 1.34495 0.527003 1.6364C0.521861 1.92786 0.630046 2.20993 0.828766 2.42319L6.40877 8.00319L0.828766 13.5832C0.718236 13.6862 0.629582 13.8104 0.568094 13.9484C0.506606 14.0864 0.473543 14.2354 0.470878 14.3864C0.468213 14.5375 0.496 14.6875 0.552582 14.8276C0.609163 14.9677 0.69338 15.0949 0.800208 15.2017C0.907036 15.3086 1.03429 15.3928 1.17437 15.4494C1.31445 15.506 1.4645 15.5337 1.61555 15.5311C1.7666 15.5284 1.91557 15.4953 2.05357 15.4339C2.19157 15.3724 2.31577 15.2837 2.41877 15.1732L7.99877 9.59319L13.5788 15.1732C13.6818 15.2837 13.806 15.3724 13.944 15.4339C14.082 15.4953 14.2309 15.5284 14.382 15.5311C14.533 15.5337 14.6831 15.506 14.8232 15.4494C14.9632 15.3928 15.0905 15.3086 15.1973 15.2017C15.3042 15.0949 15.3884 14.9677 15.445 14.8276C15.5015 14.6875 15.5293 14.5375 15.5267 14.3864C15.524 14.2354 15.4909 14.0864 15.4294 13.9484C15.3679 13.8104 15.2793 13.6862 15.1688 13.5832L9.58877 8.00319L15.1688 2.42319C15.3675 2.20993 15.4757 1.92786 15.4705 1.6364C15.4654 1.34495 15.3473 1.06687 15.1412 0.860755C14.9351 0.654636 14.657 0.536568 14.3655 0.531425C14.0741 0.526283 13.792 0.634468 13.5788 0.833188L7.99877 6.41319L2.41877 0.833188Z" fill="#0A0C10"/>
+                        </svg>
+
+
+               </button>
+            </div>
+
+            
+            <div class="body_profile_offcanfas h-100 p-4">
+              <form action="/account-profile" method="post" class="d-flex flex-column h-100 justify-content-between" id="customFormProfileEdit">
+                  <div>
+                     {# this input used for know who is the user token #}
+                    <input type="hidden" class="profile-hidden-input-custom" name="_token" value="">
+                    <div class="mb-3">
+                      <label for="inputName" class="form-label  sameStyle">{{ locals.profile.input_name }}</label>
+                      <input type="text" name="name" class="form-control" id="inputName"  value="{{ customer.name }}">
+                    </div>
+                    <div class="mb-3">
+                      <label for="inputMobile" class="form-label sameStyle">{{ locals.profile.input_phone }}</label>
+                      <input type="text"  disabled class="form-control" id="inputMobile"  value="{{ customer.mobile }}">
+                    </div>
+                       <div class="mb-3">
+                      <label for="inputEmail" class="form-label diffStyle">{{ locals.profile.input_email }}</label>
+                      <input type="text" name="email" class="form-control" id="inputEmail"  value="{{ customer.email }}">
+                    </div>
+                  </div>
+                  <div class="container">
+                   <div class="row g-2 justify-content-center">
+                       <div class="col-4 col-md-6">
+                         <button id="col-save-button" type="submit" class="btn btn-primary w-100 btn-edit">{{ locals.profile.btn_edit }}</button>
+                       </div>
+                       <div class="col-4 col-md-6">
+                         <button id="btn_profile_delete_account" type="button" class="btn btn-outline-danger w-100 btn-delete" id="btn_profile_delete_account" data-bs-toggle="modal" data-bs-target="#deleteProfileAccount">{{ locals.profile.btn_delete }}</button>
+                       </div>
+                   </div>
+                  </div>
+              </form>
+            </div>
+
+        </div>
+        {# delete account #}
+        <div class="modal fade" id="deleteProfileAccount" tabindex="-1" aria-labelledby="deleteProfileAccountLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <form class="modal-content" action="/delete-account" method="post" >
+                {# this input used for know who is the user token #}
+                <input type="hidden" class="profile-hidden-input-delete" name="_token" value="">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">هل تريد بالفعل حزف الحساب</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">الغاء</button>
+                  <button type="submit" class="btn btn-danger">حذف</button>
+                </div>
+              </form>
+            </div>
+        </div>
+
+  </div>

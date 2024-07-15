@@ -1,0 +1,489 @@
+/* start main settings */
+a {
+  text-decoration: none;
+}
+
+select {
+  border: none; /* Removes the default border */
+  border-radius: 30px; /* Adds rounded corners */
+  padding: 10px 15px; /* Adds padding for a better appearance */
+  outline: none; /* Removes the outline on focus */
+  background-color: #fff; /* Optional: Sets a background color */
+  width: 165px;
+}
+@media screen and (max-width: 767px) {
+  select {
+    width: 95px;
+  }
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  background: transparent;
+  border: 0;
+}
+
+.rotateIcon {
+  transform: rotate(180deg);
+}
+
+.radius30 {
+  border-radius: 30px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
+  rotate: 180deg !important;
+  padding-left: 4px !important;
+  padding-right: 4px !important;
+}
+
+.breadcrumb-section nav {
+  background-color: #fff !important;
+}
+
+.breadcrumb-item {
+  color: #333 !important;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 0 !important;
+}
+@media screen and (max-width: 767px) {
+  .breadcrumb-item {
+    font-size: 12px;
+  }
+}
+
+.breadcrumb-item.active {
+  color: #333 !important;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 0 !important;
+}
+@media screen and (max-width: 767px) {
+  .breadcrumb-item.active {
+    font-size: 12px;
+  }
+}
+
+/* start main settings */
+/*********************** start style profile  *************************/
+.profile-page .profile-box {
+  background-color: #fff;
+  border-radius: 30px;
+  border: 1px solid #e0e0e0;
+}
+.profile-page .profile-box .user-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+}
+.profile-page .profile-box .welcome {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+@media screen and (max-width: 767px) {
+  .profile-page .profile-box .welcome {
+    font-size: 14px;
+  }
+}
+.profile-page .profile-box .customer h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+}
+@media screen and (max-width: 767px) {
+  .profile-page .profile-box .customer h2 {
+    font-size: 18px;
+  }
+}
+.profile-page .profile-box .customer button {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+}
+@media screen and (max-width: 767px) {
+  .profile-page .profile-box .customer button {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .profile-page .offcanvas-profile-edit {
+    height: 60%;
+  }
+}
+.profile-page .offcanvas-profile-edit .header_profile_offcanfas {
+  background-color: #e2e8f0;
+}
+.profile-page .offcanvas-profile-edit .header_profile_offcanfas h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+}
+@media screen and (max-width: 767px) {
+  .profile-page .offcanvas-profile-edit .header_profile_offcanfas h2 {
+    font-size: 20px;
+  }
+}
+.profile-page .offcanvas-profile-edit .header_profile_offcanfas .close-btn {
+  width: 33px;
+  height: 33px;
+}
+.profile-page .offcanvas-profile-edit .body_profile_offcanfas .sameStyle,
+.profile-page .offcanvas-profile-edit .body_profile_offcanfas .diffStyle {
+  font-size: 14px;
+  font-weight: 700;
+}
+.profile-page .offcanvas-profile-edit .body_profile_offcanfas .sameStyle {
+  color: #070606;
+}
+.profile-page .offcanvas-profile-edit .body_profile_offcanfas .diffStyle {
+  color: #475569;
+}
+.profile-page .offcanvas-profile-edit .body_profile_offcanfas .btn-edit,
+.profile-page .offcanvas-profile-edit .body_profile_offcanfas .btn-delete {
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 30px;
+  height: 56px;
+}
+.profile-page .offcanvas-profile-edit .body_profile_offcanfas .btn-edit {
+  color: #fff;
+}
+@media screen and (max-width: 767px) {
+  .profile-page .offcanvas-profile-edit {
+    width: 100vw;
+  }
+}
+.profile-page .myOrders,
+.profile-page .myAddress_profile,
+.profile-page .myShipping_profile {
+  border-radius: 30px;
+  background-color: #fff;
+}
+.profile-page .myOrders a,
+.profile-page .myAddress_profile a,
+.profile-page .myShipping_profile a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--primary-color);
+}
+.profile-page .latest-orders {
+  height: 583px;
+  background-color: #fff;
+  border-radius: 30px;
+  border: 1px solid #e0e0e0;
+}
+.profile-page .latest-orders .head {
+  background-color: #f7f7f7;
+  border-radius: 30px 30px 0 0;
+}
+.profile-page .latest-orders .latest_orders_data {
+  height: 443px;
+  overflow: auto;
+  padding-inline-end: 20px;
+}
+.profile-page .latest-orders .latest_orders_data .latest-order .order-id {
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+}
+@media screen and (max-width: 767px) {
+  .profile-page .latest-orders .latest_orders_data .latest-order .order-id {
+    font-size: 14px;
+  }
+}
+.profile-page .latest-orders .latest_orders_data .latest-order .date {
+  font-size: 12px;
+  font-weight: 700;
+  color: #808080;
+}
+.profile-page .latest-orders .latest_orders_data .latest-order .order-status,
+.profile-page .latest-orders .latest_orders_data .latest-order .order-payment {
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 4px;
+  min-width: 47px;
+  height: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 767px) {
+  .profile-page .latest-orders .latest_orders_data .latest-order .order-status,
+  .profile-page .latest-orders .latest_orders_data .latest-order .order-payment {
+    font-size: 8px;
+    min-width: 40px;
+  }
+}
+.profile-page .latest-orders .latest_orders_data .latest-order .order-status {
+  color: #333333;
+  border: 1px solid #0a3254;
+}
+.profile-page .latest-orders .latest_orders_data .latest-order .order-payment {
+  color: #333333;
+  background-color: #fff;
+  border: 1px solid #e2e8f0;
+}
+.profile-page .latest-orders .latest_orders_data .latest-order .total-string {
+  font-size: 12px;
+  font-weight: 500;
+  color: #64748b;
+}
+@media screen and (max-width: 767px) {
+  .profile-page .latest-orders .latest_orders_data .latest-order .total-string {
+    font-size: 10px;
+  }
+}
+.profile-page .latest-orders .latest_orders_data .latest-order .price {
+  font-size: 18px;
+  font-weight: 500;
+  color: #1e293b;
+}
+.profile-page .order-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 30px;
+  background-color: var(--primary-color);
+}
+.profile-page .show-more {
+  font-size: 12px;
+  font-weight: 500;
+  color: #0a3254;
+}
+@media screen and (max-width: 767px) {
+  .profile-page .show-more {
+    font-size: 10px;
+  }
+}
+
+/*********************** end style profile  *************************/
+/*********************** start style orders page  *************************/
+.orders-page .orders-info {
+  background-color: #f7f7f7;
+  border-radius: 20px;
+}
+.orders-page .orders-info .order {
+  background-color: #fff;
+  border-radius: 20px;
+}
+.orders-page .orders-info .order .icon-box {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.orders-page .orders-info .order.total .icon-box {
+  background-color: #f7f5fe;
+}
+.orders-page .orders-info .order.current .icon-box {
+  background-color: #f3fdfc;
+}
+.orders-page .orders-info .order.old .icon-box {
+  background-color: #f8fafc;
+}
+.orders-page .orders-info .order h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #64748b;
+}
+@media screen and (max-width: 767px) {
+  .orders-page .orders-info .order h3 {
+    font-size: 16px;
+  }
+}
+.orders-page .orders-info .order .number {
+  font-size: 28px;
+  font-weight: 700;
+  color: #000;
+}
+@media screen and (max-width: 767px) {
+  .orders-page .orders-info .order .number {
+    font-size: 20px;
+  }
+}
+.orders-page .orders-tabs .tab {
+  min-width: 169px;
+  height: 52px;
+  background-color: #f8fafc;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  transition: backgroundColor 0.5s ease;
+}
+@media screen and (max-width: 767px) {
+  .orders-page .orders-tabs .tab {
+    min-width: 131px;
+    height: 38px;
+    font-size: 10px;
+  }
+}
+.orders-page .orders-tabs .tab .num-box {
+  background-color: #f1f5f9;
+  border-radius: 8px;
+  color: #334155;
+  min-width: 24px;
+  min-height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.orders-page .orders-tabs .tab .num-box.active {
+  background-color: #0a3254;
+  color: #fff;
+}
+.orders-page .orders-tabs .tab:hover, .orders-page .orders-tabs .tab.activeTab {
+  background-color: #e7ebee;
+  color: #0a3254;
+}
+.orders-page .rendered-orders {
+  border: 1px solid #e0e0e0;
+}
+.orders-page .rendered-orders .order-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 30px;
+  background-color: var(--primary-color);
+}
+.orders-page .rendered-orders .header-orders {
+  background-color: #f7f7f7;
+  border-radius: 30px 30px 0 0;
+}
+.orders-page .rendered-orders .body-orders .order {
+  border-radius: 12px;
+}
+.orders-page .rendered-orders .body-orders .order .order-id {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333333;
+}
+.orders-page .rendered-orders .body-orders .order .date {
+  font-size: 12px;
+  font-weight: 700;
+  color: #808080;
+}
+@media screen and (max-width: 767px) {
+  .orders-page .rendered-orders .body-orders .order .date {
+    font-size: 10px;
+  }
+}
+.orders-page .rendered-orders .body-orders .order .order-status,
+.orders-page .rendered-orders .body-orders .order .order-payment {
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 4px;
+  min-width: 47px;
+  height: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 767px) {
+  .orders-page .rendered-orders .body-orders .order .order-status,
+  .orders-page .rendered-orders .body-orders .order .order-payment {
+    font-size: 8px;
+    min-width: 40px;
+  }
+}
+.orders-page .rendered-orders .body-orders .order .order-status {
+  color: #333333;
+  border: 1px solid #0a3254;
+}
+.orders-page .rendered-orders .body-orders .order .order-payment {
+  color: #333333;
+  background-color: #fff;
+  border: 1px solid #e2e8f0;
+}
+.orders-page .rendered-orders .body-orders .order .total-string {
+  font-size: 12px;
+  font-weight: 500;
+  color: #64748b;
+}
+@media screen and (max-width: 767px) {
+  .orders-page .rendered-orders .body-orders .order .total-string {
+    font-size: 10px;
+  }
+}
+.orders-page .rendered-orders .body-orders .order .price {
+  font-size: 18px;
+  font-weight: 500;
+  color: #1e293b;
+}
+.orders-page .container-pagination .prev-btn,
+.orders-page .container-pagination .next-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(238, 238, 238, 0.9333333333);
+}
+@media screen and (max-width: 767px) {
+  .orders-page .container-pagination .prev-btn,
+  .orders-page .container-pagination .next-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+.orders-page .container-pagination .pagination-orders li {
+  border: 1px solid #eeeeee;
+  color: #0a3254;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 400;
+  transition: backgroundColor 0.5s ease;
+}
+.orders-page .container-pagination .pagination-orders li:hover, .orders-page .container-pagination .pagination-orders li.activePagination {
+  background-color: #0a3254;
+  color: #fff;
+}
+.orders-page .header-orderes h4 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+}
+@media screen and (max-width: 767px) {
+  .orders-page .header-orderes h4 {
+    font-size: 14px;
+  }
+}
+.orders-page .header-orderes .select-box {
+  -moz-appearance: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  width: 164px;
+  height: 48px;
+  border: 1px solid #cbd5e1;
+  padding: 2px 18px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #000;
+  border-radius: 8px;
+}
+@media screen and (max-width: 767px) {
+  .orders-page .header-orderes .select-box {
+    width: 89px;
+    height: 38px;
+  }
+}
+
+/*********************** end style orders page  *************************/

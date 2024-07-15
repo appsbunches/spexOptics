@@ -1,0 +1,67 @@
+<section class="orders-info  p-4 mt-5 mb-5">
+  <div class="container">
+    <div class="row g-4">
+
+      <div class="col-md-4">
+      
+        {# total #}
+        <div class="d-flex align-items-start  gap-2 order total p-4">
+          <div class="icon-box">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_81_163351)">
+            <path d="M1.69238 5.56961V15.7619C1.69238 16.1656 1.93512 16.5297 2.30777 16.685L11.0001 20.3068M1.69238 5.56961L10.2308 2.01192C10.7232 1.80679 11.277 1.80679 11.7693 2.01192L15.6539 3.63051M1.69238 5.56961L6.34623 7.50871M11.0001 9.44782V20.3068M11.0001 9.44782L20.3078 5.56961M11.0001 9.44782L6.34623 7.50871M11.0001 20.3068L19.6924 16.685C20.065 16.5297 20.3078 16.1656 20.3078 15.7619V5.56961M20.3078 5.56961L15.6539 3.63051M6.34623 7.50871L15.6539 3.63051" stroke="#5D35ED" stroke-width="2" stroke-linejoin="round"/>
+            </g>
+            <defs>
+            <clipPath id="clip0_81_163351">
+            <rect width="22" height="22" fill="white"/>
+            </clipPath>
+            </defs>
+            </svg>     
+          </div>
+          <div class="box totalOrders d-flex flex-column gap-3">
+            <h3>{{ locals.orders.all_orders }}</h3>
+            <span class="number"></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        {# current orders #}
+        <div class="d-flex align-items-start gap-2  order current p-4">
+          <div class="icon-box">
+              <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2.19238 5.56961V15.7619C2.19238 16.1656 2.43512 16.5297 2.80777 16.685L11.5001 20.3068M2.19238 5.56961L10.7308 2.01192C11.2232 1.80679 11.777 1.80679 12.2693 2.01192L16.1539 3.63051M2.19238 5.56961L6.84623 7.50871M11.5001 9.44782V20.3068M11.5001 9.44782L20.8078 5.56961M11.5001 9.44782L6.84623 7.50871M11.5001 20.3068L20.1924 16.685C20.565 16.5297 20.8078 16.1656 20.8078 15.7619V5.56961M20.8078 5.56961L16.1539 3.63051M6.84623 7.50871L16.1539 3.63051" stroke="#23ABA9" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+          </div>
+          <div class="box currentOrders d-flex flex-column gap-3">
+            <h3>{{ locals.orders.current_orders }}</h3>
+            <span class="number"></span>
+          </div>
+        </div>
+      
+      </div>
+      <div class="col-md-4">
+        {# old orders #}
+        <div class="d-flex align-items-start  gap-2 order old p-4">
+          <div class="icon-box">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_81_163333)">
+                <path d="M1.69238 5.56961V15.7619C1.69238 16.1656 1.93512 16.5297 2.30777 16.685L11.0001 20.3068M1.69238 5.56961L10.2308 2.01192C10.7232 1.80679 11.277 1.80679 11.7693 2.01192L15.6539 3.63051M1.69238 5.56961L6.34623 7.50871M11.0001 9.44782V20.3068M11.0001 9.44782L20.3078 5.56961M11.0001 9.44782L6.34623 7.50871M11.0001 20.3068L19.6924 16.685C20.065 16.5297 20.3078 16.1656 20.3078 15.7619V5.56961M20.3078 5.56961L15.6539 3.63051M6.34623 7.50871L15.6539 3.63051" stroke="#1E293B" stroke-width="2" stroke-linejoin="round"/>
+                </g>
+                <defs>
+                <clipPath id="clip0_81_163333">
+                <rect width="22" height="22" fill="white"/>
+                </clipPath>
+                </defs>
+              </svg>
+
+          </div>
+          <div class="box oldOrders d-flex flex-column gap-3">
+            <h3>{{ locals.orders.old_orders }}</h3>
+            <span class="number"></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,145 @@
+{% extends "layout.twig" %}
+
+
+{% block header %} {{ include('header.twig') }} {% endblock %}
+
+{% block top_links %}
+    <link rel="stylesheet" href="{{ asset_url ~ 'profile-style.css?v=1.02' }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'account-pages.css?v=1.59' }}" />
+{% endblock %}
+
+{% block main_content %}
+    <div class="container-parent">
+        <div class="profile-pages-bg d-none d-lg-flex flex-grow-1">
+            <div class="section-colored"></div>
+        </div>
+
+        <div class="container">
+            {% include 'profile-section-dropdown.twig' with { 'title' : locals.profile.addresses , 'section' : 'addresses' } %}
+            <div class="d-flex">
+                {% include 'profile-section.twig' with { 'section' : 'addresses' } %}
+                <div class="flex-grow-1">
+                    {% include 'profile-title.twig' with { 'title' : locals.profile.addresses } %}
+                    <div class="account-content">
+                        <div>
+                            <a href="/account-addresses/add" class="btn aaddress-personal-btn"> {{ locals.add_new_address }} <span class="icon-add_black"></span></a>
+                            <div class="row mt-3 mb-5">
+                                {% for address in addresses %}
+                                    <div id="address-div-{{ address.id }}" class="col-lg-6">
+                                        <div>
+                                            <div class="card-personal">
+                                                <div class="card-body">
+                                                    <a class="delete-button" onclick="deleteAddress({{ address.id }})">
+                                                        <img class="delete-address-progress d-none" src="{{ asset_url }}spinner.gif" width="15" height="15"/>
+                                                        <span class="icon-trash-alt"></span>
+                                                    </a>
+                                                    <a href="/account-addresses/{{ address.id }}/edit">
+                                                        <h5 class="address-title">{{ address.name }}</h5>
+                                                        <p class="address-text">{{ address.address_street }}</p>
+                                                        <p class="address-text">{{ address.country.name }}, {{ address.city.name }}, {{ address.address_district }}</p>
+                                                    </a>
+
+                                                    {% if address.address_lat %}
+                                                    <a style="color: inherit; text-decoration: underline" target="_blank" href="https://maps.google.com/?q={{ address.address_lat }},{{ address.address_lng }}">
+                                                        <i class="fa fa-map-marker"></i>&nbsp;&nbsp;{{ locals.location_on_map }}
+                                                    </a>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block footer_scripts %}
+    <script>
+    console.log({{ customer | json_encode | raw }});
+        function deleteAddress(addressId) {
+            var element = $('#address-div-'+addressId);
+
+            if(!$('.delete-address-progress',element).hasClass('d-none'))
+                return;
+
+            $('.delete-button span',element).addClass('d-none');
+
+            $('.delete-address-progress',element).removeClass('d-none');
+
+            // zid.store.customer.deleteAddress(addressId).then(function (response) {
+            //     if(response.status  === 'success'){
+            //         $('.delete-address-progress',element).addClass('d-none');
+            //         $( element ).remove();
+            //     }
+
+            // })
+    // const token = 'Qmk1cG1KVjh5UzVueTlyUzZTSE5OUzFPZEUyUXZZYkxqaWwyRnJ5US42OWMxYjkw';
+
+    // fetch(`https://pi4rax.zid.store/api/v1/customer/addAddress`, {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //         'Authorization': `Bearer ${token}`,
+    //     },
+    //     body: JSON.stringify({
+    //         address_country_id: 184,
+    //         address_city_id:1,
+    //         address_street: 'Test Street',
+    //         address_district: 'Test District',
+    //     }),
+    // })
+    // .then(response => {
+    //     // Check if the response is not OK (i.e., 2xx status code)
+    //     if (!response.ok) {
+    //         return response.text().then(text => { throw new Error(text) });
+    //     }
+    //     return response.json();
+    // })
+    // .then(data => {
+    //     console.log('Response data:', data);
+    //     if (data.status === 'success') {
+    //         // Hide the loading spinner
+    //         document.querySelector('.delete-address-progress', element).classList.add('d-none');
+    //         // Remove the address element from the DOM
+    //         element.remove();
+    //     } else {
+    //         console.error('Failed to delete address:', data.message);
+    //     }
+    // })
+    // .catch(error => {
+    //     // Log the error details
+    //     console.error('Error:', error.message);
+    // });
+    function getTokenFromHeaders() {
+    let token = null;
+    const mockHeaders = {
+        set: (name, value) => {
+            if (name === 'Authorization') {
+                token = value;
+            }
+        }
+    };
+
+    // Simulate adding headers to capture the Authorization token
+    zid.store.addDefaultHeaders(mockHeaders);
+    
+    return token;
+}
+
+const token = getTokenFromHeaders();
+console.log(token);
+}
+    </script>
+{% endblock %}
+
+
+{% block footer %} {{ include('footer.twig') }} {% endblock %}

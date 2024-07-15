@@ -1,0 +1,96 @@
+<div class="middle-section mt-5 ">
+  <div class="container">
+    <div class="row">
+    
+      {# orders #}
+      <div class="col-md-4">
+        <div class="myOrders   border d-flex flex-column align-items-center align-items-md-start gap-4 p-4">
+            <div class="order-icon d-flex justify-content-center align-items-center rounded-circle">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 6.16667V17.1667C2 17.5704 2.24274 17.9345 2.61538 18.0897L12 22M2 6.16667L11.2308 2.32051C11.7231 2.11538 12.2769 2.11538 12.7692 2.32051L17 4.08333M2 6.16667L7 8.25M12 10.3333V22M12 10.3333L22 6.16667M12 10.3333L7 8.25M12 22L21.3846 18.0897C21.7573 17.9345 22 17.5704 22 17.1667V6.16667M22 6.16667L17 4.08333M7 8.25L17 4.08333" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>{{ locals.profile.myOrders }}</h3>
+            <div class="d-flex justify-content-center justify-content-md-between gap-2 w-100 align-items-center">    
+                <div class="d-flex justify-content-center justify-content-md-start myOrdersServices flex-wrap gap-2">
+                </div>
+                <div class="d-none d-md-block">
+                {% if session.lang.code == 'ar' %} 
+                              <img src="{{ asset_url ~ "arrowLeft.svg" }}" alt="arrowLeft">
+                  {% else %}
+                                        <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="rotateIcon">
+                                        <path d="M8.40002 1C8.40002 1 1.20003 5.13483 1.20003 7.00173C1.20002 8.86863 8.40002 13 8.40002 13" stroke="#334155" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                        {% endif %} 
+                </div>
+             </div>
+          </div>
+        </div>
+      {# addresses #}
+        <div class="col-md-4">
+        <div class="myAddress_profile   border d-flex flex-column align-items-center align-items-md-start gap-4 p-4">
+            <div class="order-icon d-flex justify-content-center align-items-center rounded-circle">
+              <svg width="18" height="25" viewBox="0 0 18 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.1603 8.64836C17.2509 6.43992 16.3745 4.29674 14.745 2.74354C13.24 1.23255 11.1716 0.364466 8.99994 0.332031C6.82826 0.364452 4.76001 1.23255 3.25485 2.74354C1.62559 4.29695 0.748972 6.44014 0.839791 8.64836C0.943675 10.8568 1.76569 12.9776 3.18921 14.7099L5.17546 17.192V17.1922C4.42904 17.4273 3.72722 17.7775 3.09709 18.2292C2.14555 18.937 1.6429 19.7984 1.6429 20.7222C1.6429 21.9126 2.47601 22.9923 3.98898 23.7628C5.54841 24.4963 7.26583 24.8619 9.00011 24.8301C10.735 24.8621 12.4529 24.4963 14.0128 23.7628C15.5257 22.9924 16.3588 21.9118 16.3588 20.7222C16.3588 19.7984 15.8562 18.9363 14.9047 18.2292C14.2745 17.7775 13.5727 17.4272 12.8263 17.1922L14.8125 14.7101V14.7099C16.2355 12.9777 17.0572 10.857 17.1606 8.64836H17.1603ZM14.7718 20.7223C14.7718 21.9408 12.4023 23.2989 9.00011 23.2989C5.59792 23.2989 3.22842 21.9409 3.22842 20.7223C3.22842 19.8401 4.43199 18.953 6.21018 18.4871L8.37235 21.1898H8.37257C8.52266 21.3775 8.75452 21.4876 9.00033 21.4876C9.24614 21.4876 9.47821 21.3775 9.62831 21.1898L11.7905 18.4876C13.57 18.9532 14.7722 19.8399 14.7722 20.7223H14.7718ZM9.00011 19.4692L4.4441 13.774C1.78239 10.4473 1.755 6.35616 4.3769 3.82638C5.5855 2.60376 7.24973 1.89713 9.00008 1.86322C10.7507 1.89714 12.4149 2.60376 13.6235 3.82638C16.2467 6.35775 16.2187 10.4476 13.5563 13.774L9.00011 19.4692ZM9.00011 4.73717C7.87106 4.73717 6.78819 5.16994 5.98983 5.94036C5.19147 6.71077 4.74275 7.7557 4.74275 8.84521C4.74275 9.93471 5.19124 10.9797 5.98961 11.7501C6.78797 12.5205 7.87084 12.9535 9.00011 12.9532C10.1292 12.9532 11.212 12.5205 12.0104 11.7501C12.8087 10.9794 13.257 9.93449 13.257 8.84499C13.2557 7.75592 12.807 6.71185 12.0088 5.94161C11.2108 5.17159 10.1286 4.73842 9.00005 4.73711L9.00011 4.73717ZM9.00011 11.4217V11.4219C8.29189 11.4219 7.61264 11.1504 7.1118 10.6673C6.61093 10.184 6.32957 9.52856 6.32957 8.84515C6.32935 8.16173 6.61073 7.50627 7.11158 7.02297C7.61223 6.53965 8.29149 6.26814 8.99988 6.26814C9.7081 6.26792 10.3874 6.53945 10.8882 7.02276C11.3891 7.50608 11.6704 8.16151 11.6704 8.84493C11.6695 9.52813 11.3879 10.1832 10.8875 10.6662C10.3869 11.1493 9.70805 11.4211 9.00011 11.4219V11.4217Z" fill="white"/>
+              </svg>
+
+            </div>
+            <h3>{{ locals.profile.myaddresses }}</h3>
+            <div class="d-flex justify-content-center justify-content-md-between gap-4 w-100 align-items-center">    
+                <div class="d-flex justify-content-center justify-content-md-start myAddressesProfile flex-wrap gap-2">
+                </div>
+                <div class="d-none d-md-block">
+                {% if session.lang.code == 'ar' %} 
+                              <img src="{{ asset_url ~ "arrowLeft.svg" }}" alt="arrowLeft">
+                  {% else %}
+                                        <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="rotateIcon">
+                                        <path d="M8.40002 1C8.40002 1 1.20003 5.13483 1.20003 7.00173C1.20002 8.86863 8.40002 13 8.40002 13" stroke="#334155" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                        {% endif %} 
+                </div>
+             </div>
+          </div>
+        </div>
+      {# shipping #}
+      {% if store.shipping_methods|length > 0 %}
+      <div class="col-md-4">
+        <div class="myShipping_profile   border d-flex flex-column align-items-center align-items-md-start gap-4 p-4">
+            <div class="order-icon d-flex justify-content-center align-items-center rounded-circle">
+                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 6.16667V17.1667C2 17.5704 2.24274 17.9345 2.61538 18.0897L12 22M2 6.16667L11.2308 2.32051C11.7231 2.11538 12.2769 2.11538 12.7692 2.32051L17 4.08333M2 6.16667L7 8.25M12 10.3333V22M12 10.3333L22 6.16667M12 10.3333L7 8.25M12 22L21.3846 18.0897C21.7573 17.9345 22 17.5704 22 17.1667V6.16667M22 6.16667L17 4.08333M7 8.25L17 4.08333" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+
+            </div>
+            <h3>{{ locals.profile.myShippingOptions }}</h3>
+            <div class="d-flex justify-content-center justify-content-md-between gap-4 w-100 align-items-center">    
+                <div class="d-flex justify-content-center justify-content-md-start myAddressesProfile flex-wrap gap-2">
+                     {% for index,ship in store.shipping_methods %}
+                        {% if index <  2 %}
+                          <a class="text-nowrap " href="#0">
+                            {{ ship.name }},
+                          </a>
+                        {% endif %}
+                      {% endfor %}
+                        {% if store.shipping_methods|length > 2 %}
+                          <a class="text-nowrap " href="#0">
+                          +{{  store.shipping_methods|length - 2}}
+                          </a>
+                      {% endif %}
+                </div>
+                <div class="d-none d-md-block">
+                {% if session.lang.code == 'ar' %} 
+                              <img src="{{ asset_url ~ "arrowLeft.svg" }}" alt="arrowLeft">
+                  {% else %}
+                                        <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="rotateIcon">
+                                        <path d="M8.40002 1C8.40002 1 1.20003 5.13483 1.20003 7.00173C1.20002 8.86863 8.40002 13 8.40002 13" stroke="#334155" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                  {% endif %} 
+                </div>
+             </div>
+          </div>
+        </div>
+                           {% endif %}
+
+      </div>  {# end container and row #}
+  </div>
+</div>

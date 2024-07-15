@@ -1,0 +1,519 @@
+/* start main settings */
+a {
+  text-decoration: none;
+}
+select {
+  border: none; /* Removes the default border */
+  border-radius: 30px; /* Adds rounded corners */
+  padding: 10px 15px; /* Adds padding for a better appearance */
+  outline: none; /* Removes the outline on focus */
+  background-color: #fff; /* Optional: Sets a background color */
+  width: 165px;
+  @media screen and (max-width: 767px) {
+    width: 95px;
+  }
+}
+ul {
+  padding: 0;
+  margin: 0;
+}
+button {
+  background: transparent;
+  border: 0;
+}
+.rotateIcon {
+  transform: rotate(180deg);
+}
+.radius30 {
+  border-radius: 30px;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+html[lang='en'] .breadcrumb-item + .breadcrumb-item::before {
+  rotate: 180deg !important;
+  padding-left: 4px !important;
+  padding-right: 4px !important;
+}
+.breadcrumb-section {
+  nav {
+    background-color: #fff !important;
+  }
+}
+.breadcrumb-item {
+  color: #333 !important;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 0 !important;
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+  }
+}
+.breadcrumb-item.active {
+  color: #333 !important;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 0 !important;
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+  }
+}
+
+// varibles
+$primary-color: var(--primary-color);
+$text-color: var(--text-color);
+$font-family: var(--font-family);
+$background-color: var(--background-color);
+$border-color: var(--border-color);
+$main-space: var(--main-space);
+$main-transition: var(--main-transition);
+/* start main settings */
+
+/*********************** start style profile  *************************/
+.profile-page {
+  .profile-box {
+    background-color: #fff;
+    border-radius: 30px;
+    border: 1px solid #e0e0e0;
+    .user-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: $primary-color;
+    }
+    .welcome {
+      font-size: 16px;
+      font-weight: 700;
+      color: $primary-color;
+      @media screen and (max-width: 767px) {
+        & {
+          font-size: 14px;
+        }
+      }
+    }
+    .customer {
+      h2 {
+        font-size: 24px;
+        font-weight: 700;
+        color: #000;
+        @media screen and (max-width: 767px) {
+          & {
+            font-size: 18px;
+          }
+        }
+      }
+      button {
+        font-size: 14px;
+        font-weight: 700;
+        color: #fff;
+        @media screen and (max-width: 767px) {
+          & {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+  .offcanvas-profile-edit {
+    @media screen and (max-width: 767px) {
+      & {
+        height: 60%;
+      }
+    }
+    .header_profile_offcanfas {
+      background-color: #e2e8f0;
+
+      h2 {
+        font-size: 24px;
+        font-weight: 700;
+        color: #000;
+        @media screen and (max-width: 767px) {
+          & {
+            font-size: 20px;
+          }
+        }
+      }
+      .close-btn {
+        width: 33px;
+        height: 33px;
+      }
+    }
+    .body_profile_offcanfas {
+      .sameStyle,
+      .diffStyle {
+        font-size: 14px;
+        font-weight: 700;
+      }
+      .sameStyle {
+        color: #070606;
+      }
+      .diffStyle {
+        color: #475569;
+      }
+      .btn-edit,
+      .btn-delete {
+        font-size: 16px;
+        font-weight: 700;
+        border-radius: 30px;
+        height: 56px;
+      }
+      .btn-edit {
+        color: #fff;
+      }
+      .btn-delete {
+        // color: #ff483b;
+      }
+    }
+  }
+  .offcanvas-profile-edit {
+    @media screen and (max-width: 767px) {
+      & {
+        width: 100vw;
+      }
+    }
+  }
+  .myOrders,
+  .myAddress_profile,
+  .myShipping_profile {
+    border-radius: 30px;
+    background-color: #fff;
+    a {
+      font-size: 14px;
+      font-weight: 500;
+      color: $primary-color;
+    }
+  }
+  .latest-orders {
+    height: 583px;
+    background-color: #fff;
+    border-radius: 30px;
+    border: 1px solid #e0e0e0;
+    .head {
+      background-color: #f7f7f7;
+      border-radius: 30px 30px 0 0;
+    }
+    .latest_orders_data {
+      height: 443px;
+      overflow: auto;
+      padding-inline-end: 20px;
+      .latest-order {
+        .order-id {
+          font-size: 16px;
+          font-weight: 500;
+          color: #000;
+          @media screen and (max-width: 767px) {
+            & {
+              font-size: 14px;
+            }
+          }
+        }
+        .date {
+          font-size: 12px;
+          font-weight: 700;
+          color: #808080;
+        }
+        .order-status,
+        .order-payment {
+          font-size: 12px;
+          font-weight: 500;
+          border-radius: 4px;
+          min-width: 47px;
+          height: 26px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          @media screen and (max-width: 767px) {
+            & {
+              font-size: 8px;
+              min-width: 40px;
+            }
+          }
+        }
+        .order-status {
+          color: #333333;
+          // background-color: #ffae4d1a;
+          border: 1px solid #0a3254;
+        }
+        .order-payment {
+          color: #333333;
+          background-color: #fff;
+          border: 1px solid #e2e8f0;
+        }
+        .total-string {
+          font-size: 12px;
+          font-weight: 500;
+          color: #64748b;
+          @media screen and (max-width: 767px) {
+            & {
+              font-size: 10px;
+            }
+          }
+        }
+        .price {
+          font-size: 18px;
+          font-weight: 500;
+          color: #1e293b;
+        }
+      }
+    }
+  }
+
+  .order-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+    background-color: $primary-color;
+  }
+  .show-more {
+    font-size: 12px;
+    font-weight: 500;
+    color: #0a3254;
+    @media screen and (max-width: 767px) {
+      & {
+        font-size: 10px;
+      }
+    }
+  }
+}
+/*********************** end style profile  *************************/
+
+/*********************** start style orders page  *************************/
+.orders-page {
+  .orders-info {
+    background-color: #f7f7f7;
+    border-radius: 20px;
+    .order {
+      background-color: #fff;
+      border-radius: 20px;
+      .icon-box {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      &.total {
+        .icon-box {
+          background-color: #f7f5fe;
+        }
+      }
+      &.current {
+        .icon-box {
+          background-color: #f3fdfc;
+        }
+      }
+      &.old {
+        .icon-box {
+          background-color: #f8fafc;
+        }
+      }
+
+      h3 {
+        font-size: 18px;
+        font-weight: 700;
+        color: #64748b;
+        @media screen and (max-width: 767px) {
+          & {
+            font-size: 16px;
+          }
+        }
+      }
+      .number {
+        font-size: 28px;
+        font-weight: 700;
+        color: #000;
+        @media screen and (max-width: 767px) {
+          & {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+  .orders-tabs {
+    .tab {
+      min-width: 169px;
+      height: 52px;
+      background-color: #f8fafc;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 500;
+      transition: backgroundColor 0.5s ease;
+      @media screen and (max-width: 767px) {
+        & {
+          min-width: 131px;
+          height: 38px;
+          font-size: 10px;
+        }
+      }
+      .num-box {
+        background-color: #f1f5f9;
+        border-radius: 8px;
+        color: #334155;
+        min-width: 24px;
+        min-height: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .num-box.active {
+        background-color: #0a3254;
+        color: #fff;
+      }
+      &:hover,
+      &.activeTab {
+        background-color: #e7ebee;
+        color: #0a3254;
+      }
+    }
+  }
+  .rendered-orders {
+    .order-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 30px;
+      background-color: $primary-color;
+    }
+    border: 1px solid #e0e0e0;
+    .header-orders {
+      background-color: #f7f7f7;
+      border-radius: 30px 30px 0 0;
+    }
+    .body-orders {
+      .order {
+        border-radius: 12px;
+        .order-id {
+          font-size: 16px;
+          font-weight: 700;
+          color: #333333;
+        }
+        .date {
+          font-size: 12px;
+          font-weight: 700;
+          color: #808080;
+          @media screen and (max-width: 767px) {
+            & {
+              font-size: 10px;
+            }
+          }
+        }
+        .order-status,
+        .order-payment {
+          font-size: 12px;
+          font-weight: 500;
+          border-radius: 4px;
+          min-width: 47px;
+          height: 26px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          @media screen and (max-width: 767px) {
+            & {
+              font-size: 8px;
+              min-width: 40px;
+            }
+          }
+        }
+        .order-status {
+          color: #333333;
+          // background-color: #ffae4d1a;
+          border: 1px solid #0a3254;
+        }
+        .order-payment {
+          color: #333333;
+          background-color: #fff;
+          border: 1px solid #e2e8f0;
+        }
+        .total-string {
+          font-size: 12px;
+          font-weight: 500;
+          color: #64748b;
+          @media screen and (max-width: 767px) {
+            & {
+              font-size: 10px;
+            }
+          }
+        }
+        .price {
+          font-size: 18px;
+          font-weight: 500;
+          color: #1e293b;
+        }
+      }
+    }
+  }
+  .container-pagination {
+    .prev-btn,
+    .next-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #eeeeeeee;
+      @media screen and (max-width: 767px) {
+        & {
+          width: 40px;
+          height: 40px;
+        }
+      }
+    }
+    .pagination-orders {
+      li {
+        border: 1px solid #eeeeee;
+        color: #0a3254;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        font-weight: 400;
+        transition: backgroundColor 0.5s ease;
+        &:hover,
+        &.activePagination {
+          background-color: #0a3254;
+          color: #fff;
+        }
+      }
+    }
+  }
+  .header-orderes {
+    h4 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #000;
+      @media screen and (max-width: 767px) {
+        & {
+          font-size: 14px;
+        }
+      }
+    }
+    .select-box {
+      -moz-appearance: none !important;
+      -webkit-appearance: none !important;
+      appearance: none !important;
+
+      width: 164px;
+      height: 48px;
+      border: 1px solid #cbd5e1;
+      padding: 2px 18px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #000;
+      border-radius: 8px;
+      @media screen and (max-width: 767px) {
+        & {
+          width: 89px;
+          height: 38px;
+        }
+      }
+    }
+  }
+}
+/*********************** end style orders page  *************************/
