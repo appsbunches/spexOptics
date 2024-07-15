@@ -15,13 +15,17 @@
                 <div class="d-flex justify-content-center justify-content-md-start myOrdersServices flex-wrap gap-2">
                 </div>
                 <div class="d-none d-md-block">
-                {% if session.lang.code == 'ar' %} 
-                              <img src="{{ asset_url ~ "arrowLeft.svg" }}" alt="arrowLeft">
-                  {% else %}
-                                        <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="rotateIcon">
-                                        <path d="M8.40002 1C8.40002 1 1.20003 5.13483 1.20003 7.00173C1.20002 8.86863 8.40002 13 8.40002 13" stroke="#334155" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                        {% endif %} 
+                <a href="/account-orders">
+                
+                    {% if session.lang.code == 'ar' %} 
+                                <img src="{{ asset_url ~ "arrowLeft.svg" }}" alt="arrowLeft" >
+                    {% else %}
+                                  <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="rotateIcon">
+                                  <path d="M8.40002 1C8.40002 1 1.20003 5.13483 1.20003 7.00173C1.20002 8.86863 8.40002 13 8.40002 13" stroke="#334155" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                  </svg>
+                      {% endif %} 
+                 </a>
+
                 </div>
              </div>
           </div>
@@ -39,15 +43,18 @@
             <div class="d-flex justify-content-center justify-content-md-between gap-4 w-100 align-items-center">    
                 <div class="d-flex justify-content-center justify-content-md-start myAddressesProfile flex-wrap gap-2">
                 </div>
-                <div class="d-none d-md-block">
-                {% if session.lang.code == 'ar' %} 
-                              <img src="{{ asset_url ~ "arrowLeft.svg" }}" alt="arrowLeft">
-                  {% else %}
-                                        <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="rotateIcon">
-                                        <path d="M8.40002 1C8.40002 1 1.20003 5.13483 1.20003 7.00173C1.20002 8.86863 8.40002 13 8.40002 13" stroke="#334155" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                        {% endif %} 
-                </div>
+                <a class="d-none d-md-block">
+                   <a href="/account-addresses">
+
+                  {% if session.lang.code == 'ar' %} 
+                                <img src="{{ asset_url ~ "arrowLeft.svg" }}" alt="arrowLeft">
+                    {% else %}
+                                <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="rotateIcon">
+                                <path d="M8.40002 1C8.40002 1 1.20003 5.13483 1.20003 7.00173C1.20002 8.86863 8.40002 13 8.40002 13" stroke="#334155" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                    {% endif %} 
+                </a>
+                </a>
              </div>
           </div>
         </div>
@@ -78,13 +85,16 @@
                       {% endif %}
                 </div>
                 <div class="d-none d-md-block">
-                {% if session.lang.code == 'ar' %} 
-                              <img src="{{ asset_url ~ "arrowLeft.svg" }}" alt="arrowLeft">
-                  {% else %}
-                                        <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="rotateIcon">
-                                        <path d="M8.40002 1C8.40002 1 1.20003 5.13483 1.20003 7.00173C1.20002 8.86863 8.40002 13 8.40002 13" stroke="#334155" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                  {% endif %} 
+                  <a href="/shipping-and-payment">
+
+                      {% if session.lang.code == 'ar' %} 
+                                    <img src="{{ asset_url ~ "arrowLeft.svg" }}" alt="arrowLeft">
+                        {% else %}
+                                              <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="rotateIcon">
+                                              <path d="M8.40002 1C8.40002 1 1.20003 5.13483 1.20003 7.00173C1.20002 8.86863 8.40002 13 8.40002 13" stroke="#334155" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                              </svg>
+                        {% endif %} 
+                  </a>
                 </div>
              </div>
           </div>

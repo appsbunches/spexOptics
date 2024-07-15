@@ -84,6 +84,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'jquery-ui.min.css' }}"  />
     <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'jquery-ui.structure.min.css' }}"  />
     <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'jquery-ui.theme.min.css' }}"  />
+           <link rel="stylesheet" href="{{ asset_url ~ 'css-toastr.min.css' }}" />
+
 
     <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'slick.css' }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'slick-theme.css?v=1.08' }}" />
@@ -91,11 +93,11 @@
     <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'slide-menu.css' }}" />
 
     <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'slide-menu-style.css?v=1.18' }}" />
-
+  
     <link rel="stylesheet" href="{{ asset_url ~ 'main.css?v=1.221' }}" />
 
     <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'custom.css?v=1.148' }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'style.css?v=1.38' }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'style.css?v=1.51' }}" />
 
     {% if session.lang.code == 'ar' %}
         <link rel="stylesheet" href="{{ asset_url ~ 'main.rtl.css?v=1.25' }}">
@@ -209,8 +211,9 @@
 
 <script src="{{ asset_url ~ 'slide-menu.ie.js?v=1.06' }}" ></script>
 <script src="{{ asset_url ~ 'slick.min.js' }}" ></script>
+    <script type="text/javascript" src="{{ asset_url ~ 'js-toastr.min.js' }}"></script>
 
-<script type="text/javascript" src="{{ asset_url ~ 'main.js?v=1.120' }}" ></script>
+<script type="text/javascript" src="{{ asset_url ~ 'main.js?v=1.131' }}" ></script>
 
 {% block footer_scripts %}{% endblock %}
 
@@ -221,6 +224,70 @@
 
 {% schema %}
 {
+ "banners": {
+    "name": {
+      "ar": "اضافة بانرات للصفحات",
+      "en": "add Banners to Pages"
+    },
+    "icon": "fa fa-paint-brush",
+    "display": true,
+    "settings": {
+      "banner_profile_page": {
+        "type": "fieldset",
+        "label": {
+          "ar": "بانر الملف الشخصي",
+          "en": "profile page banner"
+        },
+        "icon": "font_awesome",
+        "expandable": true,
+        "settings": {
+          "image": {
+            "type": "image",
+            "label": {
+              "ar": "الصورة",
+              "en": "Logo"
+            }
+          }
+        }
+      },
+      "banner_ordered_page": {
+        "type": "fieldset",
+        "label": {
+          "ar": "بانر صفحة الطلبات",
+          "en": "orders page banner"
+        },
+        "icon": "font_awesome",
+        "expandable": true,
+        "settings": {
+          "image": {
+            "type": "image",
+            "label": {
+              "ar": "الصورة",
+              "en": "Logo"
+            }
+          }
+        }
+      },
+      "banner_address_page": {
+        "type": "fieldset",
+        "label": {
+          "ar": "بانر صفحة العناوين",
+          "en": "addresses page banner"
+        },
+        "icon": "font_awesome",
+        "expandable": true,
+        "settings": {
+          "image": {
+            "type": "image",
+            "label": {
+              "ar": "الصورة",
+              "en": "Logo"
+            }
+          }
+        }
+      }
+    }
+  },
   "colors":{
     "name": {
       "ar": "الالوان",

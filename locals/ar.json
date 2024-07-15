@@ -271,5 +271,15 @@
     "more_orders": "طلبات",
     "order_paid": "مدفوع",
     "order_pending": "في انتظار الدفع لإكمال إجراءات الطلب"
+  },
+  "addresses": {
+    "addresses": "العناوين",
+    "add_address": "أضف عنوان",
+    "new_address": "عنوان جديد",
+    "add": "اضف",
+    "country": "الدولة",
+    "city": "المدينة",
+    "district": "الحي",
+    "street": "الشارع"
   }
 }

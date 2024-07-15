@@ -9,135 +9,183 @@
 {% endblock %}
 
 {% block main_content %}
-    <div class="container-parent">
-        <div class="profile-pages-bg d-none d-lg-flex flex-grow-1">
-            <div class="section-colored"></div>
+ {# bread crumbs #}
+
+     {% embed 'breadcrumb.twig' %}
+        {% block breadcrumb_items %}
+            <li class="breadcrumb-item" aria-current="page"><a href="/">{{ locals.home_title }}</a></li>
+               {% if session.lang.code == 'ar' %}
+                <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                <path d="M7 1L2 6L7 11" stroke="#333333" stroke-width="1.5"/>
+                </svg>
+               {% else %}
+                <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="rotateIcon">
+                <path d="M7 1L2 6L7 11" stroke="#333333" stroke-width="1.5"/>
+                </svg>
+               {% endif %}
+            <li class="breadcrumb-item active " aria-current="page">{{ locals.addresses.addresses }}</li>
+        {% endblock %}
+    {% endembed %}
+    {# small hero #}
+    <div class="w-100 smallHero d-flex justify-content-center align-items-center"  style="{% if settings.banners_banner_address_page_image %}background-image: url({{ settings.banners_banner_address_page_image }});{% else %}background-color:{{ store.colors.primary }}{% endif %}">
+        <button type="button" class="addAddress radius30 py-3" data-bs-toggle="offcanvas" data-bs-target="#addAddress" aria-controls="offcanvasRight">
+            {{ locals.addresses.add_address }}
+        </button>
+    </div>
+    {# popup add address #}
+    <div class="offcanvas offcanvas-start offcanvas-add-address" tabindex="-1" id="addAddress" aria-labelledby="offcanvasRightLabel" style="z-index: 9999;">
+
+            <div class="header_address_offcanfas d-flex justify-content-between items-center gap-3 py-4 px-4">
+               <h2>{{ locals.addresses.new_address }}</h2>
+               <button class="close-btn d-flex justify-content-center align-items-center" type="button" data-bs-dismiss="offcanvas" aria-label="Close">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M2.41877 0.833188C2.2055 0.634468 1.92343 0.526283 1.63198 0.531425C1.34053 0.536568 1.06245 0.654636 0.856333 0.860755C0.650214 1.06687 0.532146 1.34495 0.527003 1.6364C0.521861 1.92786 0.630046 2.20993 0.828766 2.42319L6.40877 8.00319L0.828766 13.5832C0.718236 13.6862 0.629582 13.8104 0.568094 13.9484C0.506606 14.0864 0.473543 14.2354 0.470878 14.3864C0.468213 14.5375 0.496 14.6875 0.552582 14.8276C0.609163 14.9677 0.69338 15.0949 0.800208 15.2017C0.907036 15.3086 1.03429 15.3928 1.17437 15.4494C1.31445 15.506 1.4645 15.5337 1.61555 15.5311C1.7666 15.5284 1.91557 15.4953 2.05357 15.4339C2.19157 15.3724 2.31577 15.2837 2.41877 15.1732L7.99877 9.59319L13.5788 15.1732C13.6818 15.2837 13.806 15.3724 13.944 15.4339C14.082 15.4953 14.2309 15.5284 14.382 15.5311C14.533 15.5337 14.6831 15.506 14.8232 15.4494C14.9632 15.3928 15.0905 15.3086 15.1973 15.2017C15.3042 15.0949 15.3884 14.9677 15.445 14.8276C15.5015 14.6875 15.5293 14.5375 15.5267 14.3864C15.524 14.2354 15.4909 14.0864 15.4294 13.9484C15.3679 13.8104 15.2793 13.6862 15.1688 13.5832L9.58877 8.00319L15.1688 2.42319C15.3675 2.20993 15.4757 1.92786 15.4705 1.6364C15.4654 1.34495 15.3473 1.06687 15.1412 0.860755C14.9351 0.654636 14.657 0.536568 14.3655 0.531425C14.0741 0.526283 13.792 0.634468 13.5788 0.833188L7.99877 6.41319L2.41877 0.833188Z" fill="#0A0C10"/>
+                        </svg>
+
+
+               </button>
+            </div>
+
+            
+            <div class="body_addAddress_offcanfas h-100 p-4">
+              <form   class="d-flex flex-column h-100 justify-content-between" id="customAddAddress">
+                  <div>
+                    <div class="mb-3 d-flex flex-column gap-3">
+                      <label for="addressCountries" class="form-label  sameStyle">{{ locals.addresses.country }}</label>
+                      <select class="form-select-countries    w-100" aria-label="Default select example" id="addressCountries" name="address_country_id">
+                        
+                       </select>
+                    </div>
+                    <div class="mb-3 d-flex flex-column gap-3">
+                      <label for="citiesAddress" class="form-label  sameStyle">{{ locals.addresses.city }}</label>
+                      <select class="form-select-citices   w-100" aria-label="Default select example" id="citiesAddress" name="address_city_id">
+                        
+                       </select>
+                    </div>
+                    <div class="mb-3">
+                      <label for="inputDistrict" class="form-label sameStyle">{{ locals.addresses.district }}</label>
+                      <input type="text" name="address_district" required  class="form-control address-input" id="inputDistrict"  >
+                    </div>
+                       <div class="mb-3">
+                      <label for="inputStreet" class="form-label sameStyle">{{ locals.addresses.street }}</label>
+                      <input type="text" name="address_street" required class="form-control address-input" id="inputStreet"  >
+                    </div>
+                  </div>
+                  <div class="container">
+                         <button id="add-address-button" type="submit" class="btn btn-primary w-100 btn-add">
+                          <img class="add-address-progress d-none" src="{{ asset_url }}spinner.gif" width="15" height="15"/>
+                        <span class="add-address-text"> {{ locals.addresses.add }}</span>
+                         </button>
+                   </div>
+                  </div>
+              </form>
+            </div>
+
         </div>
 
-        <div class="container">
-            {% include 'profile-section-dropdown.twig' with { 'title' : locals.profile.addresses , 'section' : 'addresses' } %}
-            <div class="d-flex">
-                {% include 'profile-section.twig' with { 'section' : 'addresses' } %}
-                <div class="flex-grow-1">
-                    {% include 'profile-title.twig' with { 'title' : locals.profile.addresses } %}
-                    <div class="account-content">
-                        <div>
-                            <a href="/account-addresses/add" class="btn aaddress-personal-btn"> {{ locals.add_new_address }} <span class="icon-add_black"></span></a>
-                            <div class="row mt-3 mb-5">
-                                {% for address in addresses %}
-                                    <div id="address-div-{{ address.id }}" class="col-lg-6">
-                                        <div>
-                                            <div class="card-personal">
-                                                <div class="card-body">
-                                                    <a class="delete-button" onclick="deleteAddress({{ address.id }})">
-                                                        <img class="delete-address-progress d-none" src="{{ asset_url }}spinner.gif" width="15" height="15"/>
-                                                        <span class="icon-trash-alt"></span>
-                                                    </a>
-                                                    <a href="/account-addresses/{{ address.id }}/edit">
-                                                        <h5 class="address-title">{{ address.name }}</h5>
-                                                        <p class="address-text">{{ address.address_street }}</p>
-                                                        <p class="address-text">{{ address.country.name }}, {{ address.city.name }}, {{ address.address_district }}</p>
-                                                    </a>
-
-                                                    {% if address.address_lat %}
-                                                    <a style="color: inherit; text-decoration: underline" target="_blank" href="https://maps.google.com/?q={{ address.address_lat }},{{ address.address_lng }}">
-                                                        <i class="fa fa-map-marker"></i>&nbsp;&nbsp;{{ locals.location_on_map }}
-                                                    </a>
-                                                    {% endif %}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            </div>
+    {# show all Addresses #}
+    <div class="container my-5 allAddresses">
+       <div class="row g-3">
+         {% for address in addresses %}
+            <div class="col-md-4" id="address-div-{{ address.id }}">
+                <div class="radius30 address p-3 d-flex align-items-start justify-content-between sameBorder">
+                   <div class="d-flex flex-column gap-3">
+                        <div class="smBox">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19.0843 8.74951C19.0837 8.74907 19.0833 8.74849 19.0828 8.74805L11.2499 0.91626C10.9161 0.582275 10.4722 0.398438 10 0.398438C9.52785 0.398438 9.08395 0.582275 8.74994 0.91626L0.921166 8.74409C0.918529 8.74673 0.915746 8.74951 0.913255 8.75215C0.227639 9.44165 0.228811 10.5604 0.916625 11.2481C1.23087 11.5625 1.64575 11.7444 2.0895 11.7636C2.10766 11.7653 2.12583 11.7662 2.14414 11.7662H2.45618V17.5298C2.45618 18.6705 3.3844 19.5984 4.52519 19.5984H7.58966C7.90039 19.5984 8.15222 19.3465 8.15222 19.0359V14.5172C8.15222 13.9967 8.57575 13.5734 9.09626 13.5734H10.9038C11.4243 13.5734 11.8477 13.9967 11.8477 14.5172V19.0359C11.8477 19.3465 12.0995 19.5984 12.4102 19.5984H15.4747C16.6156 19.5984 17.5437 18.6705 17.5437 17.5298V11.7662H17.8332C18.3052 11.7662 18.7491 11.5824 19.0833 11.2482C19.7718 10.5595 19.7721 9.43872 19.0843 8.74951ZM18.2876 10.4528C18.1662 10.5743 18.0047 10.6412 17.8332 10.6412H16.9811C16.6704 10.6412 16.4186 10.893 16.4186 11.2037V17.5298C16.4186 18.0501 15.9952 18.4734 15.4747 18.4734H12.9728V14.5172C12.9728 13.3765 12.0447 12.4484 10.9038 12.4484H9.09626C7.95532 12.4484 7.02711 13.3765 7.02711 14.5172V18.4734H4.52519C4.00483 18.4734 3.5813 18.0501 3.5813 17.5298V11.2037C3.5813 10.893 3.32947 10.6412 3.01874 10.6412H2.18135C2.17256 10.6406 2.16392 10.6402 2.15498 10.64C1.98739 10.6371 1.83019 10.5706 1.71241 10.4527C1.46189 10.2022 1.46189 9.79453 1.71241 9.5439C1.71255 9.5439 1.71255 9.54375 1.7127 9.5436L1.71314 9.54316L9.54572 1.71167C9.66702 1.59023 9.82832 1.52344 10 1.52344C10.1716 1.52344 10.3329 1.59023 10.4543 1.71167L18.2851 9.54155C18.2863 9.54272 18.2876 9.5439 18.2888 9.54507C18.538 9.796 18.5375 10.2028 18.2876 10.4528Z" fill="#0A3254" stroke="#0A3254" stroke-width="0.3"/>
+                            </svg>
 
                         </div>
-
-                    </div>
+                        <h4 class="address-title">{{ address.address_street }}</h4>
+                        <p class="address-text">{{ address.country.name }}, {{ address.city.name }}, {{ address.address_district }}</p>
+                   </div>
+                   <div>
+                    <button class="delete_btn" type="button" onclick="deleteAddress({{ address.id }})">
+                      <img class="delete-address-progress d-none" src="{{ asset_url }}spinner.gif" width="15" height="15"/>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="trashIcon">
+                        <path d="M5.46995 6.01662V18.5306C5.46981 18.888 5.5401 19.2419 5.6768 19.5721C5.8135 19.9022 6.01392 20.2023 6.26661 20.455C6.51931 20.7077 6.81932 20.9081 7.14951 21.0448C7.47969 21.1815 7.83358 21.2518 8.19095 21.2516H15.8089C16.5303 21.2516 17.2222 20.9651 17.7323 20.455C18.2424 19.9449 18.5289 19.253 18.5289 18.5316V6.01562M3.29395 6.01662H20.7059" stroke="#E11717" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8.73499 6.015V4.382C8.73499 4.1676 8.77723 3.9553 8.85931 3.75723C8.94139 3.55916 9.06169 3.37921 9.21334 3.22765C9.36499 3.07609 9.54502 2.9559 9.74314 2.87394C9.94126 2.79198 10.1536 2.74987 10.368 2.75H13.632C13.8464 2.74987 14.0587 2.79198 14.2568 2.87394C14.455 2.9559 14.635 3.07609 14.7866 3.22765C14.9383 3.37921 15.0586 3.55916 15.1407 3.75723C15.2227 3.9553 15.265 4.1676 15.265 4.382V6.015M9.82399 16.992V11.553M14.177 16.992V11.553" stroke="#E11717" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                   </div>
                 </div>
             </div>
-        </div>
+         {% endfor %}
+       </div>
     </div>
-
+   
 {% endblock %}
 
 
 {% block footer_scripts %}
+
     <script>
-    console.log({{ customer | json_encode | raw }});
+       
+        // fetch countries
+        const selectBoxCountry = document.getElementById("addressCountries");
+        function fetchCountries(){
+            let countryOptions = '';
+           zid.store.settings.fetchCountries().then((res)=>{
+               if(res.status  === 'success'){
+                  let idSelected = '';
+                   res.data.countries.forEach(country => {
+                       
+                       countryOptions += `<option value="${country.id}" ${country.name == "السعودية" ? 'selected' : ''}>${country.name}</option>`;
+                       if(country.name == "السعودية"){
+                          idSelected = country.id;
+                       }
+                   });
+                   fetchCitices(idSelected);
+                   selectBoxCountry.innerHTML = countryOptions;
+              }
+           }).catch((err)=>{
+               console.log(err);
+           })
+        }
+        selectBoxCountry.addEventListener('change', function() {
+            fetchCitices(this.value);
+         });
+        // fetch Citites
+        const selectBoxCity = document.getElementById("citiesAddress");
+        function fetchCitices(idCountry){
+            let cityOptions = '';
+           zid.store.settings.fetchCitiesOfCountry(idCountry).then((res)=>{
+               if(res.status  === 'success'){
+                   res.data.cities.forEach(city => {
+                       cityOptions += `<option value="${city.id}" >${city.name}</option>`;
+                   });
+                   selectBoxCity.innerHTML = cityOptions;
+              }
+           }).catch((err)=>{
+               console.log(err);
+           })
+        }
+        document.addEventListener('DOMContentLoaded',fetchCountries);
+ 
+        // Delete address
         function deleteAddress(addressId) {
+
             var element = $('#address-div-'+addressId);
 
             if(!$('.delete-address-progress',element).hasClass('d-none'))
                 return;
 
-            $('.delete-button span',element).addClass('d-none');
+            $('.delete_btn svg',element).addClass('d-none');
 
             $('.delete-address-progress',element).removeClass('d-none');
 
-            // zid.store.customer.deleteAddress(addressId).then(function (response) {
-            //     if(response.status  === 'success'){
-            //         $('.delete-address-progress',element).addClass('d-none');
-            //         $( element ).remove();
-            //     }
 
-            // })
-    // const token = 'Qmk1cG1KVjh5UzVueTlyUzZTSE5OUzFPZEUyUXZZYkxqaWwyRnJ5US42OWMxYjkw';
 
-    // fetch(`https://pi4rax.zid.store/api/v1/customer/addAddress`, {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //         'Authorization': `Bearer ${token}`,
-    //     },
-    //     body: JSON.stringify({
-    //         address_country_id: 184,
-    //         address_city_id:1,
-    //         address_street: 'Test Street',
-    //         address_district: 'Test District',
-    //     }),
-    // })
-    // .then(response => {
-    //     // Check if the response is not OK (i.e., 2xx status code)
-    //     if (!response.ok) {
-    //         return response.text().then(text => { throw new Error(text) });
-    //     }
-    //     return response.json();
-    // })
-    // .then(data => {
-    //     console.log('Response data:', data);
-    //     if (data.status === 'success') {
-    //         // Hide the loading spinner
-    //         document.querySelector('.delete-address-progress', element).classList.add('d-none');
-    //         // Remove the address element from the DOM
-    //         element.remove();
-    //     } else {
-    //         console.error('Failed to delete address:', data.message);
-    //     }
-    // })
-    // .catch(error => {
-    //     // Log the error details
-    //     console.error('Error:', error.message);
-    // });
-    function getTokenFromHeaders() {
-    let token = null;
-    const mockHeaders = {
-        set: (name, value) => {
-            if (name === 'Authorization') {
-                token = value;
-            }
-        }
-    };
+            zid.store.customer.deleteAddress(addressId).then(function (response) {
+                if(response.status  === 'success'){
+                    $('.delete-address-progress',element).addClass('d-none');
+                    $( element ).remove();
+                }
 
-    // Simulate adding headers to capture the Authorization token
-    zid.store.addDefaultHeaders(mockHeaders);
-    
-    return token;
-}
+            })
+ 
 
-const token = getTokenFromHeaders();
-console.log(token);
-}
+      }
     </script>
 {% endblock %}
 

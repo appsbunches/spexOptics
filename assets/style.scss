@@ -2,7 +2,7 @@
 a {
   text-decoration: none;
 }
-select {
+.select-box {
   border: none; /* Removes the default border */
   border-radius: 30px; /* Adds rounded corners */
   padding: 10px 15px; /* Adds padding for a better appearance */
@@ -13,7 +13,16 @@ select {
     width: 95px;
   }
 }
-ul {
+ul,
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
   padding: 0;
   margin: 0;
 }
@@ -26,6 +35,9 @@ button {
 }
 .radius30 {
   border-radius: 30px;
+}
+.sameBorder {
+  border: 1px solid #eeeeee;
 }
 .cursor-pointer {
   cursor: pointer;
@@ -58,7 +70,15 @@ html[lang='en'] .breadcrumb-item + .breadcrumb-item::before {
     font-size: 12px;
   }
 }
-
+.smallHero {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 323px;
+  @media screen and (max-width: 767px) {
+    height: 134px;
+  }
+}
 // varibles
 $primary-color: var(--primary-color);
 $text-color: var(--text-color);
@@ -517,3 +537,121 @@ $main-transition: var(--main-transition);
   }
 }
 /*********************** end style orders page  *************************/
+
+/*********************** Start Style Addresess  *************************/
+.smallHero {
+  .addAddress {
+    min-width: 121px;
+    text-align: center;
+    font-size: 14px;
+    color: #093254;
+    background-color: #fff;
+    font-weight: 700;
+    @media screen and (max-width: 768px) {
+      min-width: 85px;
+      font-size: 12px;
+    }
+  }
+}
+
+.allAddresses {
+  .address {
+    .smBox {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #f8fafc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .address-title {
+      font-size: 16px;
+      color: #333333;
+      font-weight: 900;
+      @media screen and (max-width: 768px) {
+        font-size: 14px;
+      }
+    }
+    .address-text {
+      font-size: 14px;
+      color: #64748b;
+      font-weight: 900;
+      @media screen and (max-width: 768px) {
+        font-size: 12px;
+      }
+    }
+  }
+}
+.offcanvas-add-address {
+  @media screen and (max-width: 767px) {
+    & {
+      min-height: 60%;
+      width: 100vw;
+    }
+  }
+  .header_address_offcanfas {
+    background-color: #e2e8f0;
+
+    h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #000;
+      @media screen and (max-width: 767px) {
+        & {
+          font-size: 20px;
+        }
+      }
+    }
+    .close-btn {
+      width: 33px;
+      height: 33px;
+    }
+  }
+  .body_addAddress_offcanfas {
+    .sameStyle {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0a0c10;
+    }
+    .form-select-countries,
+    .form-select-citices {
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 10px 15px;
+      outline: none;
+      background-color: #fff;
+      height: 54px;
+      cursor: pointer;
+    }
+    .address-input {
+      height: 54px;
+      border: 1px solid #cbd5e1;
+    }
+    .btn-add {
+      width: 573px;
+      height: 56px;
+      background-color: #e2e8f0;
+      border-radius: 30px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.5s ease;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      &:hover {
+        background-color: $primary-color;
+      }
+      @media screen and (max-width: 767px) {
+        & {
+          width: auto;
+          max-width: 311px;
+        }
+      }
+    }
+  }
+}
+
+/*********************** End Style Addresess  *************************/

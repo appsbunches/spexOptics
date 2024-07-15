@@ -273,5 +273,15 @@
     "more_orders": "orders",
     "order_paid": "Order Paid",
     "order_pending": "Wait for payment to process your order"
+  },
+  "addresses": {
+    "addresses": "addresses",
+    "add_address": "Add address",
+    "new_address": "New address",
+    "add": "add",
+    "country": "Country",
+    "city": "City",
+    "district": "District",
+    "street": "Street"
   }
 }

@@ -24,7 +24,7 @@
         {% endblock %}
     {% endembed %}
     {# small hero section #}
-    {# {% include 'smallHero.twig' with { 'title' :  locals.profile.title } %} #}
+    {% include 'smallHero.twig' with { 'image' :  settings.banners_banner_profile_page_image } %}
 
     <div class="container profile-page">
       <div class="alert alert-success d-flex justify-content-between align-items-center d-none" role="alert">
@@ -58,7 +58,6 @@
 
 <script>
      console.log("store");
-     console.log({{  store | json_encode | raw }});
     // for myOrders and latestOrders
     const orderNum = "{{ locals.profile.order_number }}";
     const orderPaid = "{{ locals.profile.order_paid }}";
