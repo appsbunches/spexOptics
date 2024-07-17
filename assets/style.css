@@ -17,6 +17,11 @@ a {
   }
 }
 
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1236px;
+  }
+}
 ul,
 p,
 span,
@@ -121,6 +126,10 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
     font-size: 14px;
   }
 }
+.profile-page .profile-box .edit-profile-btn {
+  width: 195px;
+  height: 48px;
+}
 .profile-page .profile-box .customer h2 {
   font-size: 24px;
   font-weight: 700;
@@ -199,8 +208,31 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
 .profile-page .myAddress_profile a,
 .profile-page .myShipping_profile a {
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--primary-color);
+}
+@media screen and (width: 375px) {
+  .profile-page .myOrders,
+  .profile-page .myAddress_profile,
+  .profile-page .myShipping_profile {
+    width: 343px;
+  }
+}
+@media screen and (width: 1440px) {
+  .profile-page .myOrders,
+  .profile-page .myAddress_profile,
+  .profile-page .myShipping_profile {
+    width: 377px;
+  }
+}
+.profile-page .myOrders h3,
+.profile-page .myAddress_profile h3,
+.profile-page .myShipping_profile h3 {
+  font-size: 16px;
+  font-weight: 700;
+}
+.profile-page .myOrders a {
+  font-weight: 700;
 }
 .profile-page .latest-orders {
   height: 583px;
@@ -211,6 +243,11 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
 .profile-page .latest-orders .head {
   background-color: #f7f7f7;
   border-radius: 30px 30px 0 0;
+}
+.profile-page .latest-orders .head-latest-orderes {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
 }
 .profile-page .latest-orders .latest_orders_data {
   height: 443px;
@@ -271,8 +308,11 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
 }
 .profile-page .latest-orders .latest_orders_data .latest-order .price {
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 700;
   color: #1e293b;
+}
+.profile-page .latest-orders .latest_orders_data .latest-order .currency {
+  font-size: 14px;
 }
 .profile-page .order-icon {
   width: 50px;
@@ -558,12 +598,6 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
   }
 }
 
-@media screen and (max-width: 767px) {
-  .offcanvas-add-address {
-    min-height: 60%;
-    width: 100vw;
-  }
-}
 .offcanvas-add-address .header_address_offcanfas {
   background-color: #e2e8f0;
 }
@@ -621,6 +655,12 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
   .offcanvas-add-address .body_addAddress_offcanfas .btn-add {
     width: auto;
     max-width: 311px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .offcanvas-add-address {
+    height: 800px !important;
+    width: 100vw !important;
   }
 }
 

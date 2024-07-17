@@ -13,6 +13,11 @@ a {
     width: 95px;
   }
 }
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1236px;
+  }
+}
 ul,
 p,
 span,
@@ -111,6 +116,10 @@ $main-transition: var(--main-transition);
         }
       }
     }
+    .edit-profile-btn {
+      width: 195px;
+      height: 48px;
+    }
     .customer {
       h2 {
         font-size: 24px;
@@ -199,8 +208,25 @@ $main-transition: var(--main-transition);
     background-color: #fff;
     a {
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 400;
       color: $primary-color;
+    }
+    @media screen and (width: 375px) {
+      width: 343px;
+    }
+    @media screen and (width: 1440px) {
+      & {
+        width: 377px;
+      }
+    }
+    h3 {
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+  .myOrders {
+    a {
+      font-weight: 700;
     }
   }
   .latest-orders {
@@ -211,6 +237,11 @@ $main-transition: var(--main-transition);
     .head {
       background-color: #f7f7f7;
       border-radius: 30px 30px 0 0;
+    }
+    .head-latest-orderes {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1e293b;
     }
     .latest_orders_data {
       height: 443px;
@@ -271,8 +302,11 @@ $main-transition: var(--main-transition);
         }
         .price {
           font-size: 18px;
-          font-weight: 500;
+          font-weight: 700;
           color: #1e293b;
+        }
+        .currency {
+          font-size: 14px;
         }
       }
     }
@@ -584,12 +618,6 @@ $main-transition: var(--main-transition);
   }
 }
 .offcanvas-add-address {
-  @media screen and (max-width: 767px) {
-    & {
-      min-height: 60%;
-      width: 100vw;
-    }
-  }
   .header_address_offcanfas {
     background-color: #e2e8f0;
 
@@ -650,6 +678,12 @@ $main-transition: var(--main-transition);
           max-width: 311px;
         }
       }
+    }
+  }
+  @media screen and (max-width: 767px) {
+    & {
+      height: 800px !important;
+      width: 100vw !important;
     }
   }
 }

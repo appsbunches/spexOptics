@@ -561,67 +561,69 @@ function scrollToSubMenu(ele) {
   }
 }
 // Submit Form
-document
-  .getElementById('customAddAddress')
-  .addEventListener('submit', function (event) {
-    event.preventDefault(); // Prevent the default form submission
+if (document.getElementById('customAddAddress')) {
+  document
+    .getElementById('customAddAddress')
+    .addEventListener('submit', function (event) {
+      event.preventDefault(); // Prevent the default form submission
 
-    const form = event.target;
-    const formData = new FormData(form);
-    const data = {};
-    const hostname = window.location.hostname;
-    formData.forEach((value, key) => {
-      data[key] = value;
-    });
-    const token = window.__INITIAL_STATE__.apiAuthorization;
-    addAddress(data, token);
+      const form = event.target;
+      const formData = new FormData(form);
+      const data = {};
+      const hostname = window.location.hostname;
+      formData.forEach((value, key) => {
+        data[key] = value;
+      });
+      const token = window.__INITIAL_STATE__.apiAuthorization;
+      addAddress(data, token);
 
-    async function addAddress(data, token) {
-      // Show the loading overlay
-      document
-        .querySelector('.body_addAddress_offcanfas .add-address-progress')
-        .classList.remove('d-none');
-      document
-        .querySelector('.body_addAddress_offcanfas .add-address-text')
-        .classList.add('d-none');
-
-      try {
-        const response = await fetch(`/api/v1/customer/addAddress`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(data),
-        });
-
-        // Check if the response is not OK (i.e., 2xx status code)
-        if (!response.ok) {
-          const errorText = await response.text();
-          throw new Error(errorText);
-        }
-
-        const responseData = await response.json();
-        console.log('Response data:', responseData);
-
-        if (responseData.status === 'success') {
-          toastr.success(responseData.data.message);
-          window.reload();
-        } else {
-          toastr.error('Failed to add address');
-        }
-      } catch (error) {
-        toastr.error(error.message);
-      } finally {
+      async function addAddress(data, token) {
+        // Show the loading overlay
         document
           .querySelector('.body_addAddress_offcanfas .add-address-progress')
-          .classList.add('d-none');
+          .classList.remove('d-none');
         document
           .querySelector('.body_addAddress_offcanfas .add-address-text')
-          .classList.remove('d-none');
+          .classList.add('d-none');
+
+        try {
+          const response = await fetch(`/api/v1/customer/addAddress`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(data),
+          });
+
+          // Check if the response is not OK (i.e., 2xx status code)
+          if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(errorText);
+          }
+
+          const responseData = await response.json();
+          console.log('Response data:', responseData);
+
+          if (responseData.status === 'success') {
+            toastr.success(responseData.data.message);
+            window.location.reload();
+          } else {
+            toastr.error('Failed to add address');
+          }
+        } catch (error) {
+          toastr.error(error.message);
+        } finally {
+          document
+            .querySelector('.body_addAddress_offcanfas .add-address-progress')
+            .classList.add('d-none');
+          document
+            .querySelector('.body_addAddress_offcanfas .add-address-text')
+            .classList.remove('d-none');
+        }
       }
-    }
-  });
+    });
+}
 
 class ProductsQuestions {
   constructor() {

@@ -68,6 +68,26 @@
           font-style: normal;
           font-display: block;
         }
+        @font-face {
+          font-family: 'Sukar';
+          src:  url('{{ asset_url }}Sukar-Regular.eot');
+          src:  url('{{ asset_url }}Sukar-Regular.eot') format('embedded-opentype'),
+          url('{{ asset_url }}Sukar-Regular.woff2') format('woff2'),
+          url('{{ asset_url }}Sukar-Regular.ttf') format('truetype'),
+          url('{{ asset_url }}Sukar-Regular.woff') format('woff'),
+          url('{{ asset_url }}Sukar-Regular.svg') format('svg'),
+          url('{{ asset_url }}Sukar-Bold.eot') format('embedded-opentype'),
+          url('{{ asset_url }}Sukar-Bold.woff2') format('woff2'),
+          url('{{ asset_url }}Sukar-Bold.ttf') format('truetype'),
+          url('{{ asset_url }}Sukar-Bold.woff') format('woff'),
+          url('{{ asset_url }}Sukar_Bold.svg') format('svg'),
+          url('{{ asset_url }}Sukar-Black.eot') format('embedded-opentype'),
+          url('{{ asset_url }}Sukar-Black.woff2') format('woff2'),
+          url('{{ asset_url }}Sukar-Black.ttf') format('truetype'),
+          url('{{ asset_url }}Sukar-Black.woff') format('woff'),
+          url('{{ asset_url }}Sukar-Black.svg') format('svg');
+        
+        }
     </style>
 
   <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'icomoon.css?v=1.0.2' }}"  />
@@ -97,7 +117,7 @@
     <link rel="stylesheet" href="{{ asset_url ~ 'main.css?v=1.221' }}" />
 
     <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'custom.css?v=1.148' }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'style.css?v=1.51' }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'style.css?v=1.55' }}" />
 
     {% if session.lang.code == 'ar' %}
         <link rel="stylesheet" href="{{ asset_url ~ 'main.rtl.css?v=1.25' }}">
@@ -122,7 +142,7 @@
 
 <style>
   body,html {
-    font-family: {% if settings.fonts_name %}{{ strReplace('+', ' ', settings.fonts_name) }}{% else %}'Changa'{% endif %}, sans-serif;
+    font-family: 'Sukar', sans-serif;
   }
   :root {
     {% if settings.colors_header_background_color %}
@@ -213,7 +233,7 @@
 <script src="{{ asset_url ~ 'slick.min.js' }}" ></script>
     <script type="text/javascript" src="{{ asset_url ~ 'js-toastr.min.js' }}"></script>
 
-<script type="text/javascript" src="{{ asset_url ~ 'main.js?v=1.131' }}" ></script>
+<script type="text/javascript" src="{{ asset_url ~ 'main.js?v=1.136' }}" ></script>
 
 {% block footer_scripts %}{% endblock %}
 
