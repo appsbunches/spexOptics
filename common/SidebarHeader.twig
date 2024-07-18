@@ -1,0 +1,157 @@
+ {# Sidebar Header #}
+<div class="offcanvas offcanvas-start offcanvas_sidebar_mainheader" tabindex="-1" id="sidebarMainHeader" aria-labelledby="offcanvasRightLabel" style="z-index: 9999;">
+  {# Head #}
+  <div class="head  d-flex justify-content-between align-items-center">
+    <button type="button" data-bs-dismiss="offcanvas" aria-label="Close">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M18 6L6 18" stroke="#F7F7F7" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M6 6L18 18" stroke="#F7F7F7" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    {# Logo #}
+    <div class="d-flex align-items-center  justify-content-center">
+        <a href="/" class="logo">
+            {% if header_settings.header_logo %}
+                {% set logoUrl = header_settings.header_logo %}
+            {% else %}
+                {% set logoUrl = store.logo %}
+            {% endif %}
+
+            <img class="image-logo {% if header_settings.header_logo_mobile %} d-none d-lg-block {% endif %}" src="{{ imageUrl(logoUrl,{ h: 175, q: 85 }) }}" alt="{{ store.name }}" style="width: auto; max-height: 100%">
+
+            {% if header_settings.header_logo_mobile %}
+                {% set logoUrlMobile = header_settings.header_logo_mobile %}
+                <img class="image-logo d-block d-lg-none" src="{{ imageUrl(logoUrlMobile ,{ h: 175, q: 85 }) }}" alt="{{ store.name }}" style="width: auto; max-height: 100%">
+            {% endif %}
+        </a>
+     </div>
+     <div></div>
+  </div>
+  {# Body #}
+  <div class="body  ">
+      <nav class="nav  d-flex flex-column  gap-4">
+          {% for index,menu in main_navigation_menu.items %}
+            {% if menu.url %}
+               {%  if menu.items | length > 0 %}
+                    <button class="nav-link  d-flex align-items-center justify-content-between gap-3" type="button" href="#collapse{{ index }}" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseExample">
+                      {{ menu.name }}
+                      <svg width="7" height="13" viewBox="0 0 7 13" fill="none" xmlns="http://www.w3.org/2000/svg" class="arrowCollapse">
+                        <path d="M6.25 11.959L1 6.70898L6.25 1.45898" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+
+                    </button>
+                    <div class="collapse" id="collapse{{ index }}">
+                        {% for menu_sub in menu.items %}
+                          <a class="nav-link" href="{{ menu_sub.url }}">{{ menu_sub.name }}</a>
+                        {% endfor %}
+                    </div>
+                    
+                {% else %}     
+                  <a class="nav-link {% if index == 0  %}homeLink py-4{% endif %}"  href="{{ menu.url }}">
+                    {{ menu.name }}
+                  </a>
+               {% endif %}
+              
+            {% endif %}
+          {% endfor %}
+        </nav>
+  </div>
+  {# Footer #}
+  <div class="footer mt-auto py-4 px-3">
+    <div class="d-flex flex-column gap-3">
+        {% if not ('hide_language' in settings.header_options) %}
+            {% if session.lang.code == 'ar' %}
+                <button  class="en btn-reset change-language d-flex gap-3 align-items-center p-0" data-code="en" >
+                    <div class="icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 17.5C14.1421 17.5 17.5 14.1421 17.5 10C17.5 5.85786 14.1421 2.5 10 2.5M10 17.5C5.85786 17.5 2.5 14.1421 2.5 10C2.5 5.85786 5.85786 2.5 10 2.5M10 17.5V2.5M3.71667 6.25H16.3917M9.74167 2.50001C9.74167 2.50001 6.08333 4.08334 6.08333 10C6.08333 15.9167 9.74167 17.5 9.74167 17.5M10.2583 2.50001C10.2583 2.50001 13.9167 4.08334 13.9167 10C13.9167 15.9167 10.2583 17.5 10.2583 17.5M3.71667 13.75H16.3917M2.96667 10H17.1333" stroke="#0A3254" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <span>English</span>
+                </button>
+            {% endif %}
+            {% if session.lang.code == 'en' %}
+                <button  class="ar btn-reset change-language p-0 d-flex gap-3 align-items-center" data-code="ar" >
+                    <div class="icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 17.5C14.1421 17.5 17.5 14.1421 17.5 10C17.5 5.85786 14.1421 2.5 10 2.5M10 17.5C5.85786 17.5 2.5 14.1421 2.5 10C2.5 5.85786 5.85786 2.5 10 2.5M10 17.5V2.5M3.71667 6.25H16.3917M9.74167 2.50001C9.74167 2.50001 6.08333 4.08334 6.08333 10C6.08333 15.9167 9.74167 17.5 9.74167 17.5M10.2583 2.50001C10.2583 2.50001 13.9167 4.08334 13.9167 10C13.9167 15.9167 10.2583 17.5 10.2583 17.5M3.71667 13.75H16.3917M2.96667 10H17.1333" stroke="#0A3254" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <span class="lang">العربية</span>
+                </button>
+              {% endif %}
+                    
+        {% endif %}
+        <button class="d-flex align-items-center gap-3">
+           <div class="icon">                            
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13.333 2.5H0.833008V13.3333H13.333V2.5Z" stroke="#0A3254" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M13.333 6.66602H16.6663L19.1663 9.16602V13.3327H13.333V6.66602Z" stroke="#0A3254" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M4.58333 17.5007C5.73393 17.5007 6.66667 16.5679 6.66667 15.4173C6.66667 14.2667 5.73393 13.334 4.58333 13.334C3.43274 13.334 2.5 14.2667 2.5 15.4173C2.5 16.5679 3.43274 17.5007 4.58333 17.5007Z" stroke="#0A3254" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M15.4163 17.5007C16.5669 17.5007 17.4997 16.5679 17.4997 15.4173C17.4997 14.2667 16.5669 13.334 15.4163 13.334C14.2657 13.334 13.333 14.2667 13.333 15.4173C13.333 16.5679 14.2657 17.5007 15.4163 17.5007Z" stroke="#0A3254" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+          </div>
+          <span>{{ locals.header.delivery }}</span>
+        </button>
+        {% if customer %}
+             <button type="button" onclick="window.location.href='/account-profile'" class="d-flex gap-3 align-items-center">
+               <div class="icon">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_571_44390)">
+                  <path d="M10.0003 9.16667C11.8413 9.16667 13.3337 7.67428 13.3337 5.83333C13.3337 3.99238 11.8413 2.5 10.0003 2.5C8.15938 2.5 6.66699 3.99238 6.66699 5.83333C6.66699 7.67428 8.15938 9.16667 10.0003 9.16667Z" stroke="#0A3254" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M5 17.5V15.8333C5 14.9493 5.35119 14.1014 5.97631 13.4763C6.60143 12.8512 7.44928 12.5 8.33333 12.5H11.6667C12.5507 12.5 13.3986 12.8512 14.0237 13.4763C14.6488 14.1014 15 14.9493 15 15.8333V17.5" stroke="#0A3254" stroke-linecap="round" stroke-linejoin="round"/>
+                  </g>
+                  <defs>
+                  <clipPath id="clip0_571_44390">
+                  <rect width="20" height="20" fill="white"/>
+                  </clipPath>
+                  </defs>
+                  </svg>
+               </div>
+               <span>
+               {{ locals.header.profile }}
+               </span>
+            </button>
+  
+            <form action="/auth/logout" method="POST" >
+               <input type="hidden" name="_token" value="{{ csrf_token }}" />
+               <button type="submit" class="d-flex align-items-center gap-3 ">
+                  <div class="icon">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M7.5 17.5H4.16667C3.72464 17.5 3.30072 17.3244 2.98816 17.0118C2.67559 16.6993 2.5 16.2754 2.5 15.8333V4.16667C2.5 3.72464 2.67559 3.30072 2.98816 2.98816C3.30072 2.67559 3.72464 2.5 4.16667 2.5H7.5" stroke="#FF2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M13.333 14.1673L17.4997 10.0007L13.333 5.83398" stroke="#FF2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M17.5 10H7.5" stroke="#FF2020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                  </div>
+                  <span class="logout">
+                  {{ locals.header.logout }}
+                  </span>
+               </button>
+            </form>
+        {% else %}
+            <button type="button" onclick="window.location.href='/auth/login'" class="d-flex gap-3 align-items-center">
+               <div class="icon">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_571_44390)">
+                  <path d="M10.0003 9.16667C11.8413 9.16667 13.3337 7.67428 13.3337 5.83333C13.3337 3.99238 11.8413 2.5 10.0003 2.5C8.15938 2.5 6.66699 3.99238 6.66699 5.83333C6.66699 7.67428 8.15938 9.16667 10.0003 9.16667Z" stroke="#0A3254" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M5 17.5V15.8333C5 14.9493 5.35119 14.1014 5.97631 13.4763C6.60143 12.8512 7.44928 12.5 8.33333 12.5H11.6667C12.5507 12.5 13.3986 12.8512 14.0237 13.4763C14.6488 14.1014 15 14.9493 15 15.8333V17.5" stroke="#0A3254" stroke-linecap="round" stroke-linejoin="round"/>
+                  </g>
+                  <defs>
+                  <clipPath id="clip0_571_44390">
+                  <rect width="20" height="20" fill="white"/>
+                  </clipPath>
+                  </defs>
+                  </svg>
+               </div>
+               <span>
+               {{ locals.header.login }}
+               </span>
+            </button>
+        {% endif %}
+    </div>
+    <div class="d-flex justify-content-center my-4 gap-5">
+        {% include "Social-media-header.twig" %} 
+    </div>
+  </div>
+          
+</div>

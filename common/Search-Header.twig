@@ -1,0 +1,14 @@
+
+<div class="offcanvas offcanvas-top offcanvas_Search {% if ab_settings.announcement_bar_display %}
+    {% if (ab_settings.announcement_bar_page_display is empty)
+        or (template == 'home' and ab_settings.announcement_bar_page_display == 'home')
+        or ab_settings.announcement_bar_page_display == 'all'
+    %}annonce{% endif %}{% endif %}" tabindex="-1" id="searchHeader" aria-labelledby="offcanvasTopLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasTopLabel">Offcanvas top</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    First Search
+  </div>
+</div>

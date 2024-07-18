@@ -103,7 +103,83 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
   }
 }
 
-/* start main settings */
+/* End main settings */
+/*********************** Start Style Header  *************************/
+.headerContainer .main_header {
+  z-index: 9999;
+  background-color: var(--primary-color);
+}
+@media screen and (max-width: 767px) {
+  .headerContainer .main_header .logo .image-logo {
+    width: 68px;
+    height: 50px;
+  }
+}
+.headerContainer .offcanvas_sidebar_mainheader .head {
+  height: 70px;
+  background-color: var(--primary-color);
+}
+.headerContainer .offcanvas_sidebar_mainheader .head .logo .image-logo {
+  width: 65px;
+  height: 50px;
+}
+.headerContainer .offcanvas_sidebar_mainheader .footer {
+  background-color: #f7f7f7;
+}
+.headerContainer .offcanvas_sidebar_mainheader .footer .icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+.headerContainer .offcanvas_sidebar_mainheader .footer span {
+  font-size: 12px;
+  font-weight: 700;
+  color: #0a3254;
+}
+.headerContainer .offcanvas_sidebar_mainheader .footer .logout {
+  color: #ff2020;
+}
+.headerContainer .offcanvas_sidebar_mainheader .body .arrowCollapse {
+  transition: transform 0.3s ease;
+}
+.headerContainer .offcanvas_sidebar_mainheader .body .arrowCollapse.rotate {
+  transform: rotate(-90deg);
+}
+.headerContainer .offcanvas_sidebar_mainheader .body .homeLink {
+  background-color: #f7f7f7;
+}
+.headerContainer .offcanvas_sidebar_mainheader .body .nav-link {
+  font-size: 16px;
+  font-weight: 400;
+  color: #0a3254;
+}
+@media screen and (max-width: 767px) {
+  .headerContainer .offcanvas_sidebar_mainheader .body .nav-link {
+    font-size: 14px;
+  }
+}
+.headerContainer .offcanvas_Search {
+  top: 105px;
+}
+@media screen and (max-width: 767px) {
+  .headerContainer .offcanvas_Search {
+    top: 62px;
+  }
+}
+.headerContainer .offcanvas_Search.annonce {
+  top: 140px;
+}
+@media screen and (max-width: 767px) {
+  .headerContainer .offcanvas_Search.annonce {
+    top: 93px;
+  }
+}
+
+/*********************** End Style Header  *************************/
 /*********************** start style profile  *************************/
 .profile-page .profile-box {
   background-color: #fff;

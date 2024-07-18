@@ -283,5 +283,11 @@
     "city": "City",
     "district": "District",
     "street": "Street"
+  },
+  "header": {
+    "delivery": "Delivery",
+    "profile": "profile",
+    "logout": "Logout",
+    "login": "Login"
   }
 }

@@ -773,5 +773,22 @@ $(document).on('click', '.change-language', function () {
     $('#lang-shipping-country').submit();
   }, 500);
 });
+document.addEventListener('DOMContentLoaded', function () {
+  const collapseElements = document.querySelectorAll('.collapse');
+
+  collapseElements.forEach((collapseElement) => {
+    collapseElement.addEventListener('show.bs.collapse', function () {
+      const button = document.querySelector(`[href="#${collapseElement.id}"]`);
+      const svg = button.querySelector('.arrowCollapse');
+      svg.classList.add('rotate');
+    });
+
+    collapseElement.addEventListener('hide.bs.collapse', function () {
+      const button = document.querySelector(`[href="#${collapseElement.id}"]`);
+      const svg = button.querySelector('.arrowCollapse');
+      svg.classList.remove('rotate');
+    });
+  });
+});
 
 /**********************************  my edits ahmed ashraf ******************************/

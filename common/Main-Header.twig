@@ -1,0 +1,58 @@
+<nav class="main_header d-flex justify-content-between gap-3 py-2 py-md-3">
+  <div class="container ">
+    <div class="d-flex justify-content-between gap-4 align-items-center">
+    
+        {# open sidebar #}
+        <div class="d-flex gap-3">
+       
+          <div class="button" type="button"  data-bs-toggle="offcanvas" data-bs-target="#sidebarMainHeader" aria-controls="offcanvasRight">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 6H20M4 12H20M13 18H20" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <button type="button" class="search d-block d-md-none"  data-bs-toggle="offcanvas" data-bs-target="#searchHeader" aria-controls="offcanvasTop">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.55 17.91L20.39 20.74M20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+          </button>
+        </div>
+        {# Logo #}
+        <div class="d-flex align-items-center  justify-content-center">
+              <a href="/" class="logo">
+                  {% if header_settings.header_logo %}
+                      {% set logoUrl = header_settings.header_logo %}
+                  {% else %}
+                      {% set logoUrl = store.logo %}
+                  {% endif %}
+
+                  <img class="image-logo {% if header_settings.header_logo_mobile %} d-none d-lg-block {% endif %}" src="{{ imageUrl(logoUrl,{ h: 175, q: 85 }) }}" alt="{{ store.name }}" style="width: auto; max-height: 100%">
+
+                  {% if header_settings.header_logo_mobile %}
+                      {% set logoUrlMobile = header_settings.header_logo_mobile %}
+                      <img class="image-logo d-block d-lg-none" src="{{ imageUrl(logoUrlMobile ,{ h: 175, q: 85 }) }}" alt="{{ store.name }}" style="width: auto; max-height: 100%">
+                  {% endif %}
+              </a>
+        </div>
+        {# Search  and cart #}
+        <div class="d-flex gap-3">
+            <button type="button" class="search d-none d-md-block" type="button" data-bs-toggle="offcanvas" data-bs-target="#searchHeader" aria-controls="offcanvasTop">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.55 17.91L20.39 20.74M20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <div style="position: relative">
+                <a class="a-shopping-cart" href="/cart/view" style="color: inherit">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.50977 8H20.5098V18.26C20.5098 18.9867 20.2211 19.6836 19.7072 20.1975C19.1934 20.7113 18.4965 21 17.7698 21H6.24977C5.52307 21 4.82614 20.7113 4.31229 20.1975C3.79844 19.6836 3.50977 18.9867 3.50977 18.26V8Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M10.4898 3H13.4898C14.2854 3 15.0485 3.31607 15.6111 3.87868C16.1737 4.44129 16.4898 5.20435 16.4898 6V8H7.48977V6C7.48977 5.20435 7.80584 4.44129 8.36845 3.87868C8.93105 3.31607 9.69412 3 10.4898 3Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="cart-badge d-none"></span>
+                </a>
+            </div>
+      
+          </div>
+
+
+    </div> {# end on and parent #}
+  </div>
+</nav>

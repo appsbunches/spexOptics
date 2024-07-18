@@ -92,7 +92,95 @@ $background-color: var(--background-color);
 $border-color: var(--border-color);
 $main-space: var(--main-space);
 $main-transition: var(--main-transition);
-/* start main settings */
+/* End main settings */
+
+/*********************** Start Style Header  *************************/
+.headerContainer {
+  .main_header {
+    z-index: 9999;
+    background-color: $primary-color;
+    .logo {
+      .image-logo {
+        @media screen and (max-width: 767px) {
+          width: 68px;
+          height: 50px;
+        }
+      }
+    }
+  }
+  .offcanvas_sidebar_mainheader {
+    .head {
+      height: 70px;
+      background-color: $primary-color;
+      .logo {
+        .image-logo {
+          width: 65px;
+          height: 50px;
+        }
+      }
+    }
+    .footer {
+      background-color: #f7f7f7;
+      .icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+      }
+      span {
+        font-size: 12px;
+        font-weight: 700;
+        color: #0a3254;
+      }
+      .logout {
+        color: #ff2020;
+      }
+    }
+    .body {
+      .arrowCollapse {
+        transition: transform 0.3s ease;
+      }
+      .arrowCollapse.rotate {
+        transform: rotate(-90deg);
+      }
+      .homeLink {
+        background-color: #f7f7f7;
+      }
+      .nav-link {
+        font-size: 16px;
+        font-weight: 400;
+        color: #0a3254;
+
+        @media screen and (max-width: 767px) {
+          & {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+  .offcanvas_Search {
+    top: 105px;
+    @media screen and (max-width: 767px) {
+      & {
+        top: 62px;
+      }
+    }
+    &.annonce {
+      top: 140px;
+      @media screen and (max-width: 767px) {
+        & {
+          top: 93px;
+        }
+      }
+    }
+  }
+}
+
+/*********************** End Style Header  *************************/
 
 /*********************** start style profile  *************************/
 .profile-page {
