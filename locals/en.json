@@ -227,7 +227,9 @@
   "grouped_product_table_th_name": "Name",
   "grouped_product_table_th_desc": "Description",
   "grouped_product_table_no_desc": "N/A",
-
+  "brands": "Brands",
+  "suggestions": "Suggestions",
+  "search_result": "Search Result",
   "profile": {
     "title": "Profile",
     "personal_info": "Personal Information",

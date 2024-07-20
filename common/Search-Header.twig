@@ -4,11 +4,54 @@
         or (template == 'home' and ab_settings.announcement_bar_page_display == 'home')
         or ab_settings.announcement_bar_page_display == 'all'
     %}annonce{% endif %}{% endif %}" tabindex="-1" id="searchHeader" aria-labelledby="offcanvasTopLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasTopLabel">Offcanvas top</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    First Search
-  </div>
+
+<div style="background:#fff;">
+ <div class="container py-4">
+   <div class="row g-4">
+     <div class="col-md-3">
+     
+     </div>
+     <div class="col-md-9">
+        {# Search Input #}
+        <div class="d-flex align-items-center gap-4">
+          <div class="position-relative w-100">
+              <input type="text" name="seachInput"   class="form-control search-input" id="SearchInput"  >
+              <div class="position-absolute end-0 top-50 translate-middle">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="#352727" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M20.9984 21.0004L16.6484 16.6504" stroke="#352727" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+            <button class="colseBtn" type="button" data-bs-dismiss="offcanvas" aria-label="Close">
+               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.34897 4.02505C5.17125 3.85945 4.93619 3.7693 4.69332 3.77358C4.45044 3.77787 4.21871 3.87626 4.04694 4.04803C3.87518 4.21979 3.77679 4.45152 3.7725 4.6944C3.76822 4.93728 3.85837 5.17233 4.02397 5.35005L8.67397 10.0001L4.02397 14.6501C3.93186 14.7359 3.85799 14.8394 3.80675 14.9544C3.75551 15.0694 3.72795 15.1935 3.72573 15.3194C3.72351 15.4453 3.74667 15.5703 3.79382 15.687C3.84097 15.8038 3.91115 15.9098 4.00017 15.9988C4.0892 16.0879 4.19524 16.1581 4.31197 16.2052C4.42871 16.2524 4.55375 16.2755 4.67962 16.2733C4.8055 16.2711 4.92964 16.2435 5.04464 16.1923C5.15964 16.141 5.26314 16.0672 5.34897 15.9751L9.99897 11.3251L14.649 15.9751C14.7348 16.0672 14.8383 16.141 14.9533 16.1923C15.0683 16.2435 15.1924 16.2711 15.3183 16.2733C15.4442 16.2755 15.5692 16.2524 15.686 16.2052C15.8027 16.1581 15.9087 16.0879 15.9978 15.9988C16.0868 15.9098 16.157 15.8038 16.2041 15.687C16.2513 15.5703 16.2744 15.4453 16.2722 15.3194C16.27 15.1935 16.2424 15.0694 16.1912 14.9544C16.14 14.8394 16.0661 14.7359 15.974 14.6501L11.324 10.0001L15.974 5.35005C16.1396 5.17233 16.2297 4.93728 16.2254 4.6944C16.2212 4.45152 16.1228 4.21979 15.951 4.04803C15.7792 3.87626 15.5475 3.77787 15.3046 3.77358C15.0617 3.7693 14.8267 3.85945 14.649 4.02505L9.99897 8.67505L5.34897 4.02505Z" fill="#0A0C10"/>
+                </svg>
+            </button>
+        </div>
+     </div>
+     <div class="col-md-3">
+      <h3 class="title">{{ locals.suggestions }}</h3>
+      <div class="suggestions d-flex flex-wrap flex-row flex-md-column gap-3 mt-4"></div>
+     </div>
+     <div class="col-md-9">
+       <h3 class="title">{{ locals.brands }}</h3>
+        <div class="search_brands d-flex gap-4 flex-wrap mt-4">
+        
+        </div>
+     </div>
+     <div class="col-md-3">
+
+     </div>
+     <div class="col-md-9">
+       <h3 class="title title-search-result"></h3>
+        <div class="search_results mt-4">
+          <div class="search_resultsGrid d-flex flex-column flex-md-row flex-wrap gap-4 ">
+          
+          </div>
+        </div>
+     </div>
+   </div>
+ </div>
+</div>
 </div>

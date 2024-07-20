@@ -1,0 +1,8 @@
+.main_header .searchDesc {
+  border-right: 1px solid #c2c7cb;
+  border-left: none !important;
+}
+.main_header .searchMob {
+  border-left: 1px solid #c2c7cb;
+  border-right: none !important;
+}

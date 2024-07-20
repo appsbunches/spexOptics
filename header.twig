@@ -18,13 +18,105 @@
     {% include 'SidebarHeader.twig' %}
 
 
-
-
-
-
 </header>
+<script>
 
+   //  fetchBrands();
+ function fetchBrands (){
+   zid.store.product.fetchCategories().then((data)=>{
+    // console.log(data);
+     const fetchBrand = data.data.categories.find((cat)=> cat.id == 1104866 || cat.name == "brand");
+     const brandTag = document.querySelector(".offcanvas_Search .search_brands");
+     let tempBrands = '';
+     if(fetchBrand){
+      fetchBrand.sub_categories.forEach((brand)=>{
+        tempBrands += `<a class="d-flex flex-column gap-3 justify-content-center align-items-center searchBrand" href="${brand.url}">
+                    <div class="icon">
+                      <img src="${brand.image_full_size}" />
+                    </div>
+                   <h6 class="text-center">${brand.name}</h6>     
+        </a>`
+      })
+     }
+     brandTag.innerHTML = tempBrands;
+     
+  }).catch((error)=>{
+    console.log(error);
+  })
+ }
+//  fetch suggestions
+ function fetchSuggestions (){
+   zid.store.product.fetchAll(null,{}).then((data)=>{
+    // console.log(data);
+     const suggestionsTag = document.querySelector(".offcanvas_Search .suggestions");
+     let productSuggestions = '';
+     
+        console.log(data);
+      data.data.products.data.slice(0,4).forEach((pr)=>{
+        productSuggestions += `<a href="${pr.html_url}">${pr.name}</a>`
+      })
+     
 
+     suggestionsTag.innerHTML = productSuggestions;
+     
+  }).catch((error)=>{
+    console.log(error);
+  })
+ }
+
+  //  handle search
+  function getProductFromSearch(value){
+     if(!value){
+       document.querySelector(".offcanvas_Search .search_resultsGrid").innerHTML = '';
+       document.querySelector(".offcanvas_Search .title-search-result").textContent = " ";
+       return;
+     }
+       zid.store.product.fetchAll(null,{search:value}).then((data)=>{
+     const searchTag = document.querySelector(".offcanvas_Search .search_resultsGrid");
+     let productFromSearch = '';
+     if(data.data.products.data.length > 0){
+
+       data.data.products.data.forEach((pr)=>{
+          productFromSearch += `
+           <a href="${pr.html_url}" class="search-card-box d-flex align-items-center gap-4">
+              <div class="search-image">
+                <img src="${pr.images[0].image.full_size}" alt="${pr.name}" />
+              </div>
+              <div class="search-info">
+               <h6>${pr.name}</h6>
+               <div class="d-flex gap-2 mt-2 priceContainer">
+                 <span class="${pr.formatted_sale_price ? "old-price":"price"}">${pr.formatted_price}</span>
+                 ${pr.formatted_sale_price? `<span class="sale-price">${pr.formatted_sale_price}</span>`: ""}
+               </div>
+              </div>
+           </a>
+          `;
+        })
+       
+  
+       searchTag.innerHTML = productFromSearch;
+       document.querySelector(".offcanvas_Search .title-search-result").textContent = "{{ locals.search_result }}";
+     }
+     
+  }).catch((error)=>{
+    console.log(error);
+  })
+  }
+  function handleSearch(){
+    const inputElement = document.getElementById('SearchInput');
+
+    inputElement.addEventListener('keyup', function(event) {
+        const inputValue = event.target.value;
+        getProductFromSearch(inputValue);
+    });
+  };
+
+ document.addEventListener("DOMContentLoaded",()=>{
+  fetchBrands();
+  fetchSuggestions();
+  handleSearch();
+ });
+    </script>
 {% schema %}
 {
   "name": {

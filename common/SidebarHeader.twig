@@ -40,9 +40,9 @@
                       </svg>
 
                     </button>
-                    <div class="collapse" id="collapse{{ index }}">
-                        {% for menu_sub in menu.items %}
-                          <a class="nav-link" href="{{ menu_sub.url }}">{{ menu_sub.name }}</a>
+                    <div class="collapse px-3 " id="collapse{{ index }}">
+                        {% for indexSub,menu_sub in menu.items %}
+                          <a class="nav-link {% if menu.items | length - 1 != indexSub  %} mb-3{% endif %}" href="{{ menu_sub.url }}">{{ menu_sub.name }}</a>
                         {% endfor %}
                     </div>
                     

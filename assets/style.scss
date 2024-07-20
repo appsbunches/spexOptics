@@ -84,6 +84,33 @@ html[lang='en'] .breadcrumb-item + .breadcrumb-item::before {
     height: 134px;
   }
 }
+.vertical-line {
+  border-left: 0px;
+  border-right: 1px solid
+    var(--header-text-color-primary-bg, var(--text-color-primary-bg));
+}
+
+.vertical-line-menu {
+  border-right: 1px solid
+    var(--menu-header-text-color-primary-bg, var(--text-color-primary-bg));
+}
+
+.cart-total-price {
+  padding-right: unset;
+  padding-left: 8px;
+}
+
+.submenu li img {
+  margin-left: unset;
+  margin-right: 30px;
+}
+
+.availability-bar .ab-close,
+.announcement-bar .ab-close {
+  right: unset;
+  left: 0px;
+  top: 10px;
+}
 // varibles
 $primary-color: var(--primary-color);
 $text-color: var(--text-color);
@@ -107,8 +134,17 @@ $main-transition: var(--main-transition);
         }
       }
     }
+    .searchDesc {
+      border-left: 1px solid #c2c7cb;
+    }
+    .searchMob {
+      border-right: 1px solid #c2c7cb;
+    }
   }
   .offcanvas_sidebar_mainheader {
+    @media screen and (max-width: 767px) {
+      width: 100vw;
+    }
     .head {
       height: 70px;
       background-color: $primary-color;
@@ -140,6 +176,8 @@ $main-transition: var(--main-transition);
       }
     }
     .body {
+      height: calc(100% - 370px);
+      overflow-y: auto;
       .arrowCollapse {
         transition: transform 0.3s ease;
       }
@@ -160,13 +198,30 @@ $main-transition: var(--main-transition);
           }
         }
       }
+      .collapse {
+        .nav-link {
+          font-size: 14px;
+          font-weight: 400;
+          color: #333333;
+          @media screen and (max-width: 767px) {
+            & {
+              font-size: 12px;
+            }
+          }
+        }
+      }
     }
   }
   .offcanvas_Search {
+    height: auto;
+    max-height: 100%;
+    background-color: transparent;
+    overflow-y: auto;
     top: 105px;
     @media screen and (max-width: 767px) {
       & {
         top: 62px;
+        height: 100%;
       }
     }
     &.annonce {
@@ -174,6 +229,107 @@ $main-transition: var(--main-transition);
       @media screen and (max-width: 767px) {
         & {
           top: 93px;
+        }
+      }
+    }
+    .search-input {
+      border-radius: 43px;
+      border: 1px solid #eeeeee;
+      height: 50px;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    .title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #333333;
+      @media screen and (max-width: 767px) {
+        & {
+          font-size: 14px;
+        }
+      }
+    }
+    .search_resultsGrid {
+      padding-bottom: 80px;
+      .search-info {
+        h6 {
+          font-size: 12px;
+          font-weight: 400;
+          color: #333333;
+        }
+        .priceContainer {
+          .old-price {
+            text-decoration: line-through;
+            color: #d7d7d7;
+            font-size: 10px;
+          }
+          .price,
+          .sale-price {
+            font-size: 12px;
+            font-weight: 400;
+            color: #0a3254;
+          }
+        }
+      }
+      .search-card-box {
+        height: 110px;
+        max-width: 247px;
+        .search-image {
+          width: 110px;
+          height: 110px;
+          @media screen and (max-width: 767px) {
+            & {
+              width: 80px;
+              height: 80px;
+            }
+          }
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+      }
+    }
+    .search_brands {
+      .icon {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        @media screen and (max-width: 767px) {
+          & {
+            width: 40px;
+            height: 40px;
+          }
+        }
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+      .searchBrand {
+        h6 {
+          color: #093254;
+          font-size: 14px;
+          font-weight: 700;
+          @media screen and (max-width: 767px) {
+            & {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+    .suggestions {
+      a {
+        font-size: 14px;
+        font-weight: 400;
+        color: #333333;
+        @media screen and (max-width: 767px) {
+          & {
+            font-size: 12px;
+          }
         }
       }
     }

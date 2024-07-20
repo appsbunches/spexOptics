@@ -225,7 +225,9 @@
   "grouped_product_table_th_name": "الاسم",
   "grouped_product_table_th_desc": "الوصف",
   "grouped_product_table_no_desc": "لا يوجد وصف",
-
+  "brands": "البرندات",
+  "suggestions": "الاقتراحات",
+  "search_result": "نتائج البحث",
   "profile": {
     "title": "الملف الشخصي",
     "personal_info": "المعلومات الشخصية",
