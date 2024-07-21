@@ -2,6 +2,16 @@
 a {
   text-decoration: none;
 }
+.flex-1 {
+  flex: 1;
+}
+.flex-2 {
+  flex: 2;
+}
+.flex-haif {
+  flex: 1.5;
+}
+
 .select-box {
   border: none; /* Removes the default border */
   border-radius: 30px; /* Adds rounded corners */
@@ -292,6 +302,8 @@ $main-transition: var(--main-transition);
       }
     }
     .search_brands {
+      overflow-x: auto;
+      overflow-y: hidden;
       .icon {
         width: 70px;
         height: 70px;
@@ -337,6 +349,102 @@ $main-transition: var(--main-transition);
 }
 
 /*********************** End Style Header  *************************/
+
+/*********************** Start Style Footer  *************************/
+.footer {
+  background-color: $primary-color;
+  color: #fff;
+  .top {
+    border-bottom: 1px solid #c2c7cc;
+    @media screen and (max-width: 767px) {
+      border: none;
+    }
+    .footer-logo {
+      width: 85px;
+      height: 65px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+    .footer-desc {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 21px;
+      color: #c2c7cc;
+    }
+    .footer-important-links {
+      h2 {
+        font-weight: 700;
+        font-size: 16px;
+      }
+      a {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 21px;
+        color: #c2c7cc;
+      }
+    }
+    .footer-social {
+      h3 {
+        font-weight: 700;
+        font-size: 16px;
+      }
+    }
+  }
+  .bottom {
+    .footerVatCon {
+      @media screen and (max-width: 767px) {
+        border-top: 1px solid #c2c7cc;
+      }
+      .footer-vat {
+        .vat-number {
+          span {
+            color: #fff !important;
+          }
+        }
+        span {
+          font-size: 10px;
+          font-weight: 400;
+        }
+        .imageBoxVat {
+          width: 18px;
+          height: 24px;
+          svg {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+        .imageBoxBusiness {
+          width: 18px;
+          height: 18px;
+          svg {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+        .imageBoxRegister {
+          width: 43px;
+          height: 26px;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+      }
+    }
+
+    .copyright {
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+}
+/*********************** End Style Footer  *************************/
 
 /*********************** start style profile  *************************/
 .profile-page {

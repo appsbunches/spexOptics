@@ -3,6 +3,18 @@ a {
   text-decoration: none;
 }
 
+.flex-1 {
+  flex: 1;
+}
+
+.flex-2 {
+  flex: 2;
+}
+
+.flex-haif {
+  flex: 1.5;
+}
+
 .select-box {
   border: none; /* Removes the default border */
   border-radius: 30px; /* Adds rounded corners */
@@ -290,6 +302,10 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
   -o-object-fit: contain;
      object-fit: contain;
 }
+.headerContainer .offcanvas_Search .search_brands {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
 .headerContainer .offcanvas_Search .search_brands .icon {
   width: 70px;
   height: 70px;
@@ -329,6 +345,97 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
 }
 
 /*********************** End Style Header  *************************/
+/*********************** Start Style Footer  *************************/
+.footer {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+.footer .top {
+  border-bottom: 1px solid #c2c7cc;
+}
+@media screen and (max-width: 767px) {
+  .footer .top {
+    border: none;
+  }
+}
+.footer .top .footer-logo {
+  width: 85px;
+  height: 65px;
+}
+.footer .top .footer-logo img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.footer .top .footer-desc {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: #c2c7cc;
+}
+.footer .top .footer-important-links h2 {
+  font-weight: 700;
+  font-size: 16px;
+}
+.footer .top .footer-important-links a {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: #c2c7cc;
+}
+.footer .top .footer-social h3 {
+  font-weight: 700;
+  font-size: 16px;
+}
+@media screen and (max-width: 767px) {
+  .footer .bottom .footerVatCon {
+    border-top: 1px solid #c2c7cc;
+  }
+}
+.footer .bottom .footerVatCon .footer-vat .vat-number span {
+  color: #fff !important;
+}
+.footer .bottom .footerVatCon .footer-vat span {
+  font-size: 10px;
+  font-weight: 400;
+}
+.footer .bottom .footerVatCon .footer-vat .imageBoxVat {
+  width: 18px;
+  height: 24px;
+}
+.footer .bottom .footerVatCon .footer-vat .imageBoxVat svg {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.footer .bottom .footerVatCon .footer-vat .imageBoxBusiness {
+  width: 18px;
+  height: 18px;
+}
+.footer .bottom .footerVatCon .footer-vat .imageBoxBusiness svg {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.footer .bottom .footerVatCon .footer-vat .imageBoxRegister {
+  width: 43px;
+  height: 26px;
+}
+.footer .bottom .footerVatCon .footer-vat .imageBoxRegister img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.footer .bottom .copyright {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/*********************** End Style Footer  *************************/
 /*********************** start style profile  *************************/
 .profile-page .profile-box {
   background-color: #fff;

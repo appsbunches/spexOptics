@@ -1,7 +1,7 @@
  {# Sidebar Header #}
 <div class="offcanvas offcanvas-start offcanvas_sidebar_mainheader" tabindex="-1" id="sidebarMainHeader" aria-labelledby="offcanvasRightLabel" style="z-index: 9999;">
   {# Head #}
-  <div class="head  d-flex justify-content-between align-items-center">
+  <div class="head  d-flex justify-content-between align-items-center position-relative">
     <button type="button" data-bs-dismiss="offcanvas" aria-label="Close">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M18 6L6 18" stroke="#F7F7F7" stroke-linecap="round" stroke-linejoin="round"/>
@@ -9,7 +9,7 @@
       </svg>
     </button>
     {# Logo #}
-    <div class="d-flex align-items-center  justify-content-center">
+    <div class="d-flex align-items-center  justify-content-center position-absolute top-50 start-50 translate-middle">
         <a href="/" class="logo">
             {% if header_settings.header_logo %}
                 {% set logoUrl = header_settings.header_logo %}
@@ -61,7 +61,7 @@
     <div class="d-flex flex-column gap-3">
         {% if not ('hide_language' in settings.header_options) %}
             {% if session.lang.code == 'ar' %}
-                <button  class="en btn-reset change-language d-flex gap-3 align-items-center p-0" data-code="en" >
+                <button  class="en btn-reset change-language d-flex gap-3 align-items-center p-0" data-code="en" style="margin-right:6px">
                     <div class="icon">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M10 17.5C14.1421 17.5 17.5 14.1421 17.5 10C17.5 5.85786 14.1421 2.5 10 2.5M10 17.5C5.85786 17.5 2.5 14.1421 2.5 10C2.5 5.85786 5.85786 2.5 10 2.5M10 17.5V2.5M3.71667 6.25H16.3917M9.74167 2.50001C9.74167 2.50001 6.08333 4.08334 6.08333 10C6.08333 15.9167 9.74167 17.5 9.74167 17.5M10.2583 2.50001C10.2583 2.50001 13.9167 4.08334 13.9167 10C13.9167 15.9167 10.2583 17.5 10.2583 17.5M3.71667 13.75H16.3917M2.96667 10H17.1333" stroke="#0A3254" stroke-linecap="round" stroke-linejoin="round"/>

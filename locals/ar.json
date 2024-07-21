@@ -228,6 +228,7 @@
   "brands": "البرندات",
   "suggestions": "الاقتراحات",
   "search_result": "نتائج البحث",
+  "copyright": "جميع الحقوق محفوظة",
   "profile": {
     "title": "الملف الشخصي",
     "personal_info": "المعلومات الشخصية",
@@ -289,5 +290,10 @@
     "profile": "الملف الشخصي",
     "logout": "تسجيل خروج",
     "login": "تسجيل الدخول"
+  },
+  "footer": {
+    "footer_vat_number": "الرقم الضريبي:",
+    "footer_commercial_registration_number": "السجل التجاري",
+    "business_center": "منصة الأعمال"
   }
 }

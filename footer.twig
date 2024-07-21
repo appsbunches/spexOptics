@@ -1,10 +1,98 @@
-<footer section-id="{{ sectionId }}" class='d-flex flex-column'>
 
-    {% include 'footer-store-section.twig' with { 'about_settings' : settings } %}
+<footer section-id="{{ sectionId }}" class='d-flex flex-column footer'>
+  <div class="container py-4">
+    <div class="top d-flex flex-column align-items-center align-items-md-start flex-md-row gap-5 pb-4">
+       {% if store.logo or settings.about_us_des %}
+        <div class="d-flex flex-haif flex-column gap-3 align-items-center align-items-md-start">
+          {% if store.logo  %}
+            <a href="/" class="footer-logo">
+                <img src="{{ store.logo }}" alt="{{ store.name }}" />
+            </a>
+          {% endif %}
+          {% if  settings.about_us_des  %}
+            <p  class="footer-desc text-center text-md-start">
+              {{ settings.about_us_des | raw  }}
+            </p>
+          {% endif %}
+        </div>
+       {% endif %}
+       {# mblinks #}
+       <div class="conMbLinks d-flex gap-4 flex-2 justify-content-between w-100 align-self-start">
+          {# important links #}
+          {% if not (settings.links_1_hide) %}
+            <div class="footer-important-links flex-1">
+              <h2 >{{ settings.links_1_title }}</h2>
+              {% for link in settings.links_1_links %}
+                <p class="mt-3"><a href="{{ link.url }}">{{ link.title }}</a></p>
+              {% endfor %}
+            </div>
+          {% endif %}
+          {# important links 2 #}
+          {% if not (settings.links_2_hide) %}
+            <div class="footer-important-links flex-1 ">
+              <h2 class="pb-3">{{ settings.links_2_title }}</h2>
+              {% for link in settings.links_2_links %}
+                <p class"mt-3"><a href="{{ link.url }}">{{ link.title }}</a></p>
+              {% endfor %}
+            </div>
+          {% endif %}
+       </div>
+       {# mblinks #}
+       <div class="d-flex flex-column gap-3 footer-social flex-1">
+        {% if settings.social_media_title %}
+          <h3>{{  settings.social_media_title }}</h3>
+        {% endif %}
+        <div class="d-flex align-items-center gap-3">
+          {% include "Social-media-footer.twig" %}
+        </div>
+       </div>
+    </div>
+    <div class="bottom py-3">
+         <div class="d-flex flex-column flex-md-row gap-3 justify-content-between align-items-center">
+            <div class="flex-1 order-2 order-md-1 footerVatCon pt-3 pt-md-0">
+                 <div class="d-flex gap-4 footer-vat">
+                     {% include "footer-vat.twig" %}
+                 </div>
+            </div>
+            <div class="flex-1 order-3 order-md-2 ">
+              <p class="text-center copyright"> 
+                 <span>{{ locals.copyright }}</span>
+                <span>&copy;</span>
+                <span class="date-footer"></span>
+              </p>
+            </div>
+            <div class="flex-1 order-1 order-md-3 paymentMethods">
+                {% if store.shipping_methods == true or store.payment_methods == true %}
+                      <div class="d-flex  gap-2 flex-wrap">
+                        {# {% for shipping_method in store.shipping_methods %}
+                            <a href="/shipping-and-payment"  class="rounded p-2 me-1 mb-1 d-flex align-items-center justify-content-center">
+                              <img src="{{ imageUrl(shipping_method.icon,{ h: 26, q: 100 }) }}"  width="36" class="1" alt='shipping'>
+                            </a>
+                        {% endfor %} #}
+                        {% for payment_method in store.payment_methods %}
+                            <a href="/shipping-and-payment"  class="rounded p-2 me-1 mb-1 d-flex align-items-center justify-content-center" aria-label="payment method">
+                              <img src="{{ imageUrl(payment_method.icon,{ h: 26, q: 100 }) }}"  alt="" width="36" class="" alt='payments'>
+                            </a>
+                        {% endfor %}
+                      </div>  
+                  {% endif %}
+            </div>
+         </div>
+       </div>
+    </div> {# bottom #}
+  </div>
+    {# {% include 'footer-store-section.twig' with { 'about_settings' : settings } %} #}
 
 </footer>
 
-
+<script>
+function updateDate(){
+  var currentDate = new Date();
+  var year = currentDate.getFullYear();
+  document.querySelector('.footer .date-footer').innerHTML = year;
+}
+updateDate();
+</script>
 
 {% schema %}
 {

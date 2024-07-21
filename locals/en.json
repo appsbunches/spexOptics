@@ -230,6 +230,7 @@
   "brands": "Brands",
   "suggestions": "Suggestions",
   "search_result": "Search Result",
+  "copyright": "All rights reserved",
   "profile": {
     "title": "Profile",
     "personal_info": "Personal Information",
@@ -291,5 +292,10 @@
     "profile": "profile",
     "logout": "Logout",
     "login": "Login"
+  },
+  "footer": {
+    "footer_vat_number": "The VAT number:",
+    "footer_commercial_registration_number": "The commercial register",
+    "business_center": "Business platform"
   }
 }
