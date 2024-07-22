@@ -1325,4 +1325,46 @@ $main-transition: var(--main-transition);
 }
 /*********************** End Our Features  *************************/
 
+/*********************** Start latest work  *************************/
+.home-latestWorks {
+  .title {
+    font-size: 44px;
+    font-weight: 900;
+    color: #093254;
+    line-height: 26px;
+    text-align: center;
+    @media screen and (max-width: 768px) {
+      font-size: 24px;
+    }
+  }
+  .category-card {
+    height: 598px;
+    border-radius: 20px;
+    @media screen and (max-width: 768px) {
+      & {
+        height: 443px;
+      }
+    }
+  }
+  .cat-btn {
+    min-width: 208px;
+    height: 52px;
+    background-color: #fff;
+    border-radius: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 20px;
+    color: #0a3254;
+    @media screen and (max-width: 768px) {
+      font-size: 16px;
+      min-width: 126px;
+      height: 42px;
+    }
+  }
+}
+/*********************** End latest work  *************************/
+
 /*********************** &&&&&&&&&&&&&&&& end Style Home &&&&&&&&&&&&&&&&&& *************************/

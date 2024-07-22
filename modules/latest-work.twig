@@ -1,0 +1,78 @@
+<section section-id="{{ sectionId }}"
+         data-lg-scroll-offset="130"
+         data-md-scroll-offset="130"
+         data-sm-scroll-offset="94"
+         class="my-5 home-latestWorks"
+        >
+        <div class="container">
+        <h3 class="title mb-4">{{ settings.title }}</h3>
+          <div class="row g-3">
+            {% for item in settings.slider %}
+            <div class="col-md-6">
+             <div class="position-relative category-card">
+                <img src="{{ item.image }}" alt="{{ item.buttonText }}" class="w-100 h-100 object-fit-cover">
+                <a href="{{ item.buttonUrl }}" class="cat-btn position-absolute bottom-0 mb-4 mb-md-5 mx-4 end-0">{{ item.buttonText }}</a>
+             </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+  
+  </section>
+
+
+<script>
+console.log({{ settings | json_encode | raw }});
+</script>
+{% schema %}
+{
+  "name": {
+    "ar": "أحدث أعمالنا",
+    "en": "Latest work"
+  },
+  "icon": "fal fa-presentation",
+  "display": true,
+  "settings": {
+    "title": {
+      "type": "text",
+      "label": {
+        "ar": "العنوان",
+        "en": "Title"
+      }
+    },
+    "slider": {
+      "type": "list",
+      "noLabel": true,
+      "maxItems": 4,
+      "settings_label": {
+        "ar": "اسلايدر",
+        "en": "slider"
+      },
+      "settings": {
+        "image": {
+          "type": "image",
+          "label": {
+            "ar": "النص",
+            "en": "description"
+          }
+        },
+        "buttonText":{
+          "type": "text",
+          "label": {
+            "ar": "الزر",
+            "en": "button text"
+          }
+        },
+        "buttonUrl":{
+          "type": "url",
+          "label": {
+            "ar": "ربط الزر",
+            "en": "button url"
+          }
+        }
+      }
+    }
+  }
+}
+{% endschema %}
+

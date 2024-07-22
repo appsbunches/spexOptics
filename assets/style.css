@@ -1290,4 +1290,48 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
 }
 
 /*********************** End Our Features  *************************/
+/*********************** Start latest work  *************************/
+.home-latestWorks .title {
+  font-size: 44px;
+  font-weight: 900;
+  color: #093254;
+  line-height: 26px;
+  text-align: center;
+}
+@media screen and (max-width: 768px) {
+  .home-latestWorks .title {
+    font-size: 24px;
+  }
+}
+.home-latestWorks .category-card {
+  height: 598px;
+  border-radius: 20px;
+}
+@media screen and (max-width: 768px) {
+  .home-latestWorks .category-card {
+    height: 443px;
+  }
+}
+.home-latestWorks .cat-btn {
+  min-width: 208px;
+  height: 52px;
+  background-color: #fff;
+  border-radius: 30px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 20px;
+  color: #0a3254;
+}
+@media screen and (max-width: 768px) {
+  .home-latestWorks .cat-btn {
+    font-size: 16px;
+    min-width: 126px;
+    height: 42px;
+  }
+}
+
+/*********************** End latest work  *************************/
 /*********************** &&&&&&&&&&&&&&&& end Style Home &&&&&&&&&&&&&&&&&& *************************/
