@@ -1,0 +1,91 @@
+<section section-id="{{ sectionId }}"
+         data-lg-scroll-offset="130"
+         data-md-scroll-offset="130"
+         data-sm-scroll-offset="94"
+         class="container my-5"
+        >
+  <div class="swiper text-sliderM py-5 "  style="background-color:{% if settings.background_color %}{{ settings.background_color }}{% else %}#fff{% endif %}">
+      <div class="swiper-wrapper">
+        {% for key, slide in settings.slider %}
+         <div class="swiper-slide">
+                    <p class="text-center px-5" style="color:{% if slide.colorDesc %}{{ slide.colorDesc }}{% else %}#333333{% endif %}">
+                        {{ slide.desc }}
+                    </p>
+                </div>
+        {% endfor %}
+      </div>
+      <div class="container">
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+
+  
+  </section>
+<script>
+      document.addEventListener('DOMContentLoaded', () => {
+                  const swiperContainer = document.querySelector('.text-sliderM');
+if(swiperContainer){
+
+  let swiper = new Swiper('.text-sliderM', {
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+    dynamicBullets: true,
+    dynamicMainBullets: 5
+  },
+    loop: true,  
+  }); 
+}else{
+  console.log("error from main slider");
+}
+  
+  });
+</script>
+   
+
+
+{% schema %}
+{
+  "name": {
+    "ar": "اسلايدر النصوص",
+    "en": "Text Slider"
+  },
+  "icon": "fal fa-presentation",
+  "display": true,
+  "settings": {
+    "background_color": {
+      "type": "color",
+      "label": {
+        "ar": "لون الخلفية",
+        "en": "Background Color"
+      }
+    },
+    "slider": {
+      "type": "list",
+      "noLabel": true,
+      "maxItems": 4,
+      "settings_label": {
+        "ar": "اسلايدر",
+        "en": "slider"
+      },
+      "settings": {
+        "desc": {
+          "type": "text",
+          "label": {
+            "ar": "النص",
+            "en": "description"
+          }
+        },
+        "colorDesc": {
+          "type": "color",
+          "label": {
+            "ar": "لون النص",
+            "en": "color Description"
+          }
+        }
+      }
+    }
+  }
+}
+{% endschema %}
+

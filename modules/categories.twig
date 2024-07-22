@@ -1,0 +1,63 @@
+<section section-id="{{ sectionId }}"
+         data-lg-scroll-offset="130"
+         data-md-scroll-offset="130"
+         data-sm-scroll-offset="94"
+         class="my-5 home-categories"
+        >
+        <div class="container">
+          <div class="row g-3">
+            {% for item in settings.slider %}
+            <div class="col-md-6">
+             <div class="position-relative category-card">
+                <img src="{{ item.cat.image_full_size }}" alt="{{ item.cat.name }}" class="w-100 h-100 object-fit-cover">
+                <a href="{{ item.cat.url }}" class="cat-btn position-absolute bottom-0 mb-4 mx-4">{{ item.buttonText }}</a>
+             </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+  
+  </section>
+
+
+<script>
+console.log({{ settings | json_encode | raw }});
+</script>
+{% schema %}
+{
+  "name": {
+    "ar": "التصنيفات",
+    "en": "Text Slider"
+  },
+  "icon": "fal fa-presentation",
+  "display": true,
+  "settings": {
+    "slider": {
+      "type": "list",
+      "noLabel": true,
+      "maxItems": 4,
+      "settings_label": {
+        "ar": "اسلايدر",
+        "en": "slider"
+      },
+      "settings": {
+        "cat": {
+          "type": "category",
+          "label": {
+            "ar": "النص",
+            "en": "description"
+          }
+        },
+        "buttonText":{
+          "type": "text",
+          "label": {
+            "ar": "الزر",
+            "en": "button text"
+          }
+        }
+      }
+    }
+  }
+}
+{% endschema %}
+

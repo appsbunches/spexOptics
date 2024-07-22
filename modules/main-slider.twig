@@ -1,79 +1,65 @@
-<section section-id="{{ sectionId }}"
+ 
+ <section-id="{{ sectionId }}"
          data-lg-scroll-offset="130"
          data-md-scroll-offset="130"
          data-sm-scroll-offset="94"
          class="ss">
-  <div class="container container-slider">
-    <div class="main-slider slider s-slider">
+ <div class="swiper custom-main-slider">
+      <div class="swiper-wrapper">
         {% for key, slide in settings.slider %}
-          <div class="slider-item">
-            <div class="box-1-1 ratio21_9">
-              <div class="content">
-                <a href="{% if slide.url %}{{ slide.url }}{% else %}/{% endif %}" class="d-flex flex-column justify-content-start"
-                   style="position: relative; width: 100%; height: 100%; {% if settings.background_color %} background-color: {{ settings.background_color }}; {% endif %}">
-                    {% if slide.image %}
-                      <img class="d-block w-100 slider-image-{{ key }}" style="width: 100%; height: 100%; object-fit: cover"
-                              {% if key == 0 %}
-                                srcset="
-                                 {{ imageUrl(slide.image,{ w: 620, q: 100, f:'auto' }) }} 320w,
-                                 {{ imageUrl(slide.image,{ w: 960, q: 100, f:'auto' }) }} 480w,
-                                 {{ imageUrl(slide.image,{ w: 1280, q: 100, f:'auto' }) }} 640w,
-                                 {{ imageUrl(slide.image,{ w: 1920, q: 100, f:'auto' }) }} 960w,
-                                 {{ imageUrl(slide.image,{ w: 2220, q: 100, f:'auto' }) }} 1110w,
-                                "
-                                src="{{ imageUrl(slide.image,{ w: 2220, q: 100, f:'auto' }) }}"
-                                  {% else %}
-                                    data-srcset="
-                                 {{ imageUrl(slide.image,{ w: 620, q: 100, f:'auto' }) }} 320w,
-                                 {{ imageUrl(slide.image,{ w: 960, q: 100, f:'auto' }) }} 480w,
-                                 {{ imageUrl(slide.image,{ w: 1280, q: 100, f:'auto' }) }} 640w,
-                                 {{ imageUrl(slide.image,{ w: 1920, q: 100, f:'auto' }) }} 960w,
-                                 {{ imageUrl(slide.image,{ w: 2220, q: 100, f:'auto' }) }} 1110w,
-                                "
-                                    data-src="{{ imageUrl(slide.image,{ w: 2220, q: 100, f:'auto' }) }}"
-                              {% endif %}
-                           sizes="(max-width: 1110px) 100vw, 1110px"
-                           alt="{{ slide.title }}"
-                      >
-                    {% endif %}
-                  <div class="d-flex flex-column align-items-center justify-content-center"
-                       style="width: 100%; height: 100%; position: absolute; top:0; left: 0; {% if settings.text_color %} color: {{ settings.text_color }}; {% endif %}">
-                    <h2 style="font-size: 3.5rem">
-                        {{ slide.title }}
-                    </h2>
-                    <p style="font-size: 2rem">
-                        {{ slide.des }}
-                    </p>
-                  </div>
-                </a>
-              </div>
-            </div>
+          <div class="swiper-slide">
+               <a href="{% if slide.url %}{{ slide.url }}{% else %}/{% endif %}" style="background-image: url('{{ slide.background_image }}');" class="main-link d-flex justify-content-between align-items-center position-relative">
+                   {# Overlay #}
+                   <div class="overlay"></div>
+                   <div class="container d-flex  justify-content-end align-items-center ">
+
+                      {# content #}
+                      <div class="d-flex flex-column align-items-center align-items-lg-start justify-content-center justify-content-lg-start gap-5">
+                        {% if slide.image2 %}
+                            <img class="imageContent mb-0 mb-lg-4" src="{{ slide.image2 }}"
+                                alt="{{ slide.title }}" >
+                          {% endif %}
+                          <h1>
+                            {{ slide.title }}
+                          </h1>
+                          <p class="text-center text-lg-start" >
+                            {{ slide.des }}
+                          </p>
+                          {% if slide.button_text %}
+                          <a href="{{ slide.url }}" class="btn btn-primary">{{ slide.button_text }}</a>
+                          {% endif %}
+
+                      </div>
+                   </div>
+               </a>
           </div>
         {% endfor %}
+      </div>
+      <div class="container">
+        <div class="swiper-pagination"></div>
+      </div>
+
     </div>
-  </div>
 </section>
-
-
 <script>
-    document.addEventListener("DOMContentLoaded", function(){
-        $('[section-id={{ sectionId }}] .main-slider').slick({
-            infinite: false,
-            autoplay: true,
-            arrows: false,
-            dots: {% if (settings.hide_dots or (settings.slider | length <= 1)) %}false{% else %}true{% endif %},
-            rtl: !(window.appDirection === 'ltr')
-        });
+     document.addEventListener('DOMContentLoaded', () => {
+                  const swiperContainerS = document.querySelector('.custom-main-slider');
+if(swiperContainerS){
 
-
-        $('[section-id={{ sectionId }}] .main-slider').on('beforeChange', function(event, { slideCount: count }, currentSlide, nextSlide){
-            var currentImage = $('[section-id={{ sectionId }}] .slider-image-'+nextSlide);
-            if(!currentImage.attr('src')){
-                currentImage.attr('srcset',currentImage.attr('data-srcset'))
-                currentImage.attr('src',currentImage.attr('src'))
-            }
-        });
-    });
+  let swiper = new Swiper('.custom-main-slider', {
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+    dynamicBullets: true,
+    dynamicMainBullets: 5
+  },
+    loop: true,  
+  }); 
+}else{
+  console.log("error from main slider");
+}
+  
+  });
 </script>
 
 
@@ -90,7 +76,7 @@
       "type": "list",
       "noLabel": true,
       "maxItems": 4,
-      "settings_label":{
+      "settings_label": {
         "ar": "الصورة",
         "en": "Picture"
       },
@@ -99,25 +85,28 @@
           "type": "text",
           "label": {
             "ar": "العنوان",
-            "en": "text"
+            "en": "Title"
           }
         },
         "des": {
           "type": "text",
           "label": {
             "ar": "النص",
-            "en": "text"
+            "en": "Description"
           }
         },
-        "image": {
+        "background_image": {
           "type": "image",
           "label": {
-            "ar": "الصورة",
-            "en": "Image"
-          },
-          "info": {
-            "ar": "ارفع صورة بحجم 1400 * 600",
-            "en": "This is an info text sample here"
+            "ar": "صورة الخلفية",
+            "en": "Background Image"
+          }
+        },
+        "background_image_mobile": {
+          "type": "image",
+          "label": {
+            "ar": "صورة الخلفية في الموبايل",
+            "en": "Background Image in Mobile"
           }
         },
         "url": {
@@ -126,35 +115,24 @@
             "ar": "الرابط",
             "en": "Link"
           }
+        },
+        "button": {
+          "type": "text",
+          "label": {
+            "ar": "ادخل اسم الزرار",
+            "en": "Button Text"
+          }
+        },
+        "buttonUrl": {
+          "type": "url",
+          "label": {
+            "ar": "ادخل رابط الزرار",
+            "en": "Button URL"
+          }
         }
-      }
-    },
-    "hide_dots": {
-      "type": "checkbox",
-      "label": {
-        "ar": " ",
-        "en": " "
-      },
-      "option": {
-        "ar": "إخفاء النقاط",
-        "en": "Hide dots"
-      },
-      "noLabel": true
-    },
-    "background_color": {
-      "type": "color",
-      "label": {
-        "ar": "لون الخلفية",
-        "en": "Text color"
-      }
-    },
-    "text_color": {
-      "type": "color",
-      "label": {
-        "ar": "لون النص",
-        "en": "Text color"
       }
     }
   }
 }
 {% endschema %}
+
