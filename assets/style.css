@@ -1002,6 +1002,15 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
 .custom-main-slider {
   min-height: calc(100vh - 138px);
 }
+.custom-main-slider .swiper-pagination .swiper-pagination-bullet {
+  background-color: #fff !important;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #b7bfc7;
+}
+.custom-main-slider .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #0a3254 !important;
+}
 .custom-main-slider .main-link {
   min-height: calc(100vh - 138px);
   width: 100%;
@@ -1176,7 +1185,6 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
 
 /*********************** End Featured prodcut  *************************/
 /*********************** Start Brands  *************************/
-/*********************** Start Categories ome  *************************/
 .brands .title {
   font-size: 44px;
   font-weight: 900;
@@ -1222,6 +1230,64 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
   }
 }
 
-/*********************** End Categories ome  *************************/
 /*********************** End Brands  *************************/
+/*********************** Start Our Features  *************************/
+.ourFeatures_home {
+  background-color: #f7f7f7;
+}
+.ourFeatures_home .section-title {
+  font-size: 44px;
+  font-weight: 900;
+  color: #093254;
+  line-height: 26px;
+  text-align: center;
+}
+@media screen and (max-width: 768px) {
+  .ourFeatures_home .section-title {
+    font-size: 24px;
+  }
+}
+.ourFeatures_home .image-box {
+  height: 393px;
+}
+@media screen and (max-width: 768px) {
+  .ourFeatures_home .image-box {
+    height: 300px;
+  }
+}
+.ourFeatures_home .video-box {
+  height: 393px;
+}
+@media screen and (max-width: 768px) {
+  .ourFeatures_home .video-box {
+    height: 300px;
+  }
+}
+.ourFeatures_home .video-box video {
+  border-radius: 20px;
+  -o-object-fit: cover !important;
+     object-fit: cover !important;
+}
+.ourFeatures_home .video-box .playButton {
+  background-color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+}
+.ourFeatures_home .content h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0a3254;
+  line-height: 24px;
+}
+.ourFeatures_home .content p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #999999;
+}
+
+/*********************** End Our Features  *************************/
 /*********************** &&&&&&&&&&&&&&&& end Style Home &&&&&&&&&&&&&&&&&& *************************/
