@@ -15,6 +15,10 @@ a {
   flex: 1.5;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .select-box {
   border: none; /* Removes the default border */
   border-radius: 30px; /* Adds rounded corners */
@@ -1334,4 +1338,50 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
 }
 
 /*********************** End latest work  *************************/
+/*********************** Start poducts filters *************************/
+.filters-section .poducts-filters .color-attribute {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.filters-section .poducts-filters .size-attribute {
+  min-width: 29px;
+  min-height: 29px;
+  border-radius: 50%;
+  border: 1px solid #eeeeee;
+  color: #0a3254;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 400;
+  cursor: pointer;
+}
+.filters-section .poducts-filters .size-attribute.active {
+  border: 1px solid #0a3254;
+}
+.filters-section .poducts-filters .products-brands .brand {
+  border: 1px solid #eeeeee;
+  color: #0a3254;
+  border-radius: 500px;
+  font-size: 12px;
+  font-weight: 400;
+}
+.filters-section .poducts-filters .products-brands .brand.active {
+  border: 1px solid #0a3254;
+}
+.filters-section .noUi-handle {
+  width: 28px !important;
+  border-radius: 50%;
+}
+.filters-section .noUi-handle .noUi-touch-area::after {
+  content: none !important;
+  height: 0;
+}
+.filters-section .noUi-handle .noUi-touch-area::before {
+  content: none !important;
+  height: 0;
+}
+
+/*********************** End poducts filters *************************/
 /*********************** &&&&&&&&&&&&&&&& end Style Home &&&&&&&&&&&&&&&&&& *************************/

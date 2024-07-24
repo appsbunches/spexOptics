@@ -295,5 +295,11 @@
     "footer_vat_number": "الرقم الضريبي:",
     "footer_commercial_registration_number": "السجل التجاري",
     "business_center": "منصة الأعمال"
+  },
+  "filters": {
+    "filter_by": "فلتر بواسطة",
+    "try_filter": "إعادة تعيين",
+    "brands": "البرندات",
+    "price": "السعر"
   }
 }

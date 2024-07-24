@@ -297,5 +297,11 @@
     "footer_vat_number": "The VAT number:",
     "footer_commercial_registration_number": "The commercial register",
     "business_center": "Business platform"
+  },
+  "filters": {
+    "filter_by": "Filter by",
+    "try_filter": "Try filter",
+    "brands": "Brands",
+    "price": "Price"
   }
 }
