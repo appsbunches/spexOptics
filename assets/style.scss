@@ -1544,7 +1544,8 @@ $main-transition: var(--main-transition);
         font-size: 8px;
       }
     }
-    .product-price {
+    .product-price,
+    .section-product-price {
       font-size: 18px;
       font-weight: 400;
       color: #0a3254;
@@ -1558,7 +1559,6 @@ $main-transition: var(--main-transition);
       min-height: 28px;
       border-radius: 20px;
       background-color: #fff8f8;
-      color: #ff483b;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -1569,11 +1569,20 @@ $main-transition: var(--main-transition);
           border-radius: 20px;
         }
       }
+      span {
+        color: #ff483b;
+      }
     }
     .color-box {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
+      width: 8px;
+      height: 8px;
+      border-radius: 15px;
+      cursor: pointer;
+      &.active {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
     }
     .product-title {
       @media screen and (max-width: 768px) {

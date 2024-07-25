@@ -1503,13 +1503,15 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
     font-size: 8px;
   }
 }
-.custom_products_list .product-item .product-price {
+.custom_products_list .product-item .product-price,
+.custom_products_list .product-item .section-product-price {
   font-size: 18px;
   font-weight: 400;
   color: #0a3254;
 }
 @media screen and (max-width: 768px) {
-  .custom_products_list .product-item .product-price {
+  .custom_products_list .product-item .product-price,
+  .custom_products_list .product-item .section-product-price {
     font-size: 12px;
   }
 }
@@ -1518,7 +1520,6 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
   min-height: 28px;
   border-radius: 20px;
   background-color: #fff8f8;
-  color: #ff483b;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1530,7 +1531,16 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
     border-radius: 20px;
   }
 }
+.custom_products_list .product-item .discount_percentage span {
+  color: #ff483b;
+}
 .custom_products_list .product-item .color-box {
+  width: 8px;
+  height: 8px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.custom_products_list .product-item .color-box.active {
   width: 12px;
   height: 12px;
   border-radius: 50%;
