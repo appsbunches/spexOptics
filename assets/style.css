@@ -1473,13 +1473,73 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
 .allProductsPage .custom_products_list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  align-items: center;
+  gap: 20px;
+}
+@media screen and (max-width: 767px) {
+  .allProductsPage .custom_products_list {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 .allProductsPage .custom_products_list.two {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  align-items: center;
+  gap: 20px;
+}
+@media screen and (max-width: 767px) {
+  .allProductsPage .custom_products_list.two {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 /*********************** End poducts filters *************************/
+/*********************** Start product card  *************************/
+.custom_products_list .product-item .product-prev-price {
+  color: rgba(215, 215, 215, 0.9333333333);
+  font-size: 14px;
+  font-weight: 400;
+}
+@media screen and (max-width: 768px) {
+  .custom_products_list .product-item .product-prev-price {
+    font-size: 8px;
+  }
+}
+.custom_products_list .product-item .product-price {
+  font-size: 18px;
+  font-weight: 400;
+  color: #0a3254;
+}
+@media screen and (max-width: 768px) {
+  .custom_products_list .product-item .product-price {
+    font-size: 12px;
+  }
+}
+.custom_products_list .product-item .discount_percentage {
+  min-width: 61px;
+  min-height: 28px;
+  border-radius: 20px;
+  background-color: #fff8f8;
+  color: #ff483b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 768px) {
+  .custom_products_list .product-item .discount_percentage {
+    min-width: 45px;
+    min-height: 22px;
+    border-radius: 20px;
+  }
+}
+.custom_products_list .product-item .color-box {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+@media screen and (max-width: 768px) {
+  .custom_products_list .product-item .product-title {
+    font-size: 12px;
+  }
+}
+
+/*********************** end product card  *************************/
 /*********************** &&&&&&&&&&&&&&&& end Style Home &&&&&&&&&&&&&&&&&& *************************/

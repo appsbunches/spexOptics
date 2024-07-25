@@ -208,12 +208,14 @@
      {% if products.filters|length > 0 %}
          {% include 'sorting-filter.twig' %}
      {% endif %}
-      <div id="products-list" class="custom_products_list">
-      {% for product in products.data %}
-        {% include 'product-card.twig' with {'product' : product, 'index': key}
-        %}
-      {% endfor %}
-    </div>
+       <div class="resCustomProductList w-100 d-flex justify-content-center">
+            <div id="products-list" class="custom_products_list">
+                {% for product in products.data %}
+                        {% include 'product-card.twig' with {'product' : product, 'index': key}
+                        %}
+                    {% endfor %}
+            </div>
+        </div>
     </div>
   </div>
 </div>
@@ -516,6 +518,7 @@
 
         {% if  products.data|length > 0 %}
         document.addEventListener("DOMContentLoaded", function(){
+          
             var productsObj = {{ products.data | json_encode() | raw }}
                 window.sendGaProductsViewItemsListEvent('all_products', productsObj);
         });
@@ -595,7 +598,46 @@
     //   handle price
 
  
+    // handle colors of product card
+    const allColorBox = document.querySelectorAll(".product-item .color-box");
+    allColorBox.forEach(box => {
+        box.addEventListener("click", function () {
+            const idProduct = box.getAttribute("data-productId");
+            const clickedColor = box.getAttribute("data-colorProductCard");
+            zid.store.product.fetch(idProduct).then((res)=>{
+                console.log(res);
+                   const variants = res.data.product.variants;
+                   const foundedProductColor = variants.find(variant => { 
+                   if( variant.name.split("-")[1].trim().toLowerCase() === clickedColor.trim().toLowerCase() ){
+                    return variant;
+                   }
+                   });
+                   //  update old product with variation of cuurent product   
+                   const getProductCard = box.closest(".product-item");
+                   const productCardImage = getProductCard.querySelector("#product-card-img-" + idProduct);
+                   const productTitle = getProductCard.querySelector(".product-title");
+                   const productPrevPrice = getProductCard.querySelector(".product-prev-price");
+                   const productPrice = getProductCard.querySelector(".product-price");
+                   const productDiscountPercentage = getProductCard.querySelector(".discount_percentage .sp");
+                   const productPriceWithoutDiscount = getProductCard.querySelector(".section-product-price");
+                   productTitle.textContent = foundedProductColor.name;
+                   if(productCardImage.images){
+                      productCardImage.src = foundedProductColor.images[0]['image']['large'];
+                   }
+                   if(product.formatted_sale_price){
+                    productPrice.textContent = foundedProductColor.formatted_sale_price;
+                    productPrevPrice.textContent = foundedProductColor.formatted_price;
+                    productDiscountPercentage.textContent = `{{ locals.product_discount }} ${foundedProductColor.discount_percentage}`;                        
+                   }else{
+                     productPriceWithoutDiscount.textContent = foundedProductColor.formatted_price;
+                   }
+            }).catch(error => {
+                console.log(error);
+            });
 
+            
+        });
+    })
 
     </script>
 {% endblock %}

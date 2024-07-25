@@ -865,10 +865,11 @@ a.more-button {
   background-color: #ffffff;
 }
 .product-title {
-  color: #363636;
-  font-weight: var(--font-wieght-sizeTwo);
-  font-size: 48px;
+  color: #333333;
+  font-weight: 400;
+  font-size: 18px;
 }
+
 .sub-title {
   color: #494949;
   font-weight: var(--font-wieght-sizeTwo);
@@ -966,7 +967,7 @@ a.more-button {
 
 .product-item {
   width: 100%;
-  max-width: 200px;
+  max-width: 286px;
 }
 
 .product-item .product-title {
