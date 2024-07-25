@@ -1,0 +1,55 @@
+<div class="w-100 sorting d-flex justify-content-between align-items-center p-3 d-none d-md-flex mb-5">
+  <div class="sort d-flex gap-2">
+    <h2 class="title">{{ locals.filters.sort_by }}</h2>
+    <div class="dropdown">
+      <button class="dropdown-toggle d-flex align-items-center gap-2 " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        {% if requestGet('sort_by') == 'popularity_order' %}
+            {{ locals.filters.products_list_filter_popularity }}
+        {% elseif requestGet('sort_by') == 'price' and  requestGet('order') == 'asc'%}
+            {{ locals.filters.products_list_filter_price_low }}
+        {% elseif requestGet('sort_by') == 'price' and  requestGet('order') == 'desc'%}
+            {{ locals.filters.products_list_filter_price_high }}
+        {% else%}
+            {{ locals.filters.products_list_filter_latest }}
+        {% endif %}
+        <svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0.0751953 0.638706L5.33887 5.68966C5.38184 5.73264 5.43555 5.75414 5.5 5.75414C5.56445 5.75414 5.61816 5.73264 5.66113 5.68966L10.9248 0.638707C10.9749 0.59572 11 0.543777 11 0.482879C11 0.421981 10.9785 0.366457 10.9355 0.316306C10.8926 0.273319 10.8389 0.250034 10.7744 0.246452C10.71 0.24287 10.6562 0.266154 10.6133 0.316306L5.5 5.20605L0.386719 0.316305C0.365234 0.294811 0.340169 0.278691 0.311523 0.267944C0.282878 0.257198 0.254231 0.251824 0.225586 0.251824C0.19694 0.251824 0.168294 0.257198 0.139648 0.267944C0.111003 0.278691 0.0859375 0.294811 0.0644531 0.316305C0.0214844 0.366456 -1.53766e-08 0.42198 -2.07005e-08 0.482878C-2.60243e-08 0.543776 0.0250654 0.595719 0.0751953 0.638706Z" fill="#222222"/>
+        </svg>
+
+      </button>
+      <ul class="dropdown-menu px-3">
+          <a class="d-flex gap-3 align-items-center" href="{{ requestAdd({sort_by: 'created_at', order: 'desc'}) }}">
+            <span> {{ locals.filters.products_list_filter_latest }}</span>
+          </a>
+
+          <a class="d-flex gap-3 align-items-center" href="{{ requestAdd({sort_by: 'popularity_order', order: 'asc'}) }}">            
+            <span> {{ locals.filters.products_list_filter_popularity }}</span>
+          </a>
+
+          <a class="d-flex gap-3 align-items-center" href="{{ requestAdd({sort_by: 'price', order: 'asc'}) }}">           
+            <span> {{ locals.filters.products_list_filter_price_low }}</span>
+          </a>
+
+          <a class="d-flex gap-3 align-items-center" href="{{ requestAdd({sort_by: 'price', order: 'desc'}) }}">       
+            <span> {{ locals.filters.products_list_filter_price_high }}</span>
+          </a>
+      </ul>
+     </div>
+  </div>
+  <div class="show d-flex gap-2">
+      <span >{{ locals.filters.show }}</span>
+      <button class="btn-show selected"  type="button">
+        <svg width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect  class="svg-rect"  x="1" y="1" width="4" height="10" rx="2" fill="#E2E2E2" stroke="#E2E2E2"/>
+        <rect  class="svg-rect"  x="9" y="1" width="4" height="10" rx="2" fill="#E2E2E2" stroke="#E2E2E2"/>
+        <rect  class="svg-rect"  x="17" y="1" width="4" height="10" rx="2" fill="#E2E2E2" stroke="#E2E2E2"/>
+        </svg>
+      </button>
+      <button  class="btn-show two" type="button">
+          <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect  class="svg-rect"  x="1" y="1" width="4" height="10" rx="2" fill="#E2E2E2" stroke="#E2E2E2"/>
+          <rect  class="svg-rect"  x="9" y="1" width="4" height="10" rx="2" fill="#E2E2E2" stroke="#E2E2E2"/>
+          </svg>
+      </button>
+  </div>
+</div>

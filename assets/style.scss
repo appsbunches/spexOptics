@@ -131,6 +131,12 @@ $background-color: var(--background-color);
 $border-color: var(--border-color);
 $main-space: var(--main-space);
 $main-transition: var(--main-transition);
+.arrowCollapse {
+  transition: transform 0.3s ease;
+}
+.arrowCollapse.rotate {
+  transform: rotate(-90deg);
+}
 /* End main settings */
 
 /*********************** Start Style Header  *************************/
@@ -190,12 +196,7 @@ $main-transition: var(--main-transition);
     .body {
       height: calc(100% - 370px);
       overflow-y: auto;
-      .arrowCollapse {
-        transition: transform 0.3s ease;
-      }
-      .arrowCollapse.rotate {
-        transform: rotate(-90deg);
-      }
+
       .homeLink {
         background-color: #f7f7f7;
       }
@@ -1370,53 +1371,158 @@ $main-transition: var(--main-transition);
 /*********************** End latest work  *************************/
 
 /*********************** Start poducts filters *************************/
-.filters-section {
-  .poducts-filters {
-    .color-attribute {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-    }
-    .size-attribute {
-      min-width: 29px;
-      min-height: 29px;
-      border-radius: 50%;
-      border: 1px solid #eeeeee;
-      color: #0a3254;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 12px;
-      font-weight: 400;
-      cursor: pointer;
-    }
-    .size-attribute.active {
-      border: 1px solid #0a3254;
-    }
-    .products-brands {
-      .brand {
+.allProductsPage {
+  .filters-section {
+    .poducts-filters {
+      .offcanvas_custom_filter {
+        height: auto;
+        max-height: 100%;
+        background-color: transparent;
+      }
+
+      .filter-by {
+        background-color: #f7f7f7;
+        border-radius: 4px;
+        .head {
+          font-size: 20px;
+          font-weight: 700;
+          color: #093254;
+          @media screen and (max-width: 768px) {
+            font-size: 14px;
+          }
+        }
+      }
+      .attribute-name {
+        font-size: 14px;
+        font-weight: 700;
+        color: #333333;
+      }
+      .color-attribute {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      .try_filter_section,
+      .tryFilterRenge,
+      .try_filter_brands {
+        font-weight: 700;
+        font-size: 10px;
+        color: #bcbcbc;
+        padding: 0;
+      }
+      .attribute-checkboxCon {
+        input {
+          width: 17px;
+          height: 17px;
+        }
+        label {
+          font-size: 12px;
+          font-weight: 400;
+          color: #333333;
+        }
+      }
+      .size-attribute {
+        min-width: 29px;
+        min-height: 29px;
+        border-radius: 500px;
         border: 1px solid #eeeeee;
         color: #0a3254;
-        border-radius: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         font-size: 12px;
         font-weight: 400;
+        cursor: pointer;
       }
-      .brand.active {
+      .size-attribute.active {
         border: 1px solid #0a3254;
+      }
+      .products-brands {
+        .brand {
+          border: 1px solid #eeeeee;
+          color: #0a3254;
+          border-radius: 500px;
+          font-size: 12px;
+          font-weight: 400;
+        }
+        .brand.active {
+          border: 1px solid #0a3254;
+        }
+      }
+    }
+    .rengeSLiderCon {
+      input[type='number']::-webkit-inner-spin-button,
+      input[type='number']::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      input[type='number'] {
+        -moz-appearance: textfield;
+      }
+      .tryFilterRenge {
+        font-weight: 700;
+        font-size: 10px;
+        padding: 0;
+        color: #bcbcbc;
+      }
+
+      .noUi-handle {
+        width: 20px !important;
+        height: 20px !important;
+        border: 1px solid #0a3254;
+        border-radius: 50%;
+        &::after {
+          content: none !important;
+          height: 0;
+        }
+        &::before {
+          content: none !important;
+          height: 0;
+        }
+      }
+      .noUi-connect {
+        background-color: #0a3254;
+      }
+      .noUi-horizontal {
+        height: 9px !important;
+        width: 95% !important;
       }
     }
   }
-  .noUi-handle {
-    width: 28px !important;
-    border-radius: 50%;
-    .noUi-touch-area::after {
-      content: none !important;
-      height: 0;
+  .sorting {
+    background-color: #f7f7f7;
+    border-radius: 4px;
+    .dropdown-toggle::after {
+      display: none !important;
+      a {
+        color: #333333;
+      }
     }
-    .noUi-touch-area::before {
-      content: none !important;
-      height: 0;
+    .show {
+      .btn-show .svg-rect {
+        fill: #e2e2e2;
+        stroke: #e2e2e2;
+      }
+
+      /* Color for selected SVG */
+      .btn-show.selected {
+        .svg-rect {
+          fill: #0a3254;
+          stroke: #0a3254;
+        }
+      }
     }
+  }
+  .custom_products_list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+  }
+  .custom_products_list.two {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
   }
 }
 /*********************** End poducts filters *************************/

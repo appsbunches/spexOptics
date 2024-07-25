@@ -300,6 +300,13 @@
     "filter_by": "فلتر بواسطة",
     "try_filter": "إعادة تعيين",
     "brands": "البرندات",
-    "price": "السعر"
+    "price": "السعر",
+    "sort_by": "ترتيب حسب",
+    "show": "عرض",
+    "products_list_filter_latest": "الأحدث",
+    "products_list_filter_popularity": "الأكثر شعبية",
+    "products_list_filter_price_low": "الأقل سعر",
+    "products_list_filter_price_high": "الأعلى سعر",
+    "all_Products": "كل المنتجات"
   }
 }

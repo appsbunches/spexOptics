@@ -123,7 +123,7 @@
     <link rel="stylesheet" href="{{ asset_url ~ 'main.css?v=1.224' }}" />
 
     <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'custom.css?v=1.148' }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'style.css?v=1.161' }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'style.css?v=1.189' }}" />
 
     {% if session.lang.code == 'en' %}
         <link rel="stylesheet" href="{{ asset_url ~ 'main.ltr.css?v=1.31' }}">
@@ -301,6 +301,24 @@
         "type": "fieldset",
         "label": {
           "ar": "بانر صفحة العناوين",
+          "en": "addresses page banner"
+        },
+        "icon": "font_awesome",
+        "expandable": true,
+        "settings": {
+          "image": {
+            "type": "image",
+            "label": {
+              "ar": "الصورة",
+              "en": "Logo"
+            }
+          }
+        }
+      },
+      "banner_products_page": {
+        "type": "fieldset",
+        "label": {
+          "ar": "بانر صفحة جميع المنتجات",
           "en": "addresses page banner"
         },
         "icon": "font_awesome",

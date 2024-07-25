@@ -27,11 +27,13 @@
         {% endblock %}
     {% endembed %}
     {# small hero #}
-    <div class="w-100 smallHero d-flex justify-content-center align-items-center"  style="{% if settings.banners_banner_address_page_image %}background-image: url({{ settings.banners_banner_address_page_image }});{% else %}background-color:{{ store.colors.primary }}{% endif %}">
-        <button type="button" class="addAddress radius30 py-3" data-bs-toggle="offcanvas" data-bs-target="#addAddress" aria-controls="offcanvasRight">
-            {{ locals.addresses.add_address }}
-        </button>
-    </div>
+    {% if  settings.banners_banner_address_page_image  %}    
+        <div class="w-100 smallHero d-flex justify-content-center align-items-center"  style="{% if settings.banners_banner_address_page_image %}background-image: url({{ settings.banners_banner_address_page_image }});{% else %}background-color:{{ store.colors.primary }}{% endif %}">
+            <button type="button" class="addAddress radius30 py-3" data-bs-toggle="offcanvas" data-bs-target="#addAddress" aria-controls="offcanvasRight">
+                {{ locals.addresses.add_address }}
+            </button>
+        </div>
+    {% endif %}
     {# popup add address #}
     <div class="offcanvas offcanvas-start offcanvas-add-address" tabindex="-1" id="addAddress" aria-labelledby="offcanvasRightLabel" style="z-index: 9999;">
 

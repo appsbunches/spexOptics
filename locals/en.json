@@ -302,6 +302,13 @@
     "filter_by": "Filter by",
     "try_filter": "Try filter",
     "brands": "Brands",
-    "price": "Price"
+    "price": "Price",
+    "sort_by": "Sort by",
+    "show": "Show",
+    "products_list_filter_latest": "Newest",
+    "products_list_filter_popularity": "Most popular",
+    "products_list_filter_price_low": "Low to high",
+    "products_list_filter_price_high": "High to low",
+    "all_Products": "All products"
   }
 }
