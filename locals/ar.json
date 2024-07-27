@@ -307,6 +307,9 @@
     "products_list_filter_popularity": "الأكثر شعبية",
     "products_list_filter_price_low": "الأقل سعر",
     "products_list_filter_price_high": "الأعلى سعر",
-    "all_Products": "كل المنتجات"
-  }
+    "all_Products": "كل المنتجات",
+    "noProducts": "لا يوجد منتجات"
+  },
+  "all_categories": "كل التصنيفات",
+  "link_copied": "تم نسخ الرابط"
 }

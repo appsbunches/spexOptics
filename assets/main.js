@@ -791,4 +791,14 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+// copy link in blog post
+const copyLink = (event) => {
+  event.preventDefault();
+  navigator.clipboard.writeText(window.location.href);
+  const copyMessage = document.getElementById('copyMessage');
+  copyMessage.classList.remove('d-none');
+  setTimeout(() => {
+    copyMessage.classList.add('d-none');
+  }, 2000);
+};
 /**********************************  my edits ahmed ashraf ******************************/

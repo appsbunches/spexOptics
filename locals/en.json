@@ -309,6 +309,9 @@
     "products_list_filter_popularity": "Most popular",
     "products_list_filter_price_low": "Low to high",
     "products_list_filter_price_high": "High to low",
-    "all_Products": "All products"
-  }
+    "all_Products": "All products",
+    "noProducts": "No Products Found"
+  },
+  "all_categories": "All categories",
+  "link_copied": "Link is copied"
 }

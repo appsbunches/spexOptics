@@ -1394,9 +1394,6 @@ ul.main-nav > li ul.sub-menu-lists > li > a {
   }
 }
 /* breadCrumb-twig */
-.breadcrumb-section {
-  background-color: var(--secondary-color);
-}
 
 .breadcrumb-item a {
   color: var(--primary-color);

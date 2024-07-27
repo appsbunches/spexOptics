@@ -9,72 +9,62 @@
 
 {% block main_content %}
 
-    <section class="breadcrumb-section">
-        <nav aria-label="breadcrumb">
-        
-            <ol class="breadcrumb">
-            <div class="container d-flex flex-wrap">
-                <li class="breadcrumb-item active " aria-current="page">{{ locals.header_all_categories }}</li>
-            </div>
-        
-            </ol>
+     {# breadcrumps #}
+     <div class="d-flex justify-content-between gap-2 flex-wrap align-items-center container">
+        {% embed 'breadcrumb.twig' %}
+                {% block breadcrumb_items %}
+                    <li class="breadcrumb-item" aria-current="page"><a href="/">{{ locals.home_title }}</a></li>
+                        {% if session.lang.code == 'ar' %}
+                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                        <path d="M7 1L2 6L7 11" stroke="#333333" stroke-width="1.5"/>
+                        </svg>
+                    {% else %}
+                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="rotateIcon">
+                        <path d="M7 1L2 6L7 11" stroke="#333333" stroke-width="1.5"/>
+                        </svg>
+                    {% endif %}
+                    <li class="breadcrumb-item active " aria-current="page">{{ locals.all_categories }}</li>
+                {% endblock %}
+        {% endembed %}
+        <div class="position-relative flex-1 text-end">
+            <div class="copy-message position-absolute d-none text-end w-100" id="copyMessage">{{ locals.link_copied }}</div>
+            <a href="#" onclick="copyLink(event)" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top">
+               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_300_39227)">
+                <path d="M6 15C7.65685 15 9 13.6569 9 12C9 10.3431 7.65685 9 6 9C4.34315 9 3 10.3431 3 12C3 13.6569 4.34315 15 6 15Z" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M18 9C19.6569 9 21 7.65685 21 6C21 4.34315 19.6569 3 18 3C16.3431 3 15 4.34315 15 6C15 7.65685 16.3431 9 18 9Z" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M18 21C19.6569 21 21 19.6569 21 18C21 16.3431 19.6569 15 18 15C16.3431 15 15 16.3431 15 18C15 19.6569 16.3431 21 18 21Z" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.69922 10.7008L15.2992 7.30078" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.69922 13.3008L15.2992 16.7008" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <defs>
+                <clipPath id="clip0_300_39227">
+                <rect width="24" height="24" fill="white"/>
+                </clipPath>
+                </defs>
+                </svg>
+
+            </a>
+        </div>
+     </div>
     
-        </nav>
-    </section>
+    {# small hero section #}
+    {% if  settings.banners_banner_categories_page_image %}        
+      {% include 'smallHero.twig' with { 'image' :  settings.banners_banner_categories_page_image } %}
+    {% endif %}
 
-    <div class="container mb-5">
-        <div class="row categories-row">
+    <div class="container my-5">
+        <div class="row g-3 categories-page">
             {% for key, category in categories %}
-                <div class="col col-lg-4 all-cat-col">
-
-                    <div class="card-categories-wrapper">
-                        <div class="card-categories ">
-                            <div class="box-1-1 ratio21_9">
-                                <div class="content">
-                                    {% if category.cover_image %}
-                                        <img class="categories-image" src="{{category.cover_image}}" alt="{{category.img_alt_text}}">
-                                    {% else %}
-                                        <div style="background-color: #cccccc; height: 100%; width: 100%"></div>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="accordion" class="category-second-card">
-                            <div class="card-content">
-                                <div class="card-header-category" id="heading{{ key }}">
-
-                                    <a href="/categories/{{ category.id }}/{{ category.slug }}"
-                                       class="btn btn-link-categories d-flex align-items-center d-flex justify-content-between">
-                                        <span>{{category.name}}</span>
-                                    </a>
-                                </div>
-                                {% if category.sub_categories | length > 0 %}
-                                    <div >
-                                        <div class="card-body"  style="padding: 10px 8px">
-                                            {% for sub_key, sub_category in category.sub_categories %}
-                                                <p class="categories-title">
-                                                    <a style="color: inherit" href="categories/{{ sub_category.id }}/{{ sub_category.slug }}">{{sub_category.name}}</a>
-                                                </p>
-                                                {% if sub_category.sub_categories | length > 0 %}
-                                                    <ul class="categories-subTitle">
-                                                        {% for  subTwo_category in sub_category.sub_categories %}
-                                                            <li>
-                                                                <a href="categories/{{ subTwo_category.id }}/{{ subTwo_category.slug }}">
-                                                                    {{subTwo_category.name}}
-                                                                </a>
-                                                            </li>
-                                                        {% endfor %}
-                                                    </ul>
-                                                {% endif %}
-                                            {% endfor %}
-                                        </div>
-                                    </div>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-
+                <div class="col-4 col-md-2">
+                   <a class="cat d-flex flex-column align-items-center gap-3" href="{{ category.slug }}">
+                      <div class="cat-box-image">
+                        <img {% if category.image %}src="{{ category.image}}"{% else %}src="{{ imageUrl(asset_url ~ 'product-img.svg',{ w: 235, q: 100, f:'auto' }) }}" {% endif %}
+                         alt="{{ category.name }}" class="w-100 h-100 object-fit-contain">
+                      </div>
+                      <h5 class="text-center">{{ category.name }}</h5>
+ 
+                   </a>
                 </div>
             {% endfor %}
         </div>
@@ -83,19 +73,9 @@
 {% endblock %}
 
 {% block footer_scripts %}
-    <script src="{{ asset_url ~ 'masonry.pkgd.min.js' }}"></script>
-    <script>
-
-        // Initial resize in window.load as the content in each item may contain images
-        document.addEventListener("DOMContentLoaded", function(){
-            var container = document.querySelector('.categories-row');
-            var msnry = new Masonry(container, {
-                itemSelector: '.all-cat-col'
-            });
-        });
-
-
-    </script>
+  <script>
+    console.log({{  categories|json_encode |raw}});
+  </script>
 {% endblock %}
 
 

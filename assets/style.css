@@ -1490,6 +1490,17 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
     grid-template-columns: repeat(1, 1fr);
   }
 }
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.allProductsPage .loading_more_products svg {
+  animation: rotate 2s linear infinite;
+}
 
 /*********************** End poducts filters *************************/
 /*********************** Start product card  *************************/
@@ -1552,4 +1563,59 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
 }
 
 /*********************** end product card  *************************/
+/*********************** Start Sub Categoies  *************************/
+.sliderSubCategories .subCategory img {
+  width: 165px;
+  height: 165px;
+  border-radius: 50%;
+}
+@media screen and (max-width: 768px) {
+  .sliderSubCategories .subCategory img {
+    width: 92px;
+    height: 92px;
+  }
+}
+.sliderSubCategories .subCategory .catName {
+  font-size: 20px;
+  font-weight: 700;
+  color: #093254;
+}
+@media screen and (max-width: 768px) {
+  .sliderSubCategories .subCategory .catName {
+    font-size: 14px;
+  }
+}
+
+/*********************** end sub categoies  *************************/
+/*********************** Start categories page  *************************/
+.categories-page .cat {
+  width: 165px;
+}
+@media screen and (max-width: 768px) {
+  .categories-page .cat {
+    width: auto;
+    max-width: 92px;
+  }
+}
+.categories-page .cat .cat-box-image {
+  width: 100%;
+}
+.categories-page .cat h5 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #093254;
+}
+@media screen and (max-width: 768px) {
+  .categories-page .cat h5 {
+    font-size: 14px;
+  }
+}
+
+#copyMessage {
+  color: var(--primary-color);
+  font-size: 16px;
+  top: -23px;
+}
+
+/*********************** end categories page  *************************/
 /*********************** &&&&&&&&&&&&&&&& end Style Home &&&&&&&&&&&&&&&&&& *************************/
