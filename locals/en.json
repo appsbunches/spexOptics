@@ -313,5 +313,9 @@
     "noProducts": "No Products Found"
   },
   "all_categories": "All categories",
-  "link_copied": "Link is copied"
+  "link_copied": "Link is copied",
+  "brandsPage": "Brands",
+  "show_all": "Show All",
+  "read_more_blog": "Read More",
+  "blogs": "blog"
 }

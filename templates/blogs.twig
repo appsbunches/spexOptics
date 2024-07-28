@@ -5,10 +5,186 @@
 {% block main_content %}
 
     <div id="loader"class="loader-container-relative"></div>
-
-    <div id="blog">
-    </div>
+    {# breadcrumps #}
+    {% embed 'breadcrumb.twig' %}
+        {% block breadcrumb_items %}
+            <li class="breadcrumb-item" aria-current="page"><a href="/">{{ locals.home_title }}</a></li>
+                {% if session.lang.code == 'ar' %}
+                <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                <path d="M7 1L2 6L7 11" stroke="#333333" stroke-width="1.5"/>
+                </svg>
+            {% else %}
+                <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="rotateIcon">
+                <path d="M7 1L2 6L7 11" stroke="#333333" stroke-width="1.5"/>
+                </svg>
+            {% endif %}
+            <li class="breadcrumb-item active " aria-current="page">{{ locals.blogs }}</li>
+        {% endblock %}
+    {% endembed %}
+   {# small hero section #}
+    {% if  settings.banners_banner_blogs_page_image %}        
+    {% include 'smallHero.twig' with { 'image' :  settings.banners_banner_blogs_page_image } %}
+    {% endif %}
+   <div class="blogs-page my-5">
+        <div class="container">
+            <div class="row blogs g-4">
+                
+            </div>
+            <div class="container-pagination d-flex justify-content-center align-items-center gap-3 my-4">  
+                    <div class="prev-btn cursor-pointer {% if session.lang.code == 'en' %}rotateIcon{% else %}''{% endif %} ">
+                        <svg width="8" height="10" viewBox="0 0 8 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.3999 1C1.3999 1 6.1999 3.75655 6.1999 5.00115C6.1999 6.24575 1.3999 9 1.3999 9" stroke="#1E293B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div> 
+                    <ul class="pagination-orders d-flex gap-3 flex-wrap justify-content-center ">
+                    
+                    </ul>
+                    <div class="next-btn cursor-pointer {% if session.lang.code == 'en' %}rotateIcon{% else %}''{% endif %} ">
+                        <svg width="8" height="10" viewBox="0 0 8 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.6001 1C6.6001 1 1.8001 3.75655 1.8001 5.00115C1.8001 6.24575 6.6001 9 6.6001 9" stroke="#1E293B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div> 
+            </div>
+        </div>
+   </div>
 
 {% endblock %}
+{% block footer_scripts %}
+<script>
+  let currentPage = 1;
+  let blogsPerPage = 2;
+  const blogs = {{ blogs |json_encode |raw  }};
+  const totalPosts = blogs.length;
 
+
+
+
+  // Render current posts
+  const renderPosts = () => {
+    const indexOfLastPost = currentPage * blogsPerPage;
+    const indexOfFirstPost = indexOfLastPost - blogsPerPage;
+    const currentBlogs = blogs.slice(indexOfFirstPost, indexOfLastPost);
+    let tempPosts = [];
+
+    const fetchPromises = currentBlogs.map(blog => {
+        const tempObj = {};
+        return zid.store.page.fetch(blog.id, blog.slug).then(res => {
+            console.log(res);
+            console.log(res.data.storePage.metafields);
+            res.data.storePage.metafields.forEach(meta => {
+                switch (meta.slug) {
+                    case "nameAuthor":
+                        tempObj.author = window.appDirection === "ar" ? meta.value.ar : meta.value.en;
+                        break;
+                    case "ImageForBlog":
+                        tempObj.image = meta.value.full_size;
+                        break;
+                    case "blogShortDesc":
+                        tempObj.shortDesc = window.appDirection === "ar" ? meta.value.ar : meta.value.en;
+                        break;
+                }
+            });
+            return { blog, tempObj };
+        }).catch(err => {
+            console.log(err);
+        });
+    });
+
+    Promise.all(fetchPromises).then(results => {
+        results.forEach(({ blog, tempObj }) => {
+            if (blog.slug !== "brands") {
+                tempPosts += `
+                    <div class="col-md-6">
+                        <div class="card-blog d-flex flex-column h-100 gap-4">
+                            <div class="image-box">
+                              <img src="${tempObj.image ? tempObj.image : '{{ imageUrl(asset_url ~ "product-img.svg") }}'}" class="w-100 h-100 " alt="${blog.title}">
+                            </div>
+                            <h5 class="card-title">${blog.title}</h5>
+                            ${tempObj.author ? `<div class="d-flex gap-2 align-items-center authorBox pb-4">
+                            <svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.25184 4.37713C6.25184 4.37713 6.14776 4.48109 5.93959 4.68902C5.73143 4.89695 5.33174 5.00091 4.74055 5.00091C4.14935 5.00091 3.64559 4.79298 3.22925 4.37713C2.81292 3.96128 2.60475 3.45809 2.60475 2.86758C2.60475 2.27706 2.81292 1.77388 3.22925 1.35803C3.64559 0.942172 4.14935 0.734244 4.74055 0.734244C5.33174 0.734244 5.83551 0.942172 6.25184 1.35803C6.66818 1.77388 6.87635 2.27706 6.87635 2.86758C6.87635 3.45809 6.66818 3.96128 6.25184 4.37713ZM3.00443 6.29838C3.00443 6.29838 3.16264 6.26095 3.47906 6.1861C3.79547 6.11124 4.21597 6.07382 4.74055 6.07382C5.26513 6.07382 5.84384 6.14867 6.47667 6.29838C7.10949 6.44808 7.6882 6.69344 8.21278 7.03444C8.73736 7.37544 8.99965 7.76218 8.99965 8.19467V9.26758H0.481445V8.19467C0.481445 7.76218 0.743736 7.37544 1.26832 7.03444C1.7929 6.69344 2.3716 6.44808 3.00443 6.29838Z" fill="#C8C8C8"/>
+                            </svg>
+                            <h6 class="author-name">${tempObj.author}</h6>
+                            </div>` : ''}
+                            <p class="card-text">${tempObj.shortDesc ? tempObj.shortDesc : ''}</p>
+                            <a href="/blogs/${ blog.slug }" class="btn btn-primary radius30  mt-auto align-self-start ">{{ locals.read_more_blog }}</a>
+                        </div>
+                    </div>
+                `;
+            }
+        });
+
+        document.querySelector('.blogs-page .blogs').innerHTML = tempPosts;
+        handlePagination();
+    });
+};
+
+  // pagantion 
+  const nextBtn = document.querySelector(".blogs-page .next-btn");
+  const prevBtn = document.querySelector(".blogs-page .prev-btn");
+  const pagantionOrder = document.querySelector(".blogs-page  .pagination-orders");
+      let pageNumbers = [];
+
+  const handlePagination = ()=>{
+       pageNumbers = [];
+
+        for (let i = 1; i <= Math.ceil(totalPosts / blogsPerPage); i++) {
+            pageNumbers.push(i);
+        } 
+        if(pageNumbers.length <= 1){
+            pagantionOrder.innerHTML = '';
+            nextBtn.style.display = 'none';
+            prevBtn.style.display = 'none';
+            return;
+        }else{
+            nextBtn.style.display = 'flex';
+            prevBtn.style.display = 'flex';  
+        }
+        let pagination = '';
+        pageNumbers.forEach(number => {
+            pagination += `<li class="cursor-pointer page-item ${currentPage === number? 'activePagination' : ''}" data-page="${number}">${number}</li>`;
+        });
+        pagantionOrder.innerHTML = pagination;
+            document.querySelectorAll('.blogs-page .pagination-orders .page-item').forEach(page => {
+                page.addEventListener('click', function() {
+                    document.querySelectorAll('.blogs-page  .pagination-orders .page-item').forEach(item => {
+                        item.classList.remove('activePagination');
+                    });
+
+                    this.classList.add('activePagination');
+
+                    // Update currentPage
+                    currentPage = parseInt(this.getAttribute('data-page'));
+                    renderPosts();
+                });      
+            }); 
+        
+  }
+  // Bind event listener for next button
+  nextBtn.addEventListener('click', function(e) {
+        if (currentPage < pageNumbers.length) {
+            currentPage++; 
+            renderPosts();
+        } else {
+            currentPage = 1; 
+            renderPosts();
+        }
+    });
+   prevBtn.addEventListener('click', function(e) {
+        if (currentPage <= 1) {
+          return;
+        } else {
+            currentPage--;
+            renderPosts();
+        }
+    });
+
+
+  document.addEventListener('DOMContentLoaded', ()=>{
+    renderPosts();
+ 
+  });
+ console.log({{ blogs |json_encode |raw }});
+</script>
+{% endblock %} 
 {% block footer %} {{ include('footer.twig') }} {% endblock %}

@@ -311,5 +311,9 @@
     "noProducts": "لا يوجد منتجات"
   },
   "all_categories": "كل التصنيفات",
-  "link_copied": "تم نسخ الرابط"
+  "link_copied": "تم نسخ الرابط",
+  "brandsPage": "العلامات التجارية",
+  "show_all": "عرض الكل",
+  "read_more_blog": "اقرأ المزيد",
+  "blogs": "المدونة"
 }

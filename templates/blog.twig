@@ -4,25 +4,174 @@
 
 {% block main_content %}
 
-    <div id="loader"class="loader-container-relative"></div>
+    {% if blog.slug == "brands" %}
+     <div class="container">
+            <div class="d-flex justify-content-between gap-2 flex-wrap align-items-center container">
+                {# breadcrumps #}
+                    {% embed 'breadcrumb.twig' %}
+                        {% block breadcrumb_items %}
+                            <li class="breadcrumb-item" aria-current="page"><a href="/">{{ locals.home_title }}</a></li>
+                                {% if session.lang.code == 'ar' %}
+                                <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                                <path d="M7 1L2 6L7 11" stroke="#333333" stroke-width="1.5"/>
+                                </svg>
+                            {% else %}
+                                <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="rotateIcon">
+                                <path d="M7 1L2 6L7 11" stroke="#333333" stroke-width="1.5"/>
+                                </svg>
+                            {% endif %}
+                            <li class="breadcrumb-item active " aria-current="page">{{ locals.brandsPage }}</li>
+                        {% endblock %}
+                    {% endembed %}
+                <div class="position-relative flex-1 text-end">
+                    <div class="copy-message position-absolute d-none text-end w-100" id="copyMessage">{{ locals.link_copied }}</div>
+                    <a href="#" onclick="copyLink(event)" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_300_39227)">
+                        <path d="M6 15C7.65685 15 9 13.6569 9 12C9 10.3431 7.65685 9 6 9C4.34315 9 3 10.3431 3 12C3 13.6569 4.34315 15 6 15Z" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M18 9C19.6569 9 21 7.65685 21 6C21 4.34315 19.6569 3 18 3C16.3431 3 15 4.34315 15 6C15 7.65685 16.3431 9 18 9Z" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M18 21C19.6569 21 21 19.6569 21 18C21 16.3431 19.6569 15 18 15C16.3431 15 15 16.3431 15 18C15 19.6569 16.3431 21 18 21Z" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8.69922 10.7008L15.2992 7.30078" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8.69922 13.3008L15.2992 16.7008" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                        <defs>
+                        <clipPath id="clip0_300_39227">
+                        <rect width="24" height="24" fill="white"/>
+                        </clipPath>
+                        </defs>
+                        </svg>
 
-    <section id="blog-post" class="blog mt-5 mb-5 ">
-        <div class="container">
-
-            <div class="blog-title mt-5 mb-5">
-                <h1>
-                    {{ blog.title }}
-                </h1>
+                    </a>
+                </div>
             </div>
-            <div class="blog-text mt-3 mb-5">
-                {{ blog.content | raw }}
-            </div>
+      <div class="row mb-4 g-3 brandsPage brands">
+        
+      </div> 
+    </div>
+    {% else %}
+      <div class="d-flex justify-content-between gap-2 flex-wrap align-items-center container">
+     {# breadcrumps #}
+            {% embed 'breadcrumb.twig' %}
+                {% block breadcrumb_items %}
+                    <li class="breadcrumb-item" aria-current="page"><a href="/">{{ locals.home_title }}</a></li>
+                    {% if session.lang.code == 'ar' %}
+                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                        <path d="M7 1L2 6L7 11" stroke="#333333" stroke-width="1.5"/>
+                        </svg>
+                    {% else %}
+                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="rotateIcon">
+                        <path d="M7 1L2 6L7 11" stroke="#333333" stroke-width="1.5"/>
+                        </svg>
+                    {% endif %}
+                    <li class="breadcrumb-item" aria-current="page"><a href="/">{{ locals.blogs }}</a></li>
+                    {% if session.lang.code == 'ar' %}
+                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                        <path d="M7 1L2 6L7 11" stroke="#333333" stroke-width="1.5"/>
+                        </svg>
+                    {% else %}
+                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="rotateIcon">
+                        <path d="M7 1L2 6L7 11" stroke="#333333" stroke-width="1.5"/>
+                        </svg>
+                    {% endif %}
+                    <li class="breadcrumb-item active " aria-current="page">{{ blog.title }}</li>
+                {% endblock %}
+            {% endembed %}
+        <div class="position-relative flex-1 text-end">
+            <div class="copy-message position-absolute d-none text-end w-100" id="copyMessage">{{ locals.link_copied }}</div>
+            <a href="#" onclick="copyLink(event)" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Tooltip on top">
+               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_300_39227)">
+                <path d="M6 15C7.65685 15 9 13.6569 9 12C9 10.3431 7.65685 9 6 9C4.34315 9 3 10.3431 3 12C3 13.6569 4.34315 15 6 15Z" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M18 9C19.6569 9 21 7.65685 21 6C21 4.34315 19.6569 3 18 3C16.3431 3 15 4.34315 15 6C15 7.65685 16.3431 9 18 9Z" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M18 21C19.6569 21 21 19.6569 21 18C21 16.3431 19.6569 15 18 15C16.3431 15 15 16.3431 15 18C15 19.6569 16.3431 21 18 21Z" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.69922 10.7008L15.2992 7.30078" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.69922 13.3008L15.2992 16.7008" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <defs>
+                <clipPath id="clip0_300_39227">
+                <rect width="24" height="24" fill="white"/>
+                </clipPath>
+                </defs>
+                </svg>
 
-            {% include 'template_for_blogs_metafields' %}
-
+            </a>
         </div>
-    </section>
+     </div>
+     <div class="container single-blog d-flex flex-column gap-3">
+       {% for bol in blog.metafields %}
+            {% if bol.slug == "ImageForBlog" %}          
+                <div class="main-image w-100">
+                  <img src="{{ bol.value }}" class="w-100 h-100 object-fit-contain" alt="{{ blog.title }}">
+                </div>
+            {% endif %}
+            <div class="d-flex authorBoxCon gap-2">
+                {% if bol.slug == "nameAuthor" %}          
+                    <div class="d-flex gap-2 align-items-center authorBox pb-4">
+                            <svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.25184 4.37713C6.25184 4.37713 6.14776 4.48109 5.93959 4.68902C5.73143 4.89695 5.33174 5.00091 4.74055 5.00091C4.14935 5.00091 3.64559 4.79298 3.22925 4.37713C2.81292 3.96128 2.60475 3.45809 2.60475 2.86758C2.60475 2.27706 2.81292 1.77388 3.22925 1.35803C3.64559 0.942172 4.14935 0.734244 4.74055 0.734244C5.33174 0.734244 5.83551 0.942172 6.25184 1.35803C6.66818 1.77388 6.87635 2.27706 6.87635 2.86758C6.87635 3.45809 6.66818 3.96128 6.25184 4.37713ZM3.00443 6.29838C3.00443 6.29838 3.16264 6.26095 3.47906 6.1861C3.79547 6.11124 4.21597 6.07382 4.74055 6.07382C5.26513 6.07382 5.84384 6.14867 6.47667 6.29838C7.10949 6.44808 7.6882 6.69344 8.21278 7.03444C8.73736 7.37544 8.99965 7.76218 8.99965 8.19467V9.26758H0.481445V8.19467C0.481445 7.76218 0.743736 7.37544 1.26832 7.03444C1.7929 6.69344 2.3716 6.44808 3.00443 6.29838Z" fill="#C8C8C8"/>
+                            </svg>
+                            <h6 class="author-name">
+                             {% if session.lang.code == "ar" %}
+                               {{ bol.value.ar }}
+                             {% else %}
+                              {{ bol.value.en }}
+                             {% endif %}                             
+                            </h6>
+                    </div>
+                {% endif %}
+                <div class="d-flex gap-2  align-items-center authorBox">
+                   <svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.87937 4.96262V6.03553H2.5398V4.96262H7.87937ZM8.92733 1.24489C9.22674 1.24489 9.48041 1.34885 9.68834 1.55678C9.89627 1.7647 10.0002 2.01838 10.0002 2.31779V9.75327C10.0002 10.0527 9.89627 10.3064 9.68834 10.5143C9.48041 10.7222 9.22674 10.8262 8.92733 10.8262H1.49185C1.19243 10.8262 0.938763 10.7222 0.730836 10.5143C0.522909 10.3064 0.418945 10.0527 0.418945 9.75327V2.31779C0.418945 2.01838 0.522909 1.7647 0.730836 1.55678C0.938763 1.34885 1.19243 1.24489 1.49185 1.24489H2.01583V0.171981H3.08873V1.24489H7.33045V0.171981H8.40335V1.24489H8.92733ZM8.92733 9.75327V3.91467H1.49185V9.75327H8.92733ZM6.28249 7.10843V8.15639H2.5398V7.10843H6.28249Z" fill="#C8C8C8"/>
+                    </svg>
+
+                    {{ blog.updated_at | split(' ')[1] }}
+                </div>
+            </div>
+            <p>{{ blog.content|raw }}</p>
+        
+        {% endfor %}
+     </div>
+     
+    {% endif %}
+    
+
+    
 
 {% endblock %}
 
+{% block footer_scripts %}
+<script>
+ const blog = {{ blog |json_encode |raw }};
+ console.log(blog);
+  function fetchBrandsPage (){
+        zid.store.product.fetchCategories().then((data)=>{
+            const fetchBrand = data.data.categories.find((cat)=> cat.id == 1104866 || cat.name == "brand");
+            const brandTag = document.querySelector(".brandsPage");
+            let tempBrands = '';
+            if(fetchBrand){
+            fetchBrand.sub_categories.forEach((brand)=>{
+                console.log(brand);
+
+                tempBrands += `<div class="col-md-4">
+                    <div class="position-relative category-card">
+                    <img src="${brand.image_full_size}" alt="${ brand.name }" class="w-100 h-100 object-fit-cover">
+                    <div class="d-flex flex-column gap-3  position-absolute bottom-0 end-0 mb-4 mx-4 ">
+                    <h6 class="cat-title align-self-end">${ brand.name }</h6>
+                    <a href="${ brand.url }" class="cat-btn">{{ locals.show_all }}</a>
+                    </div>
+                </div>
+                </div>`
+            })
+            }
+            brandTag.innerHTML = tempBrands;
+            
+        }).catch((error)=>{
+            console.log(error);
+        })
+  }
+ if(blog.slug === "brands"){ 
+   fetchBrandsPage();
+ }
+</script>
+{% endblock %}
 {% block footer %} {{ include('footer.twig') }} {% endblock %}
