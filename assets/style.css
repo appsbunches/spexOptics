@@ -1704,21 +1704,256 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
 
 /*********************** end blogs page  *************************/
 /*********************** start blog page  *************************/
-.single-blog .main-iamge {
+.single-blog .main-image {
   height: 579px;
   border-radius: 20px;
   overflow: hidden;
 }
 @media screen and (min-width: 767px) {
-  .single-blog .main-iamge {
+  .single-blog .main-image {
     height: 344px;
+  }
+}
+.single-blog .title {
+  font-size: 30px;
+  font-weight: 900;
+  color: #1e3441;
+}
+@media screen and (max-width: 768px) {
+  .single-blog .title {
+    font-size: 16px;
   }
 }
 .single-blog .authorBoxCon {
   border-bottom: 1px solid rgba(238, 238, 238, 0.9333333333);
 }
+.single-blog .authorBoxCon .authorBox,
+.single-blog .authorBoxCon .date {
+  font-size: 12px;
+  font-weight: 700;
+  color: #c8c8c8;
+}
 .single-blog .authorBoxCon .authorBox {
-  border-left: 1px solid #c8c8c8;
+  position: relative;
+}
+.single-blog .authorBoxCon .authorBox::after {
+  content: "";
+  display: block;
+  position: absolute;
+  background-color: #c8c8c8;
+  height: 17px;
+  width: 1px;
+  left: -7px;
 }
 
 /*********************** end blog page  *************************/
+/*********************** start about us page  *************************/
+.aboutUs .image-box {
+  height: 608px;
+  border-radius: 20px;
+}
+@media screen and (max-width: 767px) {
+  .aboutUs .image-box {
+    height: 344px;
+  }
+}
+.aboutUs .image-box img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 20px;
+}
+.aboutUs .ourFeatures_home .image-box {
+  height: 393px;
+}
+@media screen and (max-width: 768px) {
+  .aboutUs .ourFeatures_home .image-box {
+    height: 300px;
+  }
+}
+.aboutUs .ourFeatures_home .image-box img {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.aboutUs .info .title {
+  font-size: 20px;
+  font-weight: 400;
+  color: #333333;
+}
+@media screen and (max-width: 768px) {
+  .aboutUs .info .title {
+    font-size: 16px;
+  }
+}
+.aboutUs .info .main-title {
+  font-size: 44px;
+  font-weight: 900;
+  color: #093254;
+}
+@media screen and (max-width: 768px) {
+  .aboutUs .info .main-title {
+    font-size: 24px;
+  }
+}
+.aboutUs .info p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #333333;
+  line-height: 32px;
+}
+@media screen and (max-width: 768px) {
+  .aboutUs .info p {
+    font-size: 14px;
+  }
+}
+
+/*********************** end about us page  *************************/
+/*********************** Start shippingAndPaymentPage  *************************/
+.shippingAndPaymentPage .tabs {
+  background-color: #0a3254;
+}
+.shippingAndPaymentPage .tabs .tab {
+  font-size: 24px;
+  font-weight: 900;
+  color: #fff;
+}
+.shippingAndPaymentPage .tabs .tab.active {
+  border-bottom: 2px solid #fff;
+}
+@media screen and (max-width: 768px) {
+  .shippingAndPaymentPage .tabs .tab {
+    font-size: 16px;
+    font-weight: 700;
+  }
+}
+.shippingAndPaymentPage .container-pagination .prev-btn,
+.shippingAndPaymentPage .container-pagination .next-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(238, 238, 238, 0.9333333333);
+}
+@media screen and (max-width: 767px) {
+  .shippingAndPaymentPage .container-pagination .prev-btn,
+  .shippingAndPaymentPage .container-pagination .next-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+.shippingAndPaymentPage .container-pagination .pagination-orders li {
+  border: 1px solid #eeeeee;
+  color: #0a3254;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 400;
+  transition: backgroundColor 0.5s ease;
+}
+.shippingAndPaymentPage .container-pagination .pagination-orders li:hover, .shippingAndPaymentPage .container-pagination .pagination-orders li.activePagination {
+  background-color: #0a3254;
+  color: #fff;
+}
+.shippingAndPaymentPage .all_shipping_methods .ship {
+  border-radius: 16px;
+  border: 1px solid rgba(238, 238, 238, 0.9333333333);
+}
+.shippingAndPaymentPage .all_shipping_methods .ship .image-ship {
+  width: 108px;
+  height: 108px;
+}
+@media screen and (max-width: 768px) {
+  .shippingAndPaymentPage .all_shipping_methods .ship .image-ship {
+    width: 50px;
+    height: 50px;
+  }
+}
+.shippingAndPaymentPage .all_shipping_methods .ship .ship-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333333;
+}
+@media screen and (max-width: 768px) {
+  .shippingAndPaymentPage .all_shipping_methods .ship .ship-title {
+    font-size: 16px;
+  }
+}
+.shippingAndPaymentPage .all_shipping_methods .ship .ship-string {
+  font-size: 14px;
+  font-weight: 400;
+  color: #64748b;
+}
+@media screen and (max-width: 768px) {
+  .shippingAndPaymentPage .all_shipping_methods .ship .ship-string {
+    font-size: 12px;
+  }
+}
+.shippingAndPaymentPage .all_shipping_methods .ship .ship-price {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333333;
+}
+@media screen and (max-width: 768px) {
+  .shippingAndPaymentPage .all_shipping_methods .ship .ship-price {
+    font-size: 12px;
+  }
+}
+.shippingAndPaymentPage .left .section-title {
+  font-size: 12px;
+  font-weight: 400;
+  color: #64748b;
+}
+.shippingAndPaymentPage .left .citises .city {
+  font-size: 12px;
+  font-weight: 400;
+  color: #334155;
+  min-width: 70px;
+  min-height: 32px;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #f8fafc;
+}
+@media screen and (max-width: 768px) {
+  .shippingAndPaymentPage .left .citises .city {
+    min-width: 54px;
+  }
+}
+.shippingAndPaymentPage .left .count-citises {
+  font-size: 14px;
+  font-weight: 400;
+  color: #0a3254;
+  background-color: #f8fafc;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.shippingAndPaymentPage .title-content {
+  font-size: 24px;
+  font-weight: 900;
+  color: #333333;
+  margin-bottom: 40px;
+}
+@media screen and (max-width: 768px) {
+  .shippingAndPaymentPage .title-content {
+    font-size: 16px;
+    font-weight: 700;
+  }
+}
+.shippingAndPaymentPage .payments .icon {
+  width: 193px;
+  height: 53px;
+}
+
+/*********************** Start shippingAndPaymentPage  *************************/

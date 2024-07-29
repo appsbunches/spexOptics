@@ -317,5 +317,14 @@
   "brandsPage": "Brands",
   "show_all": "Show All",
   "read_more_blog": "Read More",
-  "blogs": "blog"
+  "blogs": "blog",
+  "about_us": "About us",
+  "shipping_and_payment": {
+    "shippingAndPayment": "shipping and payment",
+    "shippingCompany": "shipping company",
+    "paymentOption": "Payment Option",
+    "paymentOnDelivery": "Payment On Delivery",
+    "shippingCost": "shipping cost",
+    "delivery_to": "delivery to"
+  }
 }

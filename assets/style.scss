@@ -1751,7 +1751,7 @@ $main-transition: var(--main-transition);
 
 /*********************** start blog page  *************************/
 .single-blog {
-  .main-iamge {
+  .main-image {
     height: 579px;
     border-radius: 20px;
     overflow: hidden;
@@ -1759,11 +1759,239 @@ $main-transition: var(--main-transition);
       height: 344px;
     }
   }
+  .title {
+    font-size: 30px;
+    font-weight: 900;
+    color: #1e3441;
+    @media screen and (max-width: 768px) {
+      font-size: 16px;
+    }
+  }
   .authorBoxCon {
     border-bottom: 1px solid #eeeeeeee;
+    .authorBox,
+    .date {
+      font-size: 12px;
+      font-weight: 700;
+      color: #c8c8c8;
+    }
     .authorBox {
-      border-left: 1px solid #c8c8c8;
+      position: relative;
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        background-color: #c8c8c8;
+        height: 17px;
+        width: 1px;
+        left: -7px;
+      }
     }
   }
 }
 /*********************** end blog page  *************************/
+
+/*********************** start about us page  *************************/
+.aboutUs {
+  .image-box {
+    height: 608px;
+    border-radius: 20px;
+    @media screen and (max-width: 767px) {
+      height: 344px;
+    }
+    img {
+      object-fit: cover;
+      border-radius: 20px;
+    }
+  }
+  .ourFeatures_home {
+    .image-box {
+      height: 393px;
+      @media screen and (max-width: 768px) {
+        height: 300px;
+      }
+      img {
+        object-fit: contain;
+      }
+    }
+  }
+  .info {
+    .title {
+      font-size: 20px;
+      font-weight: 400;
+      color: #333333;
+      @media screen and (max-width: 768px) {
+        font-size: 16px;
+      }
+    }
+    .main-title {
+      font-size: 44px;
+      font-weight: 900;
+      color: #093254;
+      @media screen and (max-width: 768px) {
+        font-size: 24px;
+      }
+    }
+    p {
+      font-size: 16px;
+      font-weight: 400;
+      color: #333333;
+      line-height: 32px;
+      @media screen and (max-width: 768px) {
+        font-size: 14px;
+      }
+    }
+  }
+}
+/*********************** end about us page  *************************/
+
+/*********************** Start shippingAndPaymentPage  *************************/
+.shippingAndPaymentPage {
+  .tabs {
+    background-color: #0a3254;
+    .tab {
+      font-size: 24px;
+      font-weight: 900;
+      color: #fff;
+      &.active {
+        border-bottom: 2px solid #fff;
+      }
+      @media screen and (max-width: 768px) {
+        font-size: 16px;
+        font-weight: 700;
+      }
+    }
+  }
+  .container-pagination {
+    .prev-btn,
+    .next-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #eeeeeeee;
+      @media screen and (max-width: 767px) {
+        & {
+          width: 40px;
+          height: 40px;
+        }
+      }
+    }
+    .pagination-orders {
+      li {
+        border: 1px solid #eeeeee;
+        color: #0a3254;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        font-weight: 400;
+        transition: backgroundColor 0.5s ease;
+        &:hover,
+        &.activePagination {
+          background-color: #0a3254;
+          color: #fff;
+        }
+      }
+    }
+  }
+  .all_shipping_methods {
+    .ship {
+      border-radius: 16px;
+      border: 1px solid #eeeeeeee;
+      .image-ship {
+        width: 108px;
+        height: 108px;
+        @media screen and (max-width: 768px) {
+          width: 50px;
+          height: 50px;
+        }
+      }
+      .ship-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #333333;
+        @media screen and (max-width: 768px) {
+          font-size: 16px;
+        }
+      }
+      .ship-string {
+        font-size: 14px;
+        font-weight: 400;
+        color: #64748b;
+        @media screen and (max-width: 768px) {
+          font-size: 12px;
+        }
+      }
+      .ship-price {
+        font-size: 16px;
+        font-weight: 700;
+        color: #333333;
+        @media screen and (max-width: 768px) {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+  .left {
+    .section-title {
+      font-size: 12px;
+      font-weight: 400;
+      color: #64748b;
+    }
+    .citises {
+      .city {
+        font-size: 12px;
+        font-weight: 400;
+        color: #334155;
+        min-width: 70px;
+        min-height: 32px;
+        border-radius: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: #f8fafc;
+
+        @media screen and (max-width: 768px) {
+          min-width: 54px;
+        }
+      }
+    }
+    .count-citises {
+      font-size: 14px;
+      font-weight: 400;
+      color: #0a3254;
+      background-color: #f8fafc;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+  }
+  .title-content {
+    font-size: 24px;
+    font-weight: 900;
+    color: #333333;
+    margin-bottom: 40px;
+    @media screen and (max-width: 768px) {
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+  .payments {
+    .icon {
+      width: 193px;
+      height: 53px;
+    }
+  }
+}
+/*********************** Start shippingAndPaymentPage  *************************/

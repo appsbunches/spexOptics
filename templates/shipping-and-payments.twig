@@ -10,297 +10,265 @@
 
 {% block main_content %}
 
-    <div class="container-parent">
-        <div class="profile-pages-bg d-none d-lg-flex flex-grow-1">
-            <div class="section-colored"></div>
-        </div>
-
-        <div class="container">
-            {% include 'shipping-payment-tabs-mobile.twig' %}
-            <div class="d-flex">
-                {% include 'shipping-payment-vertical-menu.twig' %}
-                <div class="flex-grow-1">
-                    <div class="profile-title d-none d-lg-block theme-text-primary" style="background: #D9D9D9;">
-                        <div class="container py-4 page-breadcurmb">{{ locals.shipping_option }}</div>
-                    </div>
-                    <div class="account-content account-content-lg">
-                        <div class="tab-content " id="v-pills-tabContent">
-
-                            <!-- tab 1 -->
-                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                                <div class="mt-5 mb-5 tab-content-shipping">
-
-                                    <div class="card-table d-none d-lg-block">
-                                        <div class="card">
-                                            <div class="card-body card-table-header">
-                                                <div class="row align-items-center">
-                                                    <div class="col col-lg-2 shipping-col-1">{{ locals.shipping_option }}</div>
-                                                    <div class="col col-lg-3 shipping-col-2">{{ locals.covered_cities }}</div>
-                                                    <div class="col col-lg-5 shipping-col-3">{{ locals.shipping_charges }}</div>
-                                                    <div class="col shipping-col-4">{{ locals.payment_upon_receipt }}</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {% for shipping_method in store_shipping_methods %}
-                                        <div  class="card-table options-table">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <div class="row flex-column flex-lg-row align-items-start align-items-lg-center">
-
-
-
-
-                                                        <div class="col col-lg-2 m-col shipping-col-1">
-                                                            <span>
-                                                                         <img style="display: inline-block; width: 46px; height: auto"
-                                                                              src="{{ shipping_method.image }}"
-                                                                              alt="{{ shipping_method.name }}"
-                                                                         />
-
-                                                                {{ shipping_method.name }}
-                                                                    </span>
-                                                        </div>
-
-                                                        <div class="col col-lg-3 m-col shipping-col-2">
-                                                            <span class="variant-name-sm d-inline-block d-lg-none">{{ locals.covered_cities }}:&nbsp;</span>
-                                                            <span>
-                                                                    {% for city in shipping_method.delivery_option_cities | slice(0, 3) %}
-                                                                        {{city.name}} {% if loop.last == false %}<span >,</span>{% endif %}
-                                                                    {% endfor %}
-
-                                                                {% if shipping_method.delivery_option_cities | length > 3 %}
-                                                                    <span onclick="showModal()"
-                                                                          class="color-success cursor-pointer text-decoration-underline"
-                                                                          role="button"  href="#" data-toggle="modal"
-                                                                          data-target="#shipping-cities-{{ shipping_method.id }}">
-                                                                        {{ locals.and }} {{ (shipping_method.delivery_option_cities | length) - 3 }} {{ locals.cities }}
-                                                                    </span>
-                                                                {% endif %}
-
-                                                                </span>
-                                                        </div>
-
-                                                        <div class="col col-lg-5 m-col shipping-col-3">
-                                                            <span class="variant-name-sm d-inline-block d-lg-none">{{ locals.shipping_charges }}:&nbsp;</span>
-                                                            <span>
-                                                                    {% for cost in shipping_method.cost %}
-                                                                        <div v-for="cost in shippingMethodData.cost" class="d-flex flex-wrap s-row">
-                                                                        <span class="s-title" style="width: 120px">{{ cost.title }}: </span>
-                                                                        <span class="color-primary s-content">{{ cost.cost_string }} </span>
-                                                                    </div>
-                                                                    {% endfor %}
-
-                                                                </span>
-                                                        </div>
-
-                                                        <div class="col m-col shipping-col-4">
-                                                            <span class="variant-name-sm d-inline-block d-lg-none">{{ locals.payment_upon_receipt }}:&nbsp;</span>
-                                                            <span>
-                                                                    {% if shipping_method.cod_enabled %}
-                                                                        {% for cod_fee in shipping_method.cod_fee %}
-                                                                            <div class="d-flex flex-wrap s-row">
-                                                                                {% if cod_fee.title is not empty %}<span class="s-title">{{ cod_fee.title }}: </span>{% endif %}
-                                                                                <span class="color-primary s-content">{{ cod_fee.cod_fee_string }} </span>
-                                                                            </div>
-                                                                        {% endfor %}
-                                                                    {% else %}
-                                                                        <i v-else class="icon-clear"></i>
-                                                                    {% endif %}
-                                                                </span>
-                                                        </div>
-
-
-
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        {% if shipping_method.delivery_option_cities | length > 3 %}
-                                            <div class="modal fade shipping-cities-modal" id="shipping-cities-{{ shipping_method.id }}"
-                                                 tabindex="-1" role="dialog"
-                                                 aria-labelledby="myModalLabel">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal" style="position: absolute"
-                                                                    aria-label="Close"><span
-                                                                        aria-hidden="true">&times;</span></button>
-                                                            <h4 class="modal-title" id="myModalLabel">{{ locals.covered_cities }}</h4>
-                                                        </div>
-                                                        <div class="modal-body" style="overflow: scroll">
-
-                                                            <div class="form-element" style="position: relative">
-                                                                <i class="icon-search"></i>
-                                                                <input type="text" class="form-control" placeholder="{{ locals.shipping_payments_th_shipping_cities_search }}"
-                                                                       id="citiesFilter-{{ shipping_method.id }}"
-                                                                       onkeyup="filterCitiesList({{ shipping_method.id }})"
-                                                                       name="citiesFilter"
-                                                                       v-model="filterCities"
-                                                                >
-                                                            </div>
-
-                                                            <ul id="shipping-cities-ul-{{ shipping_method.id }}" style="max-height: 320px; overflow: scroll">
-
-                                                                {% for city in shipping_method.delivery_option_cities %}
-                                                                    <li>
-                                                                        {{city.name}}
-                                                                    </li>
-                                                                {% endfor %}
-
-                                                            </ul>
-
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-default"
-                                                                    data-dismiss="modal">{{ locals.close }}
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        {% endif %}
-
-                                    {% endfor %}
-
-
-                                </div>
-                            </div>
-
-                            <!-- tab 2 -->
-                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                                <div class="mt-5 mb-5">
-                                    <div class="d-flex flex-wrap">
-                                        {% for payment_method in store_payment_methods %}
-                                            {% if payment_method.icon %}
-                                                <div class="d-flex align-items-center justify-content-center payment-method-card">
-                                                    <img src="{{ payment_method.icon }}">
-                                                </div>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </div>
-                                </div>
-
-                            </div>
-
-
-                            <!-- tab 3 -->
-                            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-
-                                {% for store_bank in store_banks %}
-                                    <div class="mt-5 mb-5">
-                                        <div class="shipping-payment-card">
-                                                <div class="card-body-shipping">
-                                                    <h5 class="card-title-shipping mb-2">{{ store_bank.bank.name }}</h5>
-                                                    <div class="d-flex flex-column flex-lg-row align-items-lg-center">
-                                                        <div class="bank-image" style="width: 90px;">
-                                                            <img src="{{ store_bank.bank.logo }}" style="width: 100%; height: auto">
-                                                        </div>
-                                                        <div class="card-account-details">
-                                                            <div class="d-flex shipping-text">
-                                                                <p>{{ locals.shipping_payments_th_banks_account_owner }}</p>
-                                                                <span class="d-block"> <span class="d-inline-block">{{ store_bank.beneficiary_name }}</span></span>
-                                                            </div>
-                                                            <div class="d-flex shipping-text">
-                                                                <p>{{ locals.shipping_payments_th_banks_account_iban }}</p>
-                                                                <span class="d-block">
-                                                                <span class="d-inline-block">{{ store_bank.iban }}</span>
-                                                                <span class="icon-content_copy d-inline-block"></span>
-                                                            </span>
-                                                            </div>
-                                                            <div class="d-flex shipping-text">
-                                                                <p>{{ locals.shipping_payments_th_banks_account_number }}</p>
-                                                                <span class="d-block">
-                                                                <span class="d-inline-block">{{ store_bank.account_number }}</span>
-                                                                <span class="icon-content_copy d-inline-block"></span>
-                                                            </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                    </div>
-                                {% endfor %}
-
-                            </div>
-
-                        </div>
-                    </div>
+     {% embed 'breadcrumb.twig' %}
+                {% block breadcrumb_items %}
+                    <li class="breadcrumb-item" aria-current="page"><a href="/">{{ locals.home_title }}</a></li>
+                        {% if session.lang.code == 'ar' %}
+                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                        <path d="M7 1L2 6L7 11" stroke="#333333" stroke-width="1.5"/>
+                        </svg>
+                    {% else %}
+                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="rotateIcon">
+                        <path d="M7 1L2 6L7 11" stroke="#333333" stroke-width="1.5"/>
+                        </svg>
+                    {% endif %}
+                    <li class="breadcrumb-item active " aria-current="page">{{ locals.shipping_and_payment.shippingAndPayment }}</li>
+                {% endblock %}
+     {% endembed %}
+     <div class="shippingAndPaymentPage">
+        {# tabs #}
+        <div class="tabs py-3">
+           <div class="container">
+                <div class="d-flex justify-content-around align-items-center gap-3">
+                   <button type="button" class="tab active d-flex align-items-center gap-3 pb-3 " data-tabId="shipping-tab">
+                        <svg width="32" height="36" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.2426 0.346707H17.2462L30.3524 8.31775C31.0209 8.72938 31.4277 9.46504 31.4277 10.2403V25.1695C31.4277 26.2928 30.8493 27.3753 29.8508 27.9729L17.1982 35.6607C16.8381 35.8826 16.4234 36 16.0005 36C15.5775 36 15.1629 35.8826 14.8028 35.6607L2.14657 27.9705C1.6661 27.6778 1.26901 27.2664 0.993476 26.7758C0.717942 26.2853 0.573227 25.7321 0.573242 25.1695V10.2403C0.573242 9.47704 0.971674 8.72698 1.66293 8.32015L14.7812 0.339506C15.1533 0.116137 15.5795 -0.00125892 16.0135 1.01816e-05C16.4475 0.00127928 16.8729 0.121165 17.2438 0.346707M16.0077 2.40367L4.27314 9.54065L8.48548 12.1149L20.2344 4.97308L16.0077 2.40367ZM24.1863 7.37567L12.4194 14.5186L16.0197 16.7172L27.9066 9.63905L24.1863 7.37567ZM2.97344 25.1695C2.97344 25.4803 3.13785 25.7647 3.39347 25.9196L14.81 32.8561V18.7922L11.0861 16.518V18.6638C11.0861 18.9518 10.7741 19.1198 10.534 18.9878L7.31778 17.0316C7.26634 16.9974 7.22411 16.951 7.19481 16.8966C7.16551 16.8422 7.15004 16.7814 7.14977 16.7196V14.113L2.97344 11.5616V25.1695ZM28.6075 25.9196L28.6171 25.9148C28.7438 25.836 28.8482 25.726 28.9201 25.5953C28.992 25.4645 29.029 25.3175 29.0275 25.1683V11.7632L17.2102 18.8018V32.8453L28.6075 25.9196Z" fill="white"/>
+                        </svg>
+                        {{ locals.shipping_and_payment.shippingCompany }}
+                   </button>
+                   <button type="button" class="tab  d-flex align-items-center gap-3 pb-3"  data-tabId="payment-tab" >
+                        <svg width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.75 10.6875C2.75 9.34484 3.28337 8.05717 4.23277 7.10777C5.18217 6.15837 6.46984 5.625 7.8125 5.625H29.1875C30.5302 5.625 31.8178 6.15837 32.7672 7.10777C33.7166 8.05717 34.25 9.34484 34.25 10.6875V25.3125C34.25 26.6552 33.7166 27.9428 32.7672 28.8922C31.8178 29.8416 30.5302 30.375 29.1875 30.375H7.8125C6.46984 30.375 5.18217 29.8416 4.23277 28.8922C3.28337 27.9428 2.75 26.6552 2.75 25.3125V10.6875ZM7.8125 7.875C7.06658 7.875 6.35121 8.17132 5.82376 8.69876C5.29632 9.22621 5 9.94158 5 10.6875V12.375H32V10.6875C32 9.94158 31.7037 9.22621 31.1762 8.69876C30.6488 8.17132 29.9334 7.875 29.1875 7.875H7.8125ZM5 25.3125C5 26.0584 5.29632 26.7738 5.82376 27.3012C6.35121 27.8287 7.06658 28.125 7.8125 28.125H29.1875C29.9334 28.125 30.6488 27.8287 31.1762 27.3012C31.7037 26.7738 32 26.0584 32 25.3125V14.625H5V25.3125ZM24.125 21.375H27.5C27.7984 21.375 28.0845 21.4935 28.2955 21.7045C28.5065 21.9155 28.625 22.2016 28.625 22.5C28.625 22.7984 28.5065 23.0845 28.2955 23.2955C28.0845 23.5065 27.7984 23.625 27.5 23.625H24.125C23.8266 23.625 23.5405 23.5065 23.3295 23.2955C23.1185 23.0845 23 22.7984 23 22.5C23 22.2016 23.1185 21.9155 23.3295 21.7045C23.5405 21.4935 23.8266 21.375 24.125 21.375Z" fill="white"/>
+                        </svg>
+                        {{ locals.shipping_and_payment.paymentOption }}
+                   </button>
                 </div>
-            </div>
-
+           </div>
         </div>
-    </div>
-
+        <div class="container">
+          {# shiping content #}
+          <div class="tab-content" id="shipping-tab">
+           <h3 class="title-content my-4">{{ locals.shipping_and_payment.shippingCompany }}</h3>
+           <div class="container">
+              <div class="row g-3 all_shipping_methods">
+                
+              </div>   
+           </div>
+           {# pagantion #}
+            <div class="container-pagination d-flex justify-content-center align-items-center gap-3 my-4">  
+                    <div class="prev-btn cursor-pointer {% if session.lang.code == 'en' %}rotateIcon{% else %}''{% endif %} ">
+                        <svg width="8" height="10" viewBox="0 0 8 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.3999 1C1.3999 1 6.1999 3.75655 6.1999 5.00115C6.1999 6.24575 1.3999 9 1.3999 9" stroke="#1E293B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div> 
+                    <ul class="pagination-orders d-flex gap-3 flex-wrap justify-content-center ">
+                    
+                    </ul>
+                    <div class="next-btn cursor-pointer {% if session.lang.code == 'en' %}rotateIcon{% else %}''{% endif %} ">
+                        <svg width="8" height="10" viewBox="0 0 8 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.6001 1C6.6001 1 1.8001 3.75655 1.8001 5.00115C1.8001 6.24575 6.6001 9 6.6001 9" stroke="#1E293B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div> 
+             </div>
+          </div>
+          {# payment content #}
+          <div class="tab-content d-none" id="payment-tab">
+             <h3 class="title-content my-5">{{ locals.shipping_and_payment.paymentOption }}</h3>
+             <div class="payments d-flex gap-2 flex-wrap">
+              {% for payment in store.payment_methods %}
+              <div class="icon">
+                 <img src="{{ payment.icon }}" alt="{{ payment.name }}" class="w-100 h-100 object-fit-contain">
+              </div>
+              {% endfor %}
+             </div>
+          </div>
+        </div>
+     </div>
+  
 {% endblock %}
 
 {% block footer_scripts %}
 
     <script>
-        function setTab(tabId, target){
-            $('.tab-content > div').removeClass('show active')
-            $(tabId).addClass('show active');
+    // data comes from request for both shipping and payment
+    let allShipping = [];
+    let allPayments = [];
 
-            $('.profile-item > a').removeClass('active');
-            $(target).addClass('active');
-
-            if(tabId === '#v-pills-home'){
-                $('.account-content').addClass('account-content-lg')
-            }else{
-                $('.account-content').removeClass('account-content-lg')
-            }
-
-            if(tabId === '#v-pills-profile'){
-                $('.account-content').addClass('account-content-sm')
-            }else{
-                $('.account-content').removeClass('account-content-sm')
-            }
-
-            $('.shipping-payment-icon').addClass('d-none');
-
-            if(tabId === '#v-pills-home'){
-                $('.page-breadcurmb').html('{{locals.shipping_option}}')
-                $('.profile-item-title-top').html('{{locals.shipping_option}}')
-                $('.shipping-payment-icon.icon-local_shipping').removeClass('d-none')
-                $('.li-pills-home').addClass('d-none')
-                $('.li-pills-profile').removeClass('d-none')
-                $('.li-pills-message').removeClass('d-none')
-            }
-
-            if(tabId === '#v-pills-profile'){
-                $('.page-breadcurmb').html('{{ locals.payment_options }}')
-                $('.profile-item-title-top').html('{{ locals.payment_options }}')
-                $('.shipping-payment-icon.icon-payments_black').removeClass('d-none')
-                $('.li-pills-profile').addClass('d-none')
-                $('.li-pills-home').removeClass('d-none')
-                $('.li-pills-message').removeClass('d-none')
-            }
-
-            if(tabId === '#v-pills-messages'){
-                $('.page-breadcurmb').html('{{locals.bank_accounts}}')
-                $('.profile-item-title-top').html('{{locals.bank_accounts}}')
-                $('.shipping-payment-icon.icon-account_balance').removeClass('d-none')
-                $('.li-pills-message').addClass('d-none')
-                $('.li-pills-home').removeClass('d-none')
-                $('.li-pills-profile').removeClass('d-none')
-            }
-
+    // handle Request
+    async function fetchShippingAndPayment(){
+        try {
+            const response = await zid.store.page.fetchShippingAndPayment();
+             allShipping =  response.data.storeShippingMethods;
+             allPayments =  response.data.storePaymentMethods;
+           
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        } finally {
+          handleShipping(); // beacuse it has active class and first render shouid be it
         }
+        
+    }
 
-        function filterCitiesList(shipping_method_id) {
-            const searchVal = $('#citiesFilter-'+shipping_method_id).val().toLowerCase();
-            var ul = "#shipping-cities-ul-"+shipping_method_id;
-            $(ul+" > li").each(function() {
-                if ($(this).text().toLowerCase().search(searchVal) > -1) {
-                    $(this).show();
-                } else {
-                    $(this).hide();
-                }
+    // handle tabs
+    const tabs = document.querySelectorAll('.tabs .tab');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            const tabId = tab.getAttribute('data-tabId');
+
+            document.querySelectorAll('.shippingAndPaymentPage .tab-content').forEach(tc => {
+               tc.classList.add('d-none');
             });
+        
+            const tabContent = document.getElementById(`${tabId}`);
+            if (tabContent) {
+                tabContent.classList.remove("d-none");
+            }
+
+        });
+    });
+
+
+
+    // handle shipping
+    let currentPage = 1;
+    let shippingPerPage = 4;
+    function handleShipping (){
+        const indexOfLastShipping = currentPage * shippingPerPage;
+        const indexOfFirstShipping = indexOfLastShipping - shippingPerPage;
+        const currentShipping = allShipping.slice(indexOfFirstShipping, indexOfLastShipping);
+        let tempShipping = []
+
+        currentShipping.forEach((shiping) => {
+            console.log(shiping);
+           let tempCitices = "";
+           let countCitices = 0;
+           shiping.delivery_option_cities.slice(0,10).forEach((cit) => {
+               tempCitices += `<span class="city px-2">${cit.name}</span>`;
+           });
+           if( shiping.delivery_option_cities.length > 10){
+             countCitices = shiping.delivery_option_cities.length - 10;
+           }
+           tempShipping += `<div class="col-md-6">
+                              <div class="ship p-4 d-flex gap-3 h-100">
+                                <!-- right -->
+                                <div class="d-flex flex-column gap-3 flex-1">
+                                    <div class="image-ship">
+                                        <img src="${shiping.image}" alt="${shiping.name}" class="w-100 h-100 object-fit-contain">
+                                    </div>
+                                    <span class="ship-title">${shiping.name}</span>
+                                    <div  class="d-flex flex-column flex-md-row gap-3">
+                                        <div class="d-flex align-items-start gap-2">
+                                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <rect width="30" height="30" rx="8" fill="#0A3254" fill-opacity="0.1"/>
+                                                <path d="M15.6441 6.17979H15.646L22.4424 10.3133C22.789 10.5267 23 10.9082 23 11.3102V19.052C23 19.6345 22.7 20.1958 22.1823 20.5057L15.6211 24.4924C15.4343 24.6074 15.2193 24.6683 15 24.6683C14.7807 24.6683 14.5657 24.6074 14.3789 24.4924L7.81587 20.5045C7.56671 20.3527 7.3608 20.1393 7.21792 19.885C7.07504 19.6306 6.99999 19.3437 7 19.052V11.3102C7 10.9144 7.20661 10.5255 7.56507 10.3145L14.3677 6.17606C14.5607 6.06022 14.7817 5.99935 15.0067 6.00001C15.2318 6.00066 15.4524 6.06283 15.6447 6.17979M15.0037 7.24646L8.91863 10.9474L11.103 12.2823L17.1956 8.57886L15.0037 7.24646ZM19.2449 9.82475L13.143 13.5288L15.01 14.6689L21.1741 10.9985L19.2449 9.82475ZM8.24465 19.052C8.24465 19.2132 8.32991 19.3607 8.46247 19.4409L14.3827 23.038V15.7449L12.4516 14.5656V15.6784C12.4516 15.8277 12.2898 15.9148 12.1653 15.8464L10.4975 14.832C10.4708 14.8142 10.4489 14.7902 10.4337 14.762C10.4185 14.7337 10.4105 14.7022 10.4103 14.6702V13.3185L8.24465 11.9954V19.052ZM21.5375 19.4409L21.5425 19.4384C21.6082 19.3976 21.6623 19.3406 21.6996 19.2728C21.7369 19.205 21.7561 19.1287 21.7553 19.0514V12.1L15.6273 15.7499V23.0324L21.5375 19.4409Z" fill="#0A3254"/>
+                                             </svg>
+                                             <div class="d-flex flex-column gap-2">
+                                                <span class="ship-string">{{ locals.shipping_and_payment.shippingCost }}</span>
+                                                <span class="ship-price">${shiping?.cost[0]?.cost_string}</span>
+                                             </div>
+                                        </div>
+                                        ${shiping.cod_enabled ? `   <div class="d-flex align-items-start gap-2">
+                                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="30" height="30" rx="8" fill="#0A3254" fill-opacity="0.1"/>
+                                            <path d="M23.3227 8.42094C23.2459 8.27886 23.0627 8.22324 22.9155 8.29746C21.9281 8.79055 21.3614 11.2156 21.1633 12.2365C20.9545 13.345 19.7442 14.359 18.7738 14.9932C17.1974 16.0112 16.1756 15.5859 14.4255 17.497C13.4832 18.3391 12.1454 18.1709 11.5518 17.1399L11.3735 16.8283C11.9987 15.4868 13.547 14.588 15.0057 14.4171C15.2311 14.391 15.0819 14.4116 17.4144 11.6079C17.6032 11.3768 17.3528 11.0503 17.0653 11.159C15.2925 11.832 14.1188 10.6659 14.0708 10.6166C13.9005 10.4407 13.5955 10.5288 13.5521 10.7636C13.3104 12.0693 11.7063 12.2919 11.6386 12.3008C11.5126 12.3167 11.4102 12.4069 11.3828 12.5262C11.2828 12.9611 12.1829 12.7493 12.2565 14.8943C11.7402 15.2647 11.3348 15.7081 11.0338 16.2087C10.7164 15.5883 10.7236 15.4569 9.85936 13.1416C9.27922 11.5578 10.6786 10.6183 11.6525 8.88958C12.2888 7.95046 12.9405 8.14837 17.9841 6.27785C18.1411 6.2234 18.2226 6.05702 18.1659 5.90639C18.1095 5.75577 17.9354 5.6782 17.7792 5.73181C13.0566 7.51251 11.9587 7.37341 11.1453 8.57357C10.2404 10.2296 8.57657 11.3884 9.28896 13.3337C10.1313 15.5922 10.145 15.7744 10.4672 16.4173C8.78682 16.9638 7.64258 18.4892 7.64258 20.2454C7.64258 22.4734 9.50587 24.2863 11.7963 24.2863C15.2791 24.2863 17.2019 20.3506 15.0376 17.7259C16.7041 16.0104 17.3595 16.6057 19.1121 15.4739C20.234 14.7409 21.5147 13.6217 21.7577 12.3417C22.0581 10.792 22.6186 9.09982 23.1936 8.81265C23.3419 8.7381 23.3998 8.56319 23.3227 8.42094ZM14.0105 11.3249C14.4633 11.6393 15.2949 12.0574 16.3868 11.9248L14.8058 13.859C14.4983 13.9091 13.6864 14.0755 12.8392 14.5317C12.7926 14.0279 12.6581 13.2719 12.2718 12.7472C12.8284 12.5724 13.6511 12.1779 14.0105 11.3249ZM11.7967 23.7056C9.83959 23.7056 8.24743 22.1533 8.24743 20.2451C8.24743 18.7121 9.26258 17.3844 10.7484 16.9396C10.8083 17.0158 11.6945 19.0539 13.6937 18.5378C14.0126 18.4559 14.319 18.3121 14.5935 18.1166C16.3968 20.3574 14.7658 23.7056 11.7967 23.7056Z" fill="#0A3254" stroke="#0A3254" stroke-width="0.8"/>
+                                            </svg>
+                                             <div class="d-flex flex-column gap-2">
+                                                <span class="ship-string">{{ locals.shipping_and_payment.paymentOnDelivery }}</span>
+                                                <span class="ship-price">${shiping?.cod_fee[0]?.cod_fee_string}</span>
+                                             </div>
+                                        </div>` :""}
+                                     
+                                    </div>
+                                </div> 
+                                <!-- left -->
+                                <div class="left d-flex align-items-center flex-1 gap-3">
+                                   
+                                        <div style="flex:3">
+                                          <h4 class="section-title">{{ locals.shipping_and_payment.delivery_to }}</h4>
+                                          <div class="citises d-flex flex-wrap gap-2 ">
+                                           ${tempCitices}
+                                          </div>
+                                        </div>
+                                        ${countCitices ?`<div style="flex:1">
+                                         <span class="count-citises">+${countCitices}</span>
+                                        </div>` :""}                                      
+                                     
+                                </div>
+                                <!-- left -->
+
+                              </div>
+                            </div>`   
+        });
+
+        document.querySelector('.shippingAndPaymentPage .all_shipping_methods').innerHTML = tempShipping;
+        handlePagination();
+
+    }   
+    // handle Pagantion
+    const nextBtn = document.querySelector(".shippingAndPaymentPage .next-btn");
+    const prevBtn = document.querySelector(".shippingAndPaymentPage .prev-btn");
+    const pagantionOrder = document.querySelector(".shippingAndPaymentPage  .pagination-orders");
+    let pageNumbers = [];
+    const handlePagination = ()=>{
+       pageNumbers = [];
+
+        for (let i = 1; i <= Math.ceil(allShipping.length / shippingPerPage); i++) {
+            pageNumbers.push(i);
+        } 
+        if(pageNumbers.length <= 1){
+            pagantionOrder.innerHTML = '';
+            nextBtn.style.display = 'none';
+            prevBtn.style.display = 'none';
+            return;
+        }else{
+            nextBtn.style.display = 'flex';
+            prevBtn.style.display = 'flex';  
         }
+        let pagination = '';
+        pageNumbers.forEach(number => {
+            pagination += `<li class="cursor-pointer page-item ${currentPage === number? 'activePagination' : ''}" data-page="${number}">${number}</li>`;
+        });
+        pagantionOrder.innerHTML = pagination;
+            document.querySelectorAll('.shippingAndPaymentPage .pagination-orders .page-item').forEach(page => {
+                page.addEventListener('click', function() {
+                    document.querySelectorAll('.shippingAndPaymentPage  .pagination-orders .page-item').forEach(item => {
+                        item.classList.remove('activePagination');
+                    });
+
+                    this.classList.add('activePagination');
+
+                    // Update currentPage
+                    currentPage = parseInt(this.getAttribute('data-page'));
+                    handleShipping();
+                });      
+            }); 
+        
+     }
+    // Bind event listener for next button
+    nextBtn.addEventListener('click', function(e) {
+            if (currentPage < pageNumbers.length) {
+                currentPage++; 
+                handleShipping();
+            } else {
+                currentPage = 1; 
+                handleShipping();
+            }
+     });
+    prevBtn.addEventListener('click', function(e) {
+            if (currentPage <= 1) {
+            return;
+            } else {
+                currentPage--;
+                handleShipping();
+            }
+        });
+    // handle payment
+    function handlePayment (){
+
+    }
+    document.addEventListener("DOMContentLoaded",fetchShippingAndPayment);
     </script>
 
 {% endblock %}

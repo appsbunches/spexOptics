@@ -315,5 +315,14 @@
   "brandsPage": "العلامات التجارية",
   "show_all": "عرض الكل",
   "read_more_blog": "اقرأ المزيد",
-  "blogs": "المدونة"
+  "blogs": "المدونة",
+  "about_us": "من نحن ",
+  "shipping_and_payment": {
+    "shippingAndPayment": "خيارات الشحن والدفع",
+    "shippingCompany": "شركات الشحن",
+    "paymentOption": "خيارات الدفع",
+    "paymentOnDelivery": "الدفع عند الاستلام",
+    "shippingCost": "تكلفة الشحن",
+    "delivery_to": "التوصيل الي"
+  }
 }

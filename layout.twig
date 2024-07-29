@@ -123,10 +123,10 @@
     <link rel="stylesheet" href="{{ asset_url ~ 'main.css?v=1.228' }}" />
 
     <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'custom.css?v=1.151' }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'style.css?v=1.215' }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'style.css?v=1.234' }}" />
 
     {% if session.lang.code == 'en' %}
-        <link rel="stylesheet" href="{{ asset_url ~ 'main.ltr.css?v=1.31' }}">
+        <link rel="stylesheet" href="{{ asset_url ~ 'main.ltr.css?v=1.33' }}">
     {% endif %}
 
     {% block top_links %}{% endblock %}
@@ -253,6 +253,62 @@
 
 {% schema %}
 {
+ "features_about_us":{
+  "name": {
+    "ar": "مميزاتنا",
+    "en": "Our Features"
+  },
+  "icon": "fal fa-presentation",
+  "display": true,
+  "settings": {
+    "title": {
+      "type": "text",
+      "label": {
+        "ar": "العنوان",
+        "en": "Title"
+      }
+    },
+    "slider": {
+      "type": "list",
+      "noLabel": true,
+      "maxItems": 4,
+      "settings_label": {
+        "ar": "الصورة",
+        "en": "Picture"
+      },
+      "settings": {
+        "title": {
+          "type": "text",
+          "label": {
+            "ar": "العنوان",
+            "en": "Title"
+          }
+        },
+        "des": {
+          "type": "text",
+          "label": {
+            "ar": "النص",
+            "en": "Description"
+          }
+        },
+        "image": {
+          "type": "image",
+          "label": {
+            "ar": "صورة",
+            "en": "Image"
+          }
+        },
+        "video": {
+          "type": "video",
+          "label": {
+            "ar": "فيديو",
+            "en": "Video"
+          }
+        }
+      }
+    }
+  }
+ },
  "banners": {
     "name": {
       "ar": "اضافة بانرات للصفحات",
