@@ -1995,3 +1995,38 @@ $main-transition: var(--main-transition);
   }
 }
 /*********************** Start shippingAndPaymentPage  *************************/
+
+/*********************** Start Faqs  *************************/
+.accordion-button::after {
+  display: none;
+}
+.faqs {
+  .accordion-item {
+    .accordion-button {
+      background-color: #f7f7f7;
+      color: #0a3254;
+      height: 92px;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: 400;
+      @media screen and (max-width: 768px) {
+        height: 62px;
+        font-size: 14px;
+      }
+      &:focus {
+        box-shadow: none;
+      }
+    }
+    .accordion-body {
+      color: #0a3254;
+      height: 70px;
+      font-size: 18px;
+      font-weight: 400;
+      @media screen and (max-width: 768px) {
+        height: 45px;
+        font-size: 14px;
+      }
+    }
+  }
+}
+/*********************** end Faqs  *************************/

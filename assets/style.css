@@ -1957,3 +1957,39 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
 }
 
 /*********************** Start shippingAndPaymentPage  *************************/
+/*********************** Start Faqs  *************************/
+.accordion-button::after {
+  display: none;
+}
+
+.faqs .accordion-item .accordion-button {
+  background-color: #f7f7f7;
+  color: #0a3254;
+  height: 92px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 400;
+}
+@media screen and (max-width: 768px) {
+  .faqs .accordion-item .accordion-button {
+    height: 62px;
+    font-size: 14px;
+  }
+}
+.faqs .accordion-item .accordion-button:focus {
+  box-shadow: none;
+}
+.faqs .accordion-item .accordion-body {
+  color: #0a3254;
+  height: 70px;
+  font-size: 18px;
+  font-weight: 400;
+}
+@media screen and (max-width: 768px) {
+  .faqs .accordion-item .accordion-body {
+    height: 45px;
+    font-size: 14px;
+  }
+}
+
+/*********************** end Faqs  *************************/

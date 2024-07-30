@@ -4,37 +4,82 @@
 
 {% block main_content %}
 
+ {% embed 'breadcrumb.twig' %}
+                {% block breadcrumb_items %}
+                    <li class="breadcrumb-item" aria-current="page"><a href="/">{{ locals.home_title }}</a></li>
+                        {% if session.lang.code == 'ar' %}
+                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                        <path d="M7 1L2 6L7 11" stroke="#333333" stroke-width="1.5"/>
+                        </svg>
+                    {% else %}
+                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="rotateIcon">
+                        <path d="M7 1L2 6L7 11" stroke="#333333" stroke-width="1.5"/>
+                        </svg>
+                    {% endif %}
+                    <li class="breadcrumb-item active " aria-current="page">{{ locals.common_question }}</li>
+                {% endblock %}
+    {% endembed %}
 
-    <div class="container mt-5 mb-5">
-        <div id="accordion">
-
+    <div class="container mb-5 faqs">
+      <div class="accordion" id="faqs">
             {% for key, faq in faqs %}
-                <div class="mt-5 mb-5">
-                    <hr>
-                    <div>
-                        <div id="heading{{ key }}">
-
-                            <h2 class="mb-0 faqs-title" data-toggle="collapse" data-target="#collapse{{ key }}" aria-expanded="{% if key == 0 %}true{% else %}false{% endif %}" aria-controls="collapse{{ key }}">
-                                {{ faq.question }}
-                                <span class="icon-expand_more1 accordion-icon"></span>
-                            </h2>
-
-                        </div>
-
-
-                        <div id="collapse{{ key }}" class="collapse {% if key == 0 %}show{% endif %}" aria-labelledby="heading{{ key }}" data-parent="#accordion">
-                            <div class="card-body text-justify">
-                                {{ faq.answer | raw }}
-                            </div>
+                <div class="accordion-item border-0 mt-4">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button py-4 d-flex justify-content-between align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ key }}" aria-expanded="{% if key == 0 %}true{% else %}false{% endif %}" aria-controls="collapse{{ key }}">
+                            {{ faq.question }}
+                            <span class="accordion-icon">
+                                {% if key == 0 %}                         
+                                    <svg width="17" height="2" viewBox="0 0 17 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M15.5 1H1.5" stroke="#0A3254" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                {% else %}
+                                    <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M15.5 8H1.5" stroke="#0A3254" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M9 1V15" stroke="#0A3254" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                {% endif %}
+                            </span>
+                        </button>
+                    </h2>
+                    <div id="collapse{{ key }}" class="accordion-collapse collapse {% if key == 0 %}show{% endif %}" data-bs-parent="#faqs">
+                        <div class="accordion-body d-flex align-items-end">
+                            {{ faq.answer | raw }}
                         </div>
                     </div>
                 </div>
             {% endfor %}
-
         </div>
+
+
     </div>
 
 
 {% endblock %}
+{% block footer_scripts %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const accordionButtons = document.querySelectorAll('.accordion-button');
+
+    accordionButtons.forEach(button => {
+        button.addEventListener('click', function() {
+    
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            const iconContainer = this.querySelector('.accordion-icon');
+
+            if (isExpanded) {
+                iconContainer.innerHTML = `<svg width="17" height="2" viewBox="0 0 17 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M15.5 1H1.5" stroke="#0A3254" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>`;
+            } else {
+                iconContainer.innerHTML = `<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M15.5 8H1.5" stroke="#0A3254" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M9 1V15" stroke="#0A3254" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>`;
+            }
+        });
+    });
+});
+</script>
+{% endblock %} 
 
 {% block footer %} {{ include('footer.twig') }} {% endblock %}
