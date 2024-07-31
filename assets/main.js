@@ -125,8 +125,6 @@ function removeCartItems() {
 }
 
 function updateCartProducts(res) {
-  console.log(res);
-
   let added_product = res.data.cart.product;
   let i = cart_products.findIndex(
     (item) => item.product_id == added_product.product_id
@@ -603,7 +601,6 @@ if (document.getElementById('customAddAddress')) {
           }
 
           const responseData = await response.json();
-          console.log('Response data:', responseData);
 
           if (responseData.status === 'success') {
             toastr.success(responseData.data.message);
@@ -748,7 +745,6 @@ class ProductsQuestions {
           $('textarea[name="question"]').val('');
         }
       } catch (error) {
-        console.log(error);
         toastr.error(error, locales_messages.error);
       } finally {
         $('.add-review-progress').addClass('d-none');

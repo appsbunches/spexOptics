@@ -14,6 +14,14 @@ a {
 .pointer {
   cursor: pointer;
 }
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
 .select-box {
   border: none; /* Removes the default border */
   border-radius: 30px; /* Adds rounded corners */
@@ -1452,14 +1460,6 @@ $main-transition: var(--main-transition);
       }
     }
     .rengeSLiderCon {
-      input[type='number']::-webkit-inner-spin-button,
-      input[type='number']::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
-      input[type='number'] {
-        -moz-appearance: textfield;
-      }
       .tryFilterRenge {
         font-weight: 700;
         font-size: 10px;
@@ -2030,3 +2030,270 @@ $main-transition: var(--main-transition);
   }
 }
 /*********************** end Faqs  *************************/
+
+/*********************** start 404 page  *************************/
+.page404 {
+  .page404con {
+    width: 398px;
+    @media screen and (max-width: 767px) {
+      width: 222px;
+    }
+    h1 {
+      font-size: 27px;
+      font-weight: 400;
+      color: #333333;
+
+      @media screen and (max-width: 768px) {
+        font-size: 16px;
+      }
+    }
+    a {
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 400;
+      height: 48px;
+      width: 100%;
+      @media screen and (max-width: 768px) {
+        font-size: 14px;
+        width: 195px;
+      }
+    }
+  }
+}
+/*********************** end 404 page  *************************/
+
+/*********************** start style cart *************************/
+.cart-view {
+  .section-cart-products {
+    .custom-cart {
+      .header_cart {
+        background-color: #eeeeeeee;
+        border-radius: 30px 30px 0 0;
+        span {
+          font-size: 16px;
+          font-weight: 700;
+          color: #0a0c10;
+          @media screen and (width: 1440px) {
+            & {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+      .inptContainer {
+        width: 90px;
+        input[type='number'] {
+          outline: none;
+          border: 1px solid #eeeeee;
+          border-radius: 30px;
+          height: 30px;
+          text-align: center;
+        }
+      }
+      .myCart {
+        .cart-product {
+          @media screen and (width: 1440px) {
+            & {
+              width: 270px;
+            }
+          }
+          @media screen and (width: 375px) {
+            & {
+              width: 158px;
+            }
+          }
+          .cart_product_Img {
+            width: 124px;
+            height: 124px;
+            img {
+              width: 76px;
+              height: auto;
+            }
+          }
+          .cart_product_name {
+            a {
+              font-size: 16px;
+              font-weight: 400;
+              color: #070606;
+              @media screen and (max-width: 767px) {
+                & {
+                  font-size: 12px;
+                  color: #000;
+                }
+              }
+            }
+          }
+          .price-string {
+            font-size: 14px;
+            font-weight: 400;
+            color: $primary-color;
+            @media screen and (max-width: 767px) {
+              & {
+                font-size: 10px;
+              }
+            }
+          }
+
+          .total-string {
+            font-size: 18px;
+            font-weight: 400;
+            color: #0a3254;
+            @media screen and (max-width: 767px) {
+              & {
+                font-size: 8px;
+              }
+            }
+          }
+          .section_price {
+            border-radius: 8px;
+            .sale-price,
+            .total-price {
+              font-weight: 400;
+              font-size: 12px;
+              color: #0a3254;
+            }
+            .duscount-price {
+              font-weight: 400;
+              font-size: 10px;
+              color: #d7d7d7ee;
+              text-decoration: line-through;
+            }
+            .total-word {
+              font-weight: 700;
+              font-size: 12px;
+              color: #333333;
+            }
+          }
+        }
+      }
+    }
+  }
+  .product-table {
+    background-color: #fff;
+    .coupon-form {
+      .form-group {
+        height: 40px;
+        @media screen and (width: 1440px) {
+          & {
+            width: 277px;
+          }
+        }
+        @media screen and (width: 375px) {
+          & {
+            width: 302px;
+          }
+        }
+      }
+    }
+    @media screen and (width: 1440px) {
+      & {
+        width: 313px;
+      }
+    }
+    @media screen and (width: 375px) {
+      & {
+        width: 337px;
+        margin: 0 auto;
+      }
+    }
+    .buttons-footer {
+      .conBtn {
+        @media screen and (width: 1440px) {
+          & {
+            margin: 0 auto;
+          }
+        }
+        @media screen and (width: 375px) {
+          & {
+            margin: 0 auto;
+          }
+        }
+      }
+      a {
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @media screen and (width: 1440px) {
+          & {
+            width: 277px !important;
+          }
+        }
+        @media screen and (width: 375px) {
+          & {
+            width: 302px !important;
+          }
+        }
+      }
+    }
+    .cart-totals-div {
+      border-radius: 20px;
+      border: 1px solid #eeeeeeee;
+      .head {
+        background-color: #f7f7f7;
+        border-radius: 20px;
+        span {
+          font-size: 16px;
+          font-weight: 700;
+          color: #333333;
+        }
+      }
+      @media screen and (width: 1440px) {
+        & {
+          width: 277px;
+        }
+      }
+      @media screen and (width: 375px) {
+        & {
+          width: 302px;
+        }
+      }
+      .cart-product-row-wrapper {
+        .name {
+          font-size: 16px;
+          font-weight: 400;
+          color: #333333;
+          @media screen and (max-width: 767px) {
+            & {
+              font-size: 14px;
+            }
+          }
+        }
+        .value {
+          font-size: 16px;
+          font-weight: 400;
+          color: #333333;
+          @media screen and (max-width: 767px) {
+            & {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .conBtn {
+  }
+  .continue-shop,
+  .return-store {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .continue-shop {
+    color: #fff;
+  }
+  .return-store {
+    color: $primary-color;
+  }
+  .coupon-form {
+    .send-coupon {
+      border-color: $primary-color;
+    }
+    button {
+      font-size: 14px;
+      font-weight: 400;
+      color: #fff;
+    }
+  }
+}
+/*********************** end style cart *************************/

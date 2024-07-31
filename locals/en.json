@@ -145,7 +145,7 @@
   },
   "footer_vat_number": "The VAT number:",
   "footer_commercial_registration_number": "The commercial register number:",
-  "title_404": "Page not found",
+  "title_404": "the page you are looking for not found",
   "go_to_home": "Go to Home",
   "redirect_message": "You will be redirected to the home page in",
   "seconds": "seconds",
@@ -327,5 +327,14 @@
     "paymentOnDelivery": "Payment On Delivery",
     "shippingCost": "shipping cost",
     "delivery_to": "delivery to"
+  },
+  "cart_page": {
+    "cart": "Cart",
+    "product": "Product",
+    "quantity": "quantity",
+    "price": "price",
+    "desc": "description",
+    "value": "value",
+    "total": "total:"
   }
 }

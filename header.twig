@@ -51,7 +51,6 @@
      const suggestionsTag = document.querySelector(".offcanvas_Search .suggestions");
      let productSuggestions = '';
      
-        console.log(data);
       data.data.products.data.slice(0,4).forEach((pr)=>{
         productSuggestions += `<a href="${pr.html_url}">${pr.name}</a>`
       })

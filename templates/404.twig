@@ -3,39 +3,66 @@
 {% block header %} {% include 'header.twig' %} {% endblock %}
 
 {% block main_content %}
-<div class="container mt-5 mb-5 text-center">
-    <div class="mt-5 mb-5">
-        <h1 style="color: var(--primary-color); font-size: 5rem">404</h1>
-    </div>
-    <p style="font-size: 2rem" class="theme-text-primary">{{ locals.title_404 }}</p>
+ {% embed 'breadcrumb.twig' %}
+                {% block breadcrumb_items %}
+                    <li class="breadcrumb-item" aria-current="page"><a href="/">{{ locals.home_title }}</a></li>
+                        {% if session.lang.code == 'ar' %}
+                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                        <path d="M7 1L2 6L7 11" stroke="#333333" stroke-width="1.5"/>
+                        </svg>
+                    {% else %}
+                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="rotateIcon">
+                        <path d="M7 1L2 6L7 11" stroke="#333333" stroke-width="1.5"/>
+                        </svg>
+                    {% endif %}
+                    <li class="breadcrumb-item active " aria-current="page">404</li>
+                {% endblock %}
+    {% endembed %}
+<div class="container page404  mb-5 ">
+   <div class="d-flex flex-column page404con align-items-center gap-4 justify-content-center mx-auto">
+      <div class="number mx-auto">
+        <svg width="250" height="119" viewBox="0 0 250 119" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_300_42460)">
+        <path opacity="0.939" fill-rule="evenodd" clip-rule="evenodd" d="M122.803 0.1875C138.645 0.34375 149.957 7.50537 156.738 21.6719C158.049 24.9707 158.863 28.3887 159.18 31.9258C159.505 50.4805 159.505 69.0352 159.18 87.5898C157.515 101.264 150.435 110.948 137.94 116.643C120.24 122.353 105.999 117.714 95.215 102.727C92.5094 98.0273 90.8815 92.9819 90.3322 87.5898C90.0065 69.0352 90.0065 50.4805 90.3322 31.9258C93.3488 13.2983 104.172 2.71875 122.803 0.1875ZM121.338 10.9297C135.742 10.4526 144.776 17.126 148.438 30.9492C148.763 50.1548 148.763 69.3608 148.438 88.5664C145.365 100.893 137.471 107.565 124.756 108.586C112.035 107.564 104.141 100.891 101.074 88.5664C100.749 69.3608 100.749 50.1548 101.074 30.9492C103.575 19.9028 110.33 13.23 121.338 10.9297Z" fill="#0A3254"/>
+        <path opacity="0.961" fill-rule="evenodd" clip-rule="evenodd" d="M49.0727 4.0913C56.0698 2.82666 60.8715 5.43066 63.477 11.9038C63.7211 28.5044 63.8027 45.106 63.7211 61.7085C70.2075 61.0215 72.5673 63.7886 70.8012 70.0093C70.3945 70.416 69.9872 70.8232 69.5805 71.23C67.6943 71.8911 65.7411 72.1353 63.7211 71.9624C63.8027 86.4492 63.7211 100.935 63.477 115.419C61.7758 118.537 59.2529 119.432 55.9086 118.105C54.9916 117.352 54.2592 116.457 53.7114 115.419C53.4672 100.935 53.3857 86.4492 53.4672 71.9624C38.9806 72.0439 24.495 71.9624 10.0102 71.7183C2.98556 68.8149 0.625539 63.688 2.93011 56.3374C16.9295 39.1738 31.3338 22.3281 46.143 5.80029C47.2306 5.34082 48.2072 4.77099 49.0727 4.0913ZM52.4907 14.3452C52.7919 14.3994 53.0361 14.562 53.2231 14.8335C53.4672 30.4575 53.5488 46.0825 53.4672 61.7085C39.7231 61.9482 26.0512 61.7041 12.4516 60.9761C25.7177 45.3511 39.064 29.8071 52.4907 14.3452Z" fill="#0A3254"/>
+        <path opacity="0.945" fill-rule="evenodd" clip-rule="evenodd" d="M225.341 4.09201C231.892 3.01242 236.531 5.45383 239.257 11.4162C239.966 28.1653 240.21 44.9294 239.99 61.7092C245.627 61.0783 247.986 63.5197 247.07 69.0334C245.474 71.6931 243.114 72.6696 239.99 71.9631C240.071 85.9616 239.99 99.9587 239.746 113.955C238.602 118.23 235.917 119.614 231.689 118.106C230.561 117.306 229.829 116.248 229.492 114.932C229.248 100.61 229.166 86.2868 229.248 71.9631C214.761 72.0446 200.275 71.9631 185.791 71.719C179.18 68.8318 176.82 63.8679 178.711 56.8264C179.238 55.6076 179.889 54.468 180.664 53.4084C194.196 37.6565 207.787 21.9499 221.435 6.28928C222.704 5.41281 224.006 4.68039 225.341 4.09201ZM228.271 14.3459C229.244 29.9626 229.569 45.7502 229.248 61.7092C215.504 61.9489 201.832 61.7048 188.232 60.9768C201.64 45.4636 214.986 29.9197 228.271 14.3459Z" fill="#0A3254"/>
+        </g>
+        <defs>
+        <clipPath id="clip0_300_42460">
+        <rect width="250" height="119" fill="white"/>
+        </clipPath>
+        </defs>
+        </svg>
+      </div>
+      <h1>{{ locals.title_404 }}</h1>
+      <a href="/" class="btn btn-primary radius30 d-flex align-items-center justify-content-center">{{ locals.home_title }}</a>
+   </div>
 
-    <a href="/" class="btn btn-primary mt-4">{{ locals.go_to_home }}</a>
-
-    <p id="redirectMessage" class="mt-3">
+    {# <p id="redirectMessage" class="mt-3">
         <span>{{ locals.redirect_message }}</span>
         <span id="redirectCountdown">3</span> {{ locals.seconds }}
-    </p>
+    </p> #}
 
 
 </div>
 
 <script>
-    function startRedirectCountdown(duration) {
-        var timer = duration, seconds;
-        var countdownElement = document.getElementById('redirectCountdown');
-        var countdownTimer = setInterval(function () {
-            seconds = parseInt(timer % 60, 10);
+    // function startRedirectCountdown(duration) {
+    //     var timer = duration, seconds;
+    //     var countdownElement = document.getElementById('redirectCountdown');
+    //     var countdownTimer = setInterval(function () {
+    //         seconds = parseInt(timer % 60, 10);
 
-            countdownElement.textContent = seconds;
+    //         countdownElement.textContent = seconds;
 
-            if (--timer < 0) {
-                clearInterval(countdownTimer);
-                window.location.href = '/';
-            }
-        }, 1000);
-    }
+    //         if (--timer < 0) {
+    //             clearInterval(countdownTimer);
+    //             window.location.href = '/';
+    //         }
+    //     }, 1000);
+    // }
 
-    startRedirectCountdown(3);
+    // startRedirectCountdown(3);
 </script>
 
 {% endblock %}

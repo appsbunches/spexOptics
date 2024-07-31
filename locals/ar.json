@@ -142,7 +142,7 @@
 
   "footer_vat_number": "الرقم الضريبي:",
   "footer_commercial_registration_number": "رقم السجل التجاري:",
-  "title_404": "لم يتم أيجاد الصفحة",
+  "title_404": "الصفحة التي تبحث عنها غير موجودة",
   "go_to_home": "العودة للصفحة الرئيسية",
   "redirect_message": "سيتم تحويلك للصفحة الرئيسية خلال",
   "seconds": "ثواني",
@@ -325,5 +325,14 @@
     "paymentOnDelivery": "الدفع عند الاستلام",
     "shippingCost": "تكلفة الشحن",
     "delivery_to": "التوصيل الي"
+  },
+  "cart_page": {
+    "cart": "السلة",
+    "product": "المنتج",
+    "quantity": "الكمية",
+    "price": "السعر",
+    "desc": "الوصف",
+    "value": "القيمة",
+    "total": "الإجمالي:"
   }
 }

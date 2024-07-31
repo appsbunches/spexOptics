@@ -123,7 +123,7 @@
     <link rel="stylesheet" href="{{ asset_url ~ 'main.css?v=1.228' }}" />
 
     <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'custom.css?v=1.151' }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'style.css?v=1.237' }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset_url ~ 'style.css?v=1.251' }}" />
 
     {% if session.lang.code == 'en' %}
         <link rel="stylesheet" href="{{ asset_url ~ 'main.ltr.css?v=1.33' }}">
@@ -242,7 +242,7 @@
 <script type="text/javascript" src="{{ asset_url ~ 'js-toastr.min.js' }}"></script>
     <script  src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
 
-<script type="text/javascript" src="{{ asset_url ~ 'main.js?v=1.140' }}" ></script>
+<script type="text/javascript" src="{{ asset_url ~ 'main.js?v=1.141' }}" ></script>
 
 {% block footer_scripts %}{% endblock %}
 
@@ -424,7 +424,26 @@
             }
           }
         }
+      },
+      "banner_cart_page": {
+        "type": "fieldset",
+        "label": {
+          "ar": "بانر صفحة السلة",
+          "en": "cart page banner"
+        },
+        "icon": "font_awesome",
+        "expandable": true,
+        "settings": {
+          "image": {
+            "type": "image",
+            "label": {
+              "ar": "السلة",
+              "en": "cart"
+            }
+          }
+        }
       }
+      
     }
   },
   "colors":{
