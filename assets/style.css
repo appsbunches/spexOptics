@@ -2176,18 +2176,18 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
     width: 302px !important;
   }
 }
-.cart-view .product-table .cart-totals-div {
-  border-radius: 20px;
+.cart-view .product-table .head {
+  background-color: #f7f7f7;
+  border-radius: 20px 20px 0 0;
   border: 1px solid rgba(238, 238, 238, 0.9333333333);
 }
-.cart-view .product-table .cart-totals-div .head {
-  background-color: #f7f7f7;
-  border-radius: 20px;
-}
-.cart-view .product-table .cart-totals-div .head span {
+.cart-view .product-table .head span {
   font-size: 16px;
   font-weight: 700;
   color: #333333;
+}
+.cart-view .product-table .cart-totals-div {
+  border: 1px solid rgba(238, 238, 238, 0.9333333333);
 }
 @media screen and (width: 1440px) {
   .cart-view .product-table .cart-totals-div {
@@ -2221,22 +2221,36 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
 }
 .cart-view .continue-shop,
 .cart-view .return-store {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .cart-view .continue-shop {
   color: #fff;
 }
 .cart-view .return-store {
-  color: var(--primary-color);
+  color: #333333;
+  border: 1px solid rgba(238, 238, 238, 0.9333333333);
 }
 .cart-view .coupon-form .send-coupon {
-  border-color: var(--primary-color);
+  border-color: rgba(238, 238, 238, 0.9333333333);
+  height: 48px;
+  display: flex;
+  align-items: center;
+  color: #333333;
+  font-size: 16px;
+  font-weight: 400;
 }
 .cart-view .coupon-form button {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   color: #fff;
+  height: 48px;
+  display: flex;
+  align-items: center;
 }
 
 /*********************** end style cart *************************/

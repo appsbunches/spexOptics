@@ -177,13 +177,13 @@
   "cart_header_price": "Price",
   "cart_totals_title": "name",
   "cart_totals_description": "value",
-  "cart_continue_to_purchase": "Purchase",
+  "cart_continue_to_purchase": "Pay",
   "cart_back_to_store": "continue shopping",
   "cart_list_empty": "Cart is empty",
 
   "coupon_discount": "Discount coupon",
-  "coupon_discount_enter": "Enter discount coupon",
-  "coupon_discount_submit": "Send",
+  "coupon_discount_enter": " discount coupon",
+  "coupon_discount_submit": "implementation",
   "coupon_discount_free_shipping": "Free Shipping",
   "enjoy_free_shipping_cities": "Enjoy free shipping for the cities",
 
@@ -335,6 +335,8 @@
     "price": "price",
     "desc": "description",
     "value": "value",
-    "total": "total:"
+    "total": "total:",
+    "copun_success": "Active discount coupon has been applied",
+    "copun_fail": "The discount coupon entered is incorrect"
   }
 }

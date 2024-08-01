@@ -96,12 +96,13 @@ endblock %} {% block top_links %}
     <div
       class="row cart-products-with-totals align-items-start g-4 {% if cart.products_count <= 0 %}d-none{% endif %}"
     >
-      <div class="col-12 col-lg-4  pt-4 pb-3 px-3 product-table">
-        <div class="cart-totals-div d-flex flex-column gap-5">
-          <div class="head d-flex justify-content-between flex-wrap gap-3">
+      <div class="col-12 col-lg-4   pb-3 px-3 product-table">
+         <div class="head d-flex justify-content-between flex-wrap gap-3 px-4 py-3">
             <span>{{ locals.cart_page.desc }}</span>
             <span>{{ locals.cart_page.value }}</span>
-          </div>
+         </div>
+        <div class="cart-totals-div d-flex flex-column gap-5 px-3">
+
           {% for cartTotal in cart.totals %}
           <div
             class="cart-product-row-wrapper cart-totals-row-wrapper border-0 d-flex justify-content-between gap-3 m-0 p-0"
@@ -129,15 +130,18 @@ endblock %} {% block top_links %}
         <div class="coupon-form mt-5">
           <form>
             <div class="form-group mx-auto">
-              <div class="d-flex h-100">
-                <input
-                  class="form-control send-coupon h-100"
-                  type="text"
-                  placeholder="{{ locals.coupon_discount_enter }}"
-                />
+              <div class="d-flex h-100 gap-3 justify-content-between">
+                <div class="d-flex flex-column gap-3 flex-2 mb-3">
+                    <input
+                    class="form-control send-coupon  radius30"
+                    type="text"
+                    placeholder="{{ locals.coupon_discount_enter }}"
+                    />
+                    <span class="message_coupon mb-3" style="font-size:12px;font-weight:400;"></span>
+                </div>
                 <button
                   type="button"
-                  class="btn btn-primary rounded-0 m-0 h-100"
+                  class="btn btn-primary d-flex justify-content-center radius30"
                   onclick="sendCoupon()"
                 >
                   <img
@@ -227,7 +231,7 @@ endblock %} {% block top_links %}
             {% else %}
             <a
               href="{% if customer %}/checkout/choose-address-and-shipping{% else %}/auth/login?redirect_to=/checkout/choose-address-and-shipping{% endif %}"
-              class="btn btn-primary btn-lg btn-block w-100 continue-shop"
+              class="btn btn-primary btn-lg btn-block w-100 continue-shop radius30"
             >
               {{ locals.cart_continue_to_purchase }}
             </a>
@@ -243,7 +247,7 @@ endblock %} {% block top_links %}
           <div class="conBtn">
             <a
               href="/products"
-              class="btn btn-outline-primary btn-lg btn-block w-100 return-store"
+              class="btn btn-outline-primary btn-lg btn-block w-100 return-store radius30"
             >
               {{ locals.cart_back_to_store }}
             </a>
@@ -333,11 +337,22 @@ endblock %} {% block top_links %}
         zid.store.cart.redeemCoupon($('.send-coupon').val())
             .then(function (response) {
                 if(response.status  === 'success'){
-                    toastr.success('{{ locals.sent_successfully }}', null)
+                    document.querySelector(".cart-view .message_coupon").textContent = "{{ locals.cart_page.copun_success }}";
+                    document.querySelector(".cart-view .message_coupon").style.color = "#03A481EE";
+                    document.querySelector(".cart-view .send-coupon").style.borderColor = "#03A481EE";
                     window.location.reload();
                 }else{
-                    toastr.error(response.data.message, '{{ locals.sorry }}')
+                    document.querySelector(".cart-view .message_coupon").textContent = "{{ locals.cart_page.copun_fail }}";
+                    document.querySelector(".cart-view .message_coupon").style.color = "#FF1414EE";
+                    document.querySelector(".cart-view .send-coupon").style.borderColor = "#FF1414EE";
+               
+
+
                 }
+                     setTimeout(function() {
+                        document.querySelector(".cart-view .message_coupon").textContent = "";
+                        document.querySelector(".cart-view .send-coupon").style.borderColor = "#EEEEEEEE";
+                    }, 2000);
                 $('.send-coupon-progress').addClass('d-none');
             }).catch(function (err) {
                 $('.send-coupon-progress').addClass('d-none');

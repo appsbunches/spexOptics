@@ -2226,18 +2226,18 @@ $main-transition: var(--main-transition);
         }
       }
     }
-    .cart-totals-div {
-      border-radius: 20px;
+    .head {
+      background-color: #f7f7f7;
+      border-radius: 20px 20px 0 0;
       border: 1px solid #eeeeeeee;
-      .head {
-        background-color: #f7f7f7;
-        border-radius: 20px;
-        span {
-          font-size: 16px;
-          font-weight: 700;
-          color: #333333;
-        }
+      span {
+        font-size: 16px;
+        font-weight: 700;
+        color: #333333;
       }
+    }
+    .cart-totals-div {
+      border: 1px solid #eeeeeeee;
       @media screen and (width: 1440px) {
         & {
           width: 277px;
@@ -2272,27 +2272,40 @@ $main-transition: var(--main-transition);
       }
     }
   }
-  .conBtn {
-  }
+
   .continue-shop,
   .return-store {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .continue-shop {
     color: #fff;
   }
   .return-store {
-    color: $primary-color;
+    color: #333333;
+    border: 1px solid #eeeeeeee;
   }
   .coupon-form {
     .send-coupon {
-      border-color: $primary-color;
+      border-color: #eeeeeeee;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      color: #333333;
+      font-size: 16px;
+      font-weight: 400;
     }
     button {
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 400;
       color: #fff;
+      height: 48px;
+      display: flex;
+      align-items: center;
     }
   }
 }

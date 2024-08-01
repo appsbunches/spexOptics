@@ -177,12 +177,12 @@
 
   "cart_totals_title": "الوصف",
   "cart_totals_description": "القيمة",
-  "cart_continue_to_purchase": "متابعة الشراء",
-  "cart_back_to_store": "العودة للتسوق",
+  "cart_continue_to_purchase": "الدفع",
+  "cart_back_to_store": "متابعة للتسوق",
 
   "coupon_discount": "كوبون الخصم",
-  "coupon_discount_enter": "ادخل كود الخصم",
-  "coupon_discount_submit": "إرسال",
+  "coupon_discount_enter": " كود الخصم",
+  "coupon_discount_submit": "تطبيق",
   "coupon_discount_free_shipping": "شحن مجاني",
   "enjoy_free_shipping_cities": "تمتع بالشحن المجاني للمدن التالية",
 
@@ -333,6 +333,8 @@
     "price": "السعر",
     "desc": "الوصف",
     "value": "القيمة",
-    "total": "الإجمالي:"
+    "total": "الإجمالي:",
+    "copun_success": "تم تطبيق كوبون الخصم بنجاح",
+    "copun_fail": "كوبون الخصم المدخل خاطئ"
   }
 }
