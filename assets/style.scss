@@ -145,6 +145,22 @@ $main-transition: var(--main-transition);
 .arrowCollapse.rotate {
   transform: rotate(-90deg);
 }
+::-webkit-scrollbar {
+  width: 4px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #eeeeeeee; /* Color of the track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #7d7d7dee; /* Color of the scrollbar thumb */
+  border-radius: 2px; /* Rounded corners */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color when hovered */
+}
 /* End main settings */
 
 /*********************** Start Style Header  *************************/
@@ -2310,3 +2326,41 @@ $main-transition: var(--main-transition);
   }
 }
 /*********************** end style cart *************************/
+
+/*********************** start style cart_sidebar *************************/
+.cart_sidebar {
+  .offcanvas-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000000;
+    @media screen and (max-width: 768px) {
+      font-size: 18px;
+      font-weight: 400;
+    }
+  }
+  width: 596px !important;
+  @media screen and (max-width: 768px) {
+    width: 100% !important;
+  }
+  .cartSidebarHead {
+    background-color: #f7f7f7;
+  }
+
+  .myCart {
+    height: calc(100vh - 526px);
+    overflow-y: auto;
+    .cart_product_Img {
+      width: 88px;
+      height: 88px;
+      @media screen and (max-width: 767px) {
+        & {
+          width: 88px;
+          height: 88px;
+          border-radius: 30px;
+          background-color: #ededed;
+        }
+      }
+    }
+  }
+}
+/*********************** end style cart_sidebar *************************/

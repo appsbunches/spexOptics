@@ -337,6 +337,7 @@
     "value": "value",
     "total": "total:",
     "copun_success": "Active discount coupon has been applied",
-    "copun_fail": "The discount coupon entered is incorrect"
+    "copun_fail": "The discount coupon entered is incorrect",
+    "sall_content": ""
   }
 }
