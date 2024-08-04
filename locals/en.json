@@ -239,16 +239,16 @@
     "addresses_description": "Through the address book, you can add and edit your favorite addresses",
     "orders": "Orders",
     "orders_description": "Through the list of orders, you can view previous and current orders",
-    "welcome": "welcome again",
+    "welcome": "Welcome Again",
     "edit_profile": "Edit your profile",
     "input_name": "Full Name",
     "input_email": "Email",
     "input_phone": "Phone Number",
     "btn_edit": "Edit profile",
     "btn_delete": "Delete Account",
-    "myOrders": "My orders",
+    "myOrders": "My Orders",
     "order_number": "Order Number",
-    "order_latest": "Latest orders",
+    "order_latest": "Latest Orders",
     "order_total": "order total",
     "orders_notfound": "No Shopping Cart Found",
     "shopping_cart": "Shopping Cart",
@@ -264,12 +264,12 @@
     "order_paid": "Order Paid",
     "order_pending": "Wait for payment to process your order",
     "show_more": "Show More",
-    "myaddresses": "my addresses",
+    "myaddresses": "My Addresses",
     "myShippingOptions": "Shipping Options"
   },
   "orders": {
     "all_orders": "All orders",
-    "current_orders": "Current Ordered",
+    "current_orders": "Current Orders",
     "old_orders": "Prev Orders",
     "uncompleted_orders": "Uncompleted Orders",
     "order": " order",
@@ -338,6 +338,6 @@
     "total": "total:",
     "copun_success": "Active discount coupon has been applied",
     "copun_fail": "The discount coupon entered is incorrect",
-    "sall_content": ""
+    "sall_content": " salla content"
   }
 }

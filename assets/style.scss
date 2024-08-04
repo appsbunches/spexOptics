@@ -61,6 +61,9 @@ button {
 .radius30 {
   border-radius: 30px;
 }
+.radius20 {
+  border-radius: 20px;
+}
 .sameBorder {
   border: 1px solid #eeeeee;
 }
@@ -479,6 +482,9 @@ $main-transition: var(--main-transition);
     background-color: #fff;
     border-radius: 30px;
     border: 1px solid #e0e0e0;
+    @media screen and (width: 375px) {
+      width: 344px;
+    }
     .user-icon {
       width: 60px;
       height: 60px;
@@ -542,8 +548,8 @@ $main-transition: var(--main-transition);
         }
       }
       .close-btn {
-        width: 33px;
-        height: 33px;
+        width: 24px;
+        height: 24px;
       }
     }
     .body_profile_offcanfas {
@@ -558,22 +564,29 @@ $main-transition: var(--main-transition);
       .diffStyle {
         color: #475569;
       }
-      .btn-edit,
-      .btn-delete {
-        font-size: 16px;
-        font-weight: 700;
-        border-radius: 30px;
-        height: 56px;
-      }
-      .btn-edit {
-        color: #fff;
-      }
-      .btn-delete {
-        // color: #ff483b;
+      .btnCon {
+        @media screen and (width: 375px) {
+          width: 133px;
+        }
+        .btn-edit,
+        .btn-delete {
+          width: 100%;
+          font-size: 16px;
+          font-weight: 700;
+          border-radius: 30px;
+          height: 56px;
+        }
+        .btn-edit {
+          color: #fff;
+        }
+        .btn-delete {
+          // color: #ff483b;
+        }
       }
     }
   }
   .offcanvas-profile-edit {
+    width: 601px !important;
     @media screen and (max-width: 767px) {
       & {
         width: 100vw;
@@ -583,6 +596,9 @@ $main-transition: var(--main-transition);
   .myOrders,
   .myAddress_profile,
   .myShipping_profile {
+    @media screen and (width: 1440px) {
+      width: 378px;
+    }
     border-radius: 30px;
     background-color: #fff;
     a {
@@ -613,6 +629,11 @@ $main-transition: var(--main-transition);
     background-color: #fff;
     border-radius: 30px;
     border: 1px solid #e0e0e0;
+    @media screen and (width: 375px) {
+      & {
+        width: 344px;
+      }
+    }
     .head {
       background-color: #f7f7f7;
       border-radius: 30px 30px 0 0;
@@ -629,11 +650,11 @@ $main-transition: var(--main-transition);
       .latest-order {
         .order-id {
           font-size: 16px;
-          font-weight: 500;
+          font-weight: 700;
           color: #000;
           @media screen and (max-width: 767px) {
             & {
-              font-size: 14px;
+              font-size: 16px;
             }
           }
         }
@@ -645,7 +666,7 @@ $main-transition: var(--main-transition);
         .order-status,
         .order-payment {
           font-size: 12px;
-          font-weight: 500;
+          font-weight: 700;
           border-radius: 4px;
           min-width: 47px;
           height: 26px;
@@ -654,7 +675,6 @@ $main-transition: var(--main-transition);
           align-items: center;
           @media screen and (max-width: 767px) {
             & {
-              font-size: 8px;
               min-width: 40px;
             }
           }
@@ -668,16 +688,12 @@ $main-transition: var(--main-transition);
           color: #333333;
           background-color: #fff;
           border: 1px solid #e2e8f0;
+          font-weight: 700;
         }
         .total-string {
           font-size: 12px;
-          font-weight: 500;
+          font-weight: 700;
           color: #64748b;
-          @media screen and (max-width: 767px) {
-            & {
-              font-size: 10px;
-            }
-          }
         }
         .price {
           font-size: 18px;
@@ -699,11 +715,11 @@ $main-transition: var(--main-transition);
   }
   .show-more {
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 700;
     color: #0a3254;
     @media screen and (max-width: 767px) {
       & {
-        font-size: 10px;
+        font-size: 12px;
       }
     }
   }
@@ -716,6 +732,16 @@ $main-transition: var(--main-transition);
     background-color: #f7f7f7;
     border-radius: 20px;
     .order {
+      @media screen and (width: 1440px) {
+        width: 390px;
+      }
+      @media screen and (width: 375px) {
+        width: 319px;
+      }
+      .order-payment,
+      .order-status {
+        font-weight: 700;
+      }
       background-color: #fff;
       border-radius: 20px;
       .icon-box {
@@ -754,7 +780,7 @@ $main-transition: var(--main-transition);
       }
       .number {
         font-size: 28px;
-        font-weight: 700;
+        font-weight: 900;
         color: #000;
         @media screen and (max-width: 767px) {
           & {
@@ -782,6 +808,15 @@ $main-transition: var(--main-transition);
           font-size: 10px;
         }
       }
+      .text {
+        font-size: 14px;
+        font-weight: 900;
+        @media screen and (max-width: 767px) {
+          & {
+            font-size: 12px;
+          }
+        }
+      }
       .num-box {
         background-color: #f1f5f9;
         border-radius: 8px;
@@ -791,6 +826,8 @@ $main-transition: var(--main-transition);
         display: flex;
         justify-content: center;
         align-items: center;
+        font-size: 12px;
+        font-weight: 900;
       }
       .num-box.active {
         background-color: #0a3254;
@@ -814,6 +851,11 @@ $main-transition: var(--main-transition);
     .header-orders {
       background-color: #f7f7f7;
       border-radius: 30px 30px 0 0;
+      .title {
+        font-size: 16px;
+        font-weight: 700;
+        color: #1e293b;
+      }
     }
     .body-orders {
       .order {
@@ -822,6 +864,11 @@ $main-transition: var(--main-transition);
           font-size: 16px;
           font-weight: 700;
           color: #333333;
+          @media screen and (max-width: 767px) {
+            & {
+              font-size: 10px;
+            }
+          }
         }
         .date {
           font-size: 12px;
@@ -836,7 +883,7 @@ $main-transition: var(--main-transition);
         .order-status,
         .order-payment {
           font-size: 12px;
-          font-weight: 500;
+          font-weight: 700;
           border-radius: 4px;
           min-width: 47px;
           height: 26px;
@@ -854,11 +901,13 @@ $main-transition: var(--main-transition);
           color: #333333;
           // background-color: #ffae4d1a;
           border: 1px solid #0a3254;
+          font-weight: 700 !important;
         }
         .order-payment {
           color: #333333;
           background-color: #fff;
           border: 1px solid #e2e8f0;
+          font-weight: 700 !important;
         }
         .total-string {
           font-size: 12px;
@@ -969,6 +1018,9 @@ $main-transition: var(--main-transition);
 
 .allAddresses {
   .address {
+    @media screen and (width: 375px) {
+      width: 343px;
+    }
     .smBox {
       width: 50px;
       height: 50px;
@@ -997,6 +1049,7 @@ $main-transition: var(--main-transition);
   }
 }
 .offcanvas-add-address {
+  width: 601px !important;
   .header_address_offcanfas {
     background-color: #e2e8f0;
 
@@ -1006,16 +1059,17 @@ $main-transition: var(--main-transition);
       color: #000;
       @media screen and (max-width: 767px) {
         & {
-          font-size: 20px;
+          font-size: 18px;
         }
       }
     }
     .close-btn {
-      width: 33px;
-      height: 33px;
+      width: 24px;
+      height: 24px;
     }
   }
   .body_addAddress_offcanfas {
+    height: calc(100vh - 60px);
     .sameStyle {
       font-size: 14px;
       font-weight: 700;
@@ -1034,6 +1088,7 @@ $main-transition: var(--main-transition);
     .address-input {
       height: 54px;
       border: 1px solid #cbd5e1;
+      border-radius: 8px;
     }
     .btn-add {
       width: 573px;
@@ -1048,6 +1103,7 @@ $main-transition: var(--main-transition);
       justify-content: center;
       align-items: center;
       border: none;
+      color: #64748b;
       &:hover {
         background-color: $primary-color;
       }

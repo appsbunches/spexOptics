@@ -49,7 +49,7 @@
             </div>
 
             
-            <div class="body_addAddress_offcanfas h-100 p-4">
+            <div class="body_addAddress_offcanfas  p-4">
               <form   class="d-flex flex-column h-100 justify-content-between" id="customAddAddress">
                   <div>
                     <div class="mb-3 d-flex flex-column gap-3">
@@ -73,8 +73,8 @@
                       <input type="text" name="address_street" required class="form-control address-input" id="inputStreet"  >
                     </div>
                   </div>
-                  <div class="container">
-                         <button id="add-address-button" type="submit" class="btn btn-primary w-100 btn-add">
+                  <div class="container mt-auto">
+                         <button id="add-address-button" type="submit" class="btn btn-primary w-100 btn-add mx-auto">
                           <img class="add-address-progress d-none" src="{{ asset_url }}spinner.gif" width="15" height="15"/>
                         <span class="add-address-text"> {{ locals.addresses.add }}</span>
                          </button>
@@ -90,7 +90,7 @@
        <div class="row g-3">
          {% for address in addresses %}
             <div class="col-md-4" id="address-div-{{ address.id }}">
-                <div class="radius30 address p-3 d-flex align-items-start justify-content-between sameBorder">
+                <div class="radius20 address p-3 d-flex align-items-start justify-content-between sameBorder mx-auto">
                    <div class="d-flex flex-column gap-3">
                         <div class="smBox">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -101,7 +101,7 @@
                         <h4 class="address-title">{{ address.address_street }}</h4>
                         <p class="address-text">{{ address.country.name }}, {{ address.city.name }}, {{ address.address_district }}</p>
                    </div>
-                   <div>
+                   <div class="mt-3">
                     <button class="delete_btn" type="button" onclick="deleteAddress({{ address.id }})">
                       <img class="delete-address-progress d-none" src="{{ asset_url }}spinner.gif" width="15" height="15"/>
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="trashIcon">
@@ -122,7 +122,7 @@
 {% block footer_scripts %}
 
     <script>
-       
+       console.log({{ addresses |json_encode() |raw }});
         // fetch countries
         const selectBoxCountry = document.getElementById("addressCountries");
         function fetchCountries(){

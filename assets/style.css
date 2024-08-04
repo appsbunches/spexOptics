@@ -75,6 +75,10 @@ button {
   border-radius: 30px;
 }
 
+.radius20 {
+  border-radius: 20px;
+}
+
 .sameBorder {
   border: 1px solid #eeeeee;
 }
@@ -475,6 +479,11 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
   border-radius: 30px;
   border: 1px solid #e0e0e0;
 }
+@media screen and (width: 375px) {
+  .profile-page .profile-box {
+    width: 344px;
+  }
+}
 .profile-page .profile-box .user-icon {
   width: 60px;
   height: 60px;
@@ -534,8 +543,8 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
   }
 }
 .profile-page .offcanvas-profile-edit .header_profile_offcanfas .close-btn {
-  width: 33px;
-  height: 33px;
+  width: 24px;
+  height: 24px;
 }
 .profile-page .offcanvas-profile-edit .body_profile_offcanfas .sameStyle,
 .profile-page .offcanvas-profile-edit .body_profile_offcanfas .diffStyle {
@@ -548,15 +557,24 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
 .profile-page .offcanvas-profile-edit .body_profile_offcanfas .diffStyle {
   color: #475569;
 }
-.profile-page .offcanvas-profile-edit .body_profile_offcanfas .btn-edit,
-.profile-page .offcanvas-profile-edit .body_profile_offcanfas .btn-delete {
+@media screen and (width: 375px) {
+  .profile-page .offcanvas-profile-edit .body_profile_offcanfas .btnCon {
+    width: 133px;
+  }
+}
+.profile-page .offcanvas-profile-edit .body_profile_offcanfas .btnCon .btn-edit,
+.profile-page .offcanvas-profile-edit .body_profile_offcanfas .btnCon .btn-delete {
+  width: 100%;
   font-size: 16px;
   font-weight: 700;
   border-radius: 30px;
   height: 56px;
 }
-.profile-page .offcanvas-profile-edit .body_profile_offcanfas .btn-edit {
+.profile-page .offcanvas-profile-edit .body_profile_offcanfas .btnCon .btn-edit {
   color: #fff;
+}
+.profile-page .offcanvas-profile-edit {
+  width: 601px !important;
 }
 @media screen and (max-width: 767px) {
   .profile-page .offcanvas-profile-edit {
@@ -568,6 +586,13 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
 .profile-page .myShipping_profile {
   border-radius: 30px;
   background-color: #fff;
+}
+@media screen and (width: 1440px) {
+  .profile-page .myOrders,
+  .profile-page .myAddress_profile,
+  .profile-page .myShipping_profile {
+    width: 378px;
+  }
 }
 .profile-page .myOrders a,
 .profile-page .myAddress_profile a,
@@ -605,6 +630,11 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
   border-radius: 30px;
   border: 1px solid #e0e0e0;
 }
+@media screen and (width: 375px) {
+  .profile-page .latest-orders {
+    width: 344px;
+  }
+}
 .profile-page .latest-orders .head {
   background-color: #f7f7f7;
   border-radius: 30px 30px 0 0;
@@ -621,12 +651,12 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
 }
 .profile-page .latest-orders .latest_orders_data .latest-order .order-id {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 700;
   color: #000;
 }
 @media screen and (max-width: 767px) {
   .profile-page .latest-orders .latest_orders_data .latest-order .order-id {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 .profile-page .latest-orders .latest_orders_data .latest-order .date {
@@ -637,7 +667,7 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
 .profile-page .latest-orders .latest_orders_data .latest-order .order-status,
 .profile-page .latest-orders .latest_orders_data .latest-order .order-payment {
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 700;
   border-radius: 4px;
   min-width: 47px;
   height: 26px;
@@ -648,7 +678,6 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
 @media screen and (max-width: 767px) {
   .profile-page .latest-orders .latest_orders_data .latest-order .order-status,
   .profile-page .latest-orders .latest_orders_data .latest-order .order-payment {
-    font-size: 8px;
     min-width: 40px;
   }
 }
@@ -660,16 +689,12 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
   color: #333333;
   background-color: #fff;
   border: 1px solid #e2e8f0;
+  font-weight: 700;
 }
 .profile-page .latest-orders .latest_orders_data .latest-order .total-string {
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 700;
   color: #64748b;
-}
-@media screen and (max-width: 767px) {
-  .profile-page .latest-orders .latest_orders_data .latest-order .total-string {
-    font-size: 10px;
-  }
 }
 .profile-page .latest-orders .latest_orders_data .latest-order .price {
   font-size: 18px;
@@ -687,12 +712,12 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
 }
 .profile-page .show-more {
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 700;
   color: #0a3254;
 }
 @media screen and (max-width: 767px) {
   .profile-page .show-more {
-    font-size: 10px;
+    font-size: 12px;
   }
 }
 
@@ -705,6 +730,20 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
 .orders-page .orders-info .order {
   background-color: #fff;
   border-radius: 20px;
+}
+@media screen and (width: 1440px) {
+  .orders-page .orders-info .order {
+    width: 390px;
+  }
+}
+@media screen and (width: 375px) {
+  .orders-page .orders-info .order {
+    width: 319px;
+  }
+}
+.orders-page .orders-info .order .order-payment,
+.orders-page .orders-info .order .order-status {
+  font-weight: 700;
 }
 .orders-page .orders-info .order .icon-box {
   width: 56px;
@@ -735,7 +774,7 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
 }
 .orders-page .orders-info .order .number {
   font-size: 28px;
-  font-weight: 700;
+  font-weight: 900;
   color: #000;
 }
 @media screen and (max-width: 767px) {
@@ -761,6 +800,15 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
     font-size: 10px;
   }
 }
+.orders-page .orders-tabs .tab .text {
+  font-size: 14px;
+  font-weight: 900;
+}
+@media screen and (max-width: 767px) {
+  .orders-page .orders-tabs .tab .text {
+    font-size: 12px;
+  }
+}
 .orders-page .orders-tabs .tab .num-box {
   background-color: #f1f5f9;
   border-radius: 8px;
@@ -770,6 +818,8 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 12px;
+  font-weight: 900;
 }
 .orders-page .orders-tabs .tab .num-box.active {
   background-color: #0a3254;
@@ -792,6 +842,11 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
   background-color: #f7f7f7;
   border-radius: 30px 30px 0 0;
 }
+.orders-page .rendered-orders .header-orders .title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
+}
 .orders-page .rendered-orders .body-orders .order {
   border-radius: 12px;
 }
@@ -799,6 +854,11 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
   font-size: 16px;
   font-weight: 700;
   color: #333333;
+}
+@media screen and (max-width: 767px) {
+  .orders-page .rendered-orders .body-orders .order .order-id {
+    font-size: 10px;
+  }
 }
 .orders-page .rendered-orders .body-orders .order .date {
   font-size: 12px;
@@ -813,7 +873,7 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
 .orders-page .rendered-orders .body-orders .order .order-status,
 .orders-page .rendered-orders .body-orders .order .order-payment {
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 700;
   border-radius: 4px;
   min-width: 47px;
   height: 26px;
@@ -831,11 +891,13 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
 .orders-page .rendered-orders .body-orders .order .order-status {
   color: #333333;
   border: 1px solid #0a3254;
+  font-weight: 700 !important;
 }
 .orders-page .rendered-orders .body-orders .order .order-payment {
   color: #333333;
   background-color: #fff;
   border: 1px solid #e2e8f0;
+  font-weight: 700 !important;
 }
 .orders-page .rendered-orders .body-orders .order .total-string {
   font-size: 12px;
@@ -933,6 +995,11 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
   }
 }
 
+@media screen and (width: 375px) {
+  .allAddresses .address {
+    width: 343px;
+  }
+}
 .allAddresses .address .smBox {
   width: 50px;
   height: 50px;
@@ -963,6 +1030,9 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
   }
 }
 
+.offcanvas-add-address {
+  width: 601px !important;
+}
 .offcanvas-add-address .header_address_offcanfas {
   background-color: #e2e8f0;
 }
@@ -973,12 +1043,15 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
 }
 @media screen and (max-width: 767px) {
   .offcanvas-add-address .header_address_offcanfas h2 {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 .offcanvas-add-address .header_address_offcanfas .close-btn {
-  width: 33px;
-  height: 33px;
+  width: 24px;
+  height: 24px;
+}
+.offcanvas-add-address .body_addAddress_offcanfas {
+  height: calc(100vh - 60px);
 }
 .offcanvas-add-address .body_addAddress_offcanfas .sameStyle {
   font-size: 14px;
@@ -998,6 +1071,7 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
 .offcanvas-add-address .body_addAddress_offcanfas .address-input {
   height: 54px;
   border: 1px solid #cbd5e1;
+  border-radius: 8px;
 }
 .offcanvas-add-address .body_addAddress_offcanfas .btn-add {
   width: 573px;
@@ -1012,6 +1086,7 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
   justify-content: center;
   align-items: center;
   border: none;
+  color: #64748b;
 }
 .offcanvas-add-address .body_addAddress_offcanfas .btn-add:hover {
   background-color: var(--primary-color);
