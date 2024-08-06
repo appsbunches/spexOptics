@@ -339,5 +339,10 @@
     "copun_success": "Active discount coupon has been applied",
     "copun_fail": "The discount coupon entered is incorrect",
     "sall_content": " salla content"
+  },
+  "product": {
+    "products": "products",
+    "confirm": "confirm",
+    "cansel": "cansel"
   }
 }

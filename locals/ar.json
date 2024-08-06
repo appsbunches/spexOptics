@@ -81,7 +81,7 @@
   "product_description": "وصف المنتج",
   "product_options": "خيارات المنتج",
   "product_product_readmore": "المزيد",
-  "add_to_cart": "اضف للسلة",
+  "add_to_cart": "أضف للسلة",
   "product_price": "السعر",
   "product_all_available_options": "جميع الخيارات المتاحة",
   "product_cart_quantity": "الكمية",
@@ -337,5 +337,12 @@
     "copun_success": "تم تطبيق كوبون الخصم بنجاح",
     "copun_fail": "كوبون الخصم المدخل خاطئ",
     "sall_content": "محتويات السلة"
+  },
+  "product": {
+    "products": "المنتجات",
+    "confirm": "تأكيد",
+    "cansel": "إلغاء",
+    "right_eye": "العين اليمين",
+    "left_eye": "العين اليسار"
   }
 }

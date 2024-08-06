@@ -797,4 +797,46 @@ const copyLink = (event) => {
     copyMessage.classList.add('d-none');
   }, 2000);
 };
+// for quantity product detaisl
+$(document).on('click', '.btn-number', function (e) {
+  e.preventDefault();
+
+  var fieldName = $(this).attr('data-field'),
+    type = $(this).attr('data-type'),
+    input = $("input[name='" + fieldName + "']"),
+    currentVal = parseInt(input.val());
+
+  //   console.log("currentVal" , currentVal)
+  if (!isNaN(currentVal)) {
+    if (type == 'minus') {
+      if (currentVal > input.attr('min')) {
+        input.val(currentVal - 1).change();
+      }
+    } else if (type == 'plus') {
+      if (currentVal < input.attr('max')) {
+        input.val(currentVal + 1).change();
+      }
+      if (parseInt(input.val()) == input.attr('max')) {
+        $(this).prop('disabled', true);
+      }
+    }
+    $(this).siblings('.btn-number[data-type="plus"]').prop('disabled', false);
+
+    let selectedQuantity = parseInt(input.val());
+
+    //   console.log("selectedQuantity" , selectedQuantity)
+    $('#product-quantity')
+      .find('option')
+      .each(function () {
+        // console.log("selectedQuantity :::", selectedQuantity)
+        if ($(this).val() == selectedQuantity) {
+          $(this).prop('selected', true);
+        } else {
+          $(this).prop('selected', false);
+        }
+      });
+  } else {
+    input.val(0);
+  }
+});
 /**********************************  my edits ahmed ashraf ******************************/

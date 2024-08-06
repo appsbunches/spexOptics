@@ -2420,3 +2420,172 @@ $main-transition: var(--main-transition);
   }
 }
 /*********************** end style cart_sidebar *************************/
+
+/*********************** start style product *************************/
+.product {
+  .col-product-info {
+    border-color: #eeeeeeee;
+    .product_name {
+      font-size: 40px;
+      font-weight: 700;
+      color: #0a0c10;
+      @media screen and (max-width: 768px) {
+        font-size: 20px;
+      }
+    }
+    .product_formatted_price_con {
+      background-color: #fee4e2;
+      height: 27px;
+      min-width: 111px;
+      border-radius: 8px;
+      .product-formatted-price-discount {
+        color: #d92c20;
+        font-weight: 800;
+        font-size: 12px;
+      }
+    }
+    .price_container {
+      .product-formatted-price {
+        color: #0a3254;
+        font-weight: 400;
+        font-size: 25px;
+        @media screen and (max-width: 768px) {
+          font-size: 16px;
+        }
+      }
+      .product-formatted-price-old {
+        color: #9d9d9d;
+        font-weight: 400;
+        text-decoration: line-through;
+        font-size: 18px;
+        @media screen and (max-width: 768px) {
+          font-size: 12px;
+        }
+      }
+    }
+    .product_short_desc {
+      font-size: 14px;
+      font-weight: 400;
+      color: #333333;
+      line-height: 25px;
+    }
+  }
+  .containerAddToCartQuantity {
+    .btn-number {
+      border: 1px solid #eeeeee;
+    }
+    .inptContainer {
+      width: 90px;
+      input[type='number'] {
+        outline: none;
+        border: 1px solid #eeeeee;
+        border-radius: 30px;
+        height: 30px;
+        text-align: center;
+        & {
+          height: 48px;
+          @media screen and (max-width: 767px) {
+            height: 36px;
+          }
+        }
+      }
+      @media screen and (max-width: 767px) {
+        flex: 1;
+      }
+    }
+    .product-buttons {
+      .btn-add-to-cart {
+        color: #fff;
+        font-size: 16px;
+        font-weight: 400;
+        height: 48px;
+        @media screen and (max-width: 767px) {
+          font-size: 12px;
+          height: 36px;
+          flex: 1;
+        }
+      }
+    }
+  }
+  .variants_colors {
+    .variant-item-con {
+      width: 39px;
+      height: 39px;
+      border-radius: 50%;
+      background: #fff;
+      cursor: pointer;
+      &.active,
+      &:hover {
+        border: 1px solid #0a3254;
+      }
+      .variant-item-li {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+      }
+    }
+  }
+  .variants_lens_type,
+  .variants_lens_thickness {
+    .variant-item-lens,
+    .variant-item-lens-thick {
+      border: 1px solid #eeeeee;
+      border-radius: 20px;
+      font-size: 12px;
+      color: #333333;
+      font-weight: 400;
+      cursor: pointer;
+      &.active {
+        border: 1px solid #0a3254;
+      }
+    }
+  }
+  .custom_input_fields {
+    .sight_size {
+      .modal_custom_input_field {
+        .title {
+          background: #f7f7f7;
+          font-size: 25px;
+          font-weight: 700;
+          color: #333333;
+          border-radius: 20px 20px 0 0;
+        }
+        .modal_content {
+          .custom_input_choice {
+            min-width: 112px;
+            height: 52px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 400;
+            font-size: 12px;
+            color: #333333;
+            cursor: pointer;
+            &.active {
+              border: 1px solid #0a3254;
+            }
+          }
+        }
+        .footer_modal {
+          .confirm,
+          .cansel {
+            height: 48px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            font-weight: 400;
+          }
+          .confirm {
+            color: #fff;
+          }
+          .cansel {
+            color: #0a3254;
+            border: 1px solid #eeeeee;
+          }
+        }
+      }
+    }
+  }
+}
+/*********************** end style product *************************/

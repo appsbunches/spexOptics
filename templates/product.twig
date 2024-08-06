@@ -217,7 +217,34 @@
 {% endblock %}
 
 {% block main_content %}
+ 
+    {# breadcrumps #}
+     {% embed 'breadcrumb.twig' %}
+                {% block breadcrumb_items %}
+                    <li class="breadcrumb-item" aria-current="page"><a href="/">{{ locals.home_title }}</a></li>
+                        {% if session.lang.code == 'ar' %}
+                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                        <path d="M7 1L2 6L7 11" stroke="#333333" stroke-width="1.5"/>
+                        </svg>
+                    {% else %}
+                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="rotateIcon">
+                        <path d="M7 1L2 6L7 11" stroke="#333333" stroke-width="1.5"/>
+                        </svg>
+                    {% endif %}
+                    <li class="breadcrumb-item " aria-current="page">{{ locals.product.products }}</li>
+                     {% if session.lang.code == 'ar' %}
+                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                        <path d="M7 1L2 6L7 11" stroke="#333333" stroke-width="1.5"/>
+                        </svg>
+                    {% else %}
+                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="rotateIcon">
+                        <path d="M7 1L2 6L7 11" stroke="#333333" stroke-width="1.5"/>
+                        </svg>
+                    {% endif %}
+                      <li class="breadcrumb-item active" aria-current="page">{{ product.name | raw }}</li>
 
+                {% endblock %}
+    {% endembed %}
     <section class="product products-details-page">
         <div class="container pb-5">
             <section class="products-details mb-5">
@@ -280,10 +307,24 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="border-product">
+                                <h4 class="product-title">{{ locals.product_share }}</h4>
+                                <div class="product-icon">
+                                    <div class="product-social d-flex">
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ product.html_url }}" target="_blank"><i class="icon-facebook-f"></i></a>
+                                        <a href="https://www.pinterest.com/pin/create/button/?url={{ product.html_url }}" target="_blank"><i class="icon-pinterest"></i></a>
+                                        <a href="https://twitter.com/intent/tweet?text={{ product.name }}: {{ product.html_url }}" target="_blank"><i class="icon-twitter"></i></a>
+                                        <a href="https://api.whatsapp.com/send?text={{ locals.check_out_this_product }}:{{ product.name }} {{ product.html_url }}" target="_blank">
+                                            <i class="icon-whatsapp"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
 
                         </div>
 
-                        <div class="col-lg-6  col-product-info {% if product.selected_product.images | length <= 1 %}col-product-info-single-image{% endif %}">
+                        <div class="col-lg-6  col-product-info border py-4 px-3 radius20 {% if product.selected_product.images | length <= 1 %}col-product-info-single-image{% endif %}">
 
 
 
@@ -291,7 +332,54 @@
                                 {% if product.badge %}
                                    {{ template_for_product_badge }}
                                 {% endif %}
-                                <h1>{{ product.name | raw }}</h1>
+                                <div class="d-flex justify-content-between gap-3 flex-wrap">                                
+                                   <h1 class="product_name flex-2">{{ product.name | raw }}</h1>
+                                   {% if product.selected_product.formatted_sale_price %} 
+                                        <div class="d-flex product_formatted_price_con align-items-center gap-3 px-2">
+                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_300_35172)">
+                                                    <g clip-path="url(#clip1_300_35172)">
+                                                    <path d="M3.78712 3.90001C3.61181 3.90001 3.44045 3.9528 3.29468 4.05169C3.14892 4.15058 3.03531 4.29114 2.96823 4.4556C2.90114 4.62005 2.88359 4.80101 2.91779 4.9756C2.95199 5.15017 3.03641 5.31054 3.16037 5.43641C3.28433 5.56228 3.44225 5.64799 3.6142 5.68272C3.78614 5.71745 3.96436 5.69962 4.12631 5.6315C4.28828 5.56338 4.42671 5.44802 4.5241 5.30003C4.6215 5.15202 4.67348 4.97801 4.67348 4.80001C4.67348 4.56132 4.5801 4.3324 4.41387 4.16362C4.24765 3.99484 4.0222 3.90001 3.78712 3.90001ZM11.8353 6.72601L6.86576 1.67401C6.81054 1.6184 6.74506 1.57441 6.67306 1.54455C6.60107 1.51469 6.52398 1.49955 6.44621 1.50001H1.12803C0.971309 1.50001 0.821009 1.56322 0.710193 1.67575C0.599376 1.78827 0.537119 1.94088 0.537119 2.10001V7.50001C0.53667 7.57897 0.551575 7.65725 0.580982 7.73035C0.610388 7.80346 0.653717 7.86995 0.708482 7.92601L5.68394 12.972C6.01633 13.3091 6.46689 13.4984 6.93667 13.4984C7.40644 13.4984 7.85701 13.3091 8.18939 12.972L11.8353 9.30001C12.1673 8.96251 12.3537 8.50501 12.3537 8.02801C12.3537 7.55101 12.1673 7.09351 11.8353 6.75601V6.72601ZM11.0021 8.41801L7.3503 12.12C7.23959 12.2318 7.08982 12.2945 6.93371 12.2945C6.77761 12.2945 6.62783 12.2318 6.51712 12.12L1.71894 7.25401V2.70001H6.20394L11.0021 7.57201C11.0569 7.62808 11.1002 7.69457 11.1296 7.76767C11.159 7.84076 11.1739 7.91905 11.1735 7.99801C11.1728 8.15542 11.1113 8.30626 11.0021 8.41801Z" fill="#D92C20"/>
+                                                    </g>
+                                                    </g>
+                                                    <defs>
+                                                    <clipPath id="clip0_300_35172">
+                                                    <rect width="14" height="14" fill="white" transform="translate(0 0.5)"/>
+                                                    </clipPath>
+                                                    <clipPath id="clip1_300_35172">
+                                                    <rect width="13" height="12" fill="white" transform="translate(-0.0546875 1.5)"/>
+                                                    </clipPath>
+                                                    </defs>
+                                                </svg>
+
+                                                <span class="product-formatted-price-discount" style="color:#f25f5f;">{% if product.selected_product.formatted_sale_price %}  &nbsp;  &nbsp;{{ locals.product_discount }}&nbsp;{{ product.discount_percentage }}%{% endif %}</span>
+                                        </div>
+                                    {% endif %}
+                                </div>
+
+                                <div class="d-flex align-items-center flex-wrap gap-3 price_container mt-3">
+                                   <p>
+                                        <del class="product-formatted-price-old">{% if product.selected_product.formatted_sale_price %} {{ product.selected_product.formatted_price }}{% endif %}</del>
+                                        
+                                    </p>
+                                    <h2 class="product-formatted-price theme-text-primary">{% if product.selected_product.formatted_sale_price %}{{ product.selected_product.formatted_sale_price }}{% else %}{{ product.selected_product.formatted_price }}{% endif %}</h2>
+                                  
+                                </div>
+                                
+                                <div class="mt-3">
+                                    {{ template_for_product_loyalty_points_widget }}
+                                </div>
+
+                                <div class="mt-3">
+                                    {{ template_for_product_payments_widget }}
+                                </div>
+                                
+                                {% if product.short_description is not empty %}
+                                    <p class="product_short_desc mt-3">
+                                        {{ product.short_description | raw }}
+                                    </p>
+                                {% endif %}
+                               {# features #}
                                 <div class="d-flex flex-column flex-lg-row product-features">
                                     {% if product.rating %}
                                         <div>
@@ -330,65 +418,82 @@
 
                                 </div>
 
-                                {% if product.short_description is not empty %}
-                                    <p>
-                                        {{ product.short_description | raw }}
-                                        &nbsp;<a id="product-description-a" href="#product-description" class="text-color-primary">{{ locals.product_description_more }}</a>
-                                    </p>
-                                {% endif %}
-                                <div class="d-flex">
-                                    <div>
-                                        <h2 class="product-formatted-price theme-text-primary">{% if product.selected_product.formatted_sale_price %}{{ product.selected_product.formatted_sale_price }}{% else %}{{ product.selected_product.formatted_price }}{% endif %}</h2>
-                                        <p>
-                                            <del class="product-formatted-price-old">{% if product.selected_product.formatted_sale_price %} {{ product.selected_product.formatted_price }}{% endif %}</del>
-                                            <span class="product-formatted-price-discount" style="color:#f25f5f;">{% if product.selected_product.formatted_sale_price %}  &nbsp;  &nbsp;{{ locals.product_discount }}&nbsp;{{ product.discount_percentage }}%{% endif %}</span>
-                                        </p>
-                                    </div>
 
-                                </div>
+                                
 
-                                <div>
-                                    {{ template_for_product_loyalty_points_widget }}
-                                </div>
 
-                                <div>
-                                    {{ template_for_product_payments_widget }}
-                                </div>
                             </section>
 
 
-                            <div class="border-product"></div>
+                            {# <div class="border-product"></div>
                             <div style="margin-bottom: 25px" class="div-product-sku {% if not product.selected_product.sku %}d-none{% endif %}">
                                 <h4 class="product-title">{{ locals.product_sku }}</h4>
                                 <div class="product-sku">
                                     {{ product.selected_product.sku }}
                                 </div>
-                            </div>
+                            </div> #}
 
-                            <div style="margin-bottom: 25px" class="div-product-weight {% if not product.selected_product.weight.value %}d-none{% endif %}">
+                            {# <div style="margin-bottom: 25px" class="div-product-weight {% if not product.selected_product.weight.value %}d-none{% endif %}">
                                 <h4 class="product-title">{{ locals.product_weight }}</h4>
                                 <div class="product-weight">
                                     {{ product.selected_product.weight.value }}&nbsp;{{ product.selected_product.weight.unit }}
                                 </div>
-                            </div>
+                            </div> #}
 
                             <form id="product-form">
                                 <input id="product-id" type="hidden" value="{{ product.selected_product.id }}">
 
                                 <div class="size-box">
-
+                                    <style>
+                                        #product-variants-options div:has(ul[name^='Color' i]),
+                                        #product-variants-options div:has(ul[name^='اللون']) {
+                                            display: none;
+                                        }
+                                        #product-variants-options div:has(ul[name^='Lens thickness' i]),
+                                        #product-variants-options div:has(ul[name^='سماكة العدسة']) {
+                                            display: none;
+                                        }
+                                        #product-variants-options div:has(ul[name^='Lens type' i]),
+                                        #product-variants-options div:has(ul[name^='نوع العدسة']) {
+                                            display: none;
+                                        }
+                                    </style>
                                     {{ template_for_product_variants_list }}
 
+                                        {% if product.has_variants %}
+                                            {# Colors Variants #} 
+                                            <div class="variants_colors d-flex gap-3 mt-4">
+                                            
+                                                  
+                                                     
+                                            </div>
+                                            <div class="variants_lens_type  d-flex gap-3 mt-4">
+                                            
+                                            </div>
+                                            <div class="variants_lens_thickness  d-flex gap-3 mt-4">
+                                            
+                                            </div>
+                                            {# Colors Variants #} 
+                                        {% endif %}
+
+                                    
+                                     <div class="custom_input_fields d-flex flex-column gap-4 mt-4">
+                                     
+                                     </div>
+                                    
                                     <!-- new custom fields update -->
                                     {% if product.has_custom_input_fields  %}
-                                        <div class="border-product" style="margin-top: 25px"></div>
-                                        {{ template_for_product_custom_input_fields }}
+                                        <div class="d-none">
+                                          {{ template_for_product_custom_input_fields }}
+                                        </div>
                                     {% endif %}
+
+                                 
                                 </div>
 
                                 {% if product.selected_product.is_infinite or product.selected_product.quantity > 0 %}
-                                    <div class="border-product" style="margin-top: 15px"></div>
-                                    <div class="select-quantity-div">
+                                    <div class="border-product d-none" style="margin-top: 15px"></div>
+                                    <div class="select-quantity-div d-none">
                                         <h4 class="product-title">{{ locals.product_cart_quantity }}</h4>
                                         <div class="form-group">
                                             <div>
@@ -430,40 +535,68 @@
 
 
                             </form>
-                            <div class="product-buttons {% if product.selected_product.out_of_stock %}d-none{% else %}d-block{% endif %}">
-                                <div class="border-product"></div>
-                                <button style="margin-bottom: 20px"
-                                        class="btn btn-add-to-cart" type="button" onclick="productAddToCart()">
-                                    <i class="fa fa-shopping-cart me-1" aria-hidden="true"></i>
-                                    <img class="add-to-cart-progress d-none" src="{{ asset_url }}spinner.gif" width="25" height="25"/>
-                                    <span>{{ locals.add_to_cart }}</span>
-                                </button>
 
-                                <div>
-                                    {{ template_for_product_apple_pay_button }}
+                            {# add to cart #}
+                              <div class="mt-auto containerAddToCartQuantity mt-auto {% if product.selected_product.is_infinite or product.selected_product.quantity > 0 %}d-block{% else %}d-none{% endif %}">
+                                <div class="d-flex gap-3">
+                                   
+                                        {% if product.selected_product.is_infinite or product.selected_product.quantity > 0 %}
+                                            {% if product.selected_product.is_infinite or product.selected_product.quantity > 100 %}
+                                                {% set maxQuantity = 100 %}
+                                            {% else %}
+                                                {% set maxQuantity = product.selected_product.quantity %}
+                                            {% endif %}    
+                                            <div class="inptContainer position-relative   ">
+                                                <button type="button" class="button-plus border-0 btn-number increase_btn position-absolute start-0 top-50 translate-middle p-0 mx-4" data-type="plus" data-field="quantity_{{product.id}}">
+                                                    <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <g clip-path="url(#clip0_1033_20933)">
+                                                        <path d="M8.33301 3.83203V13.1654" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        <path d="M3.66577 8.5H12.9991" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </g>
+                                                        <defs>
+                                                        <clipPath id="clip0_1033_20933">
+                                                        <rect width="16" height="16" fill="white" transform="translate(0.333008 0.5)"/>
+                                                        </clipPath>
+                                                        </defs>
+                                                        </svg>
+                                                </button>
+                                                <input type="number" id="input-product-quantity" name="quantity_{{product.id}}" min="1" value="1"  max="{{ maxQuantity }}"  class="w-100"/>
+                                                <button type="button" class="button-minus btn-number  border-0 decrease_btn position-absolute end-0 top-50 translate-middle p-0" data-type="minus"  data-field="quantity_{{product.id}}">
+                                                    <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <g clip-path="url(#clip0_1033_20927)">
+                                                        <path d="M3.66577 8.5H12.9991" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </g>
+                                                        <defs>
+                                                        <clipPath id="clip0_1033_20927">
+                                                        <rect width="16" height="16" fill="white" transform="translate(0.333008 0.5)"/>
+                                                        </clipPath>
+                                                        </defs>
+                                                    </svg>
+                                                </button>
+                                            </div>                                
+                                            
+                                        {% endif %}
+
+                                     <div class="product-buttons flex-1">                                  
+                                          <button id="product-view-add-to-cart"
+                                                  class=" btn-add-to-cart radius30 d-flex justify-content-center align-items-center" type="button" onclick="productAddToCart()">
+                                              <img class="add-to-cart-progress d-none" src="{{ asset_url }}spinner.gif" width="25" height="25"/>
+                                              <span>{{ locals.add_to_cart }}</span>
+                                          </button>
+                                          <div>
+                                              {{ template_for_product_apple_pay_button }}
+                                          </div>
+                                     </div>
                                 </div>
 
-                            </div>
+                              </div>
+                           
 
                             <div>
                                 <span id="product-view-add-to-cart"></span>
                             </div>
 
-                            <div class="border-product"></div>
-                            <div class="border-product">
-                                <h4 class="product-title">{{ locals.product_share }}</h4>
-                                <div class="product-icon">
-                                    <div class="product-social d-flex">
-                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ product.html_url }}" target="_blank"><i class="icon-facebook-f"></i></a>
-                                        <a href="https://www.pinterest.com/pin/create/button/?url={{ product.html_url }}" target="_blank"><i class="icon-pinterest"></i></a>
-                                        <a href="https://twitter.com/intent/tweet?text={{ product.name }}: {{ product.html_url }}" target="_blank"><i class="icon-twitter"></i></a>
-                                        <a href="https://api.whatsapp.com/send?text={{ locals.check_out_this_product }}:{{ product.name }} {{ product.html_url }}" target="_blank">
-                                            <i class="icon-whatsapp"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
+                        
                         </div>
                     </div>
                 </div>
@@ -504,7 +637,8 @@
             {% include 'grouped-product-details.twig' with {'product' : product } %}
             {% endif %}
 
-
+        
+            {# long description #}
             {% if product.description %}
                 <section id="product-description" class="mt-5">
                     <div class="d-flex align-items-center">
@@ -521,7 +655,7 @@
                 </section>
             {% endif %}
 
-            {% if product.has_variants %}
+            {# {% if product.has_variants %}
                 <section class="product-selection mt-5">
                     <div>
                         <div class="d-flex align-items-center">
@@ -715,6 +849,7 @@
                 {% include 'customer-reviews-add.twig' with {'product' : product } %}
 
             {% endif %}
+
             {% if store.is_product_question_and_answer_enabled %}
             <section class="mt-5 review-details">
                 <div>
@@ -733,7 +868,7 @@
                 {% include 'product-questions.twig' with {'questions' : product.questions} %}
                 {% include 'product-question-add.twig' with {'product' : product} %}
             </section>
-             {% endif %}
+             {% endif %} #}
 
             {% if (product.related_products | length) >  0 %}
                 <section class="mt-5 mb-5">
@@ -762,11 +897,7 @@
                     </div>
                 </section>
 
-                <script>
-                    document.addEventListener("DOMContentLoaded", function(){
-                        showRelatedProducts();
-                    });
-                </script>
+            
             {% endif %}
 
         </div>
@@ -819,7 +950,137 @@
 
     <script>
         var productImages = {{  product.selected_product.images | json_encode() | raw }};
+        console.log("selected product ");
+console.log({{  product.selected_product | json_encode() | raw }});
+        console.log(" product ");
+console.log({{  product | json_encode() | raw }});
+const product = {{  product | json_encode() | raw }};
 
+    
+
+        // handle variations
+        const handleVariations = ()=>{
+            const varinatColors = document.querySelector(".variants_colors");
+            const varinatLensType = document.querySelector(".variants_lens_type");
+            const varinatLensThickness = document.querySelector(".variants_lens_thickness");
+            if(product.variants.length > 0){
+                product.options.forEach((option,index)=>{
+                  if(option.name.trim().toLowerCase() === "color" || option.name.trim() === "اللون"){
+                    let tempChocices = "";
+                    for(let choice of option.choices){
+                        tempChocices += `<div class="variant-item-con variant-item  d-flex justify-content-center align-items-center color-variant ${product.selected_product.attributes[index].value == choice ? 'active':''}" data-value="${choice}" onclick="colorClicked(event)" >
+                                           <div data-value="${choice}" class="variant-item-li text-de" style="background-color:${choice.split('-')[1].trim()}">
+                                              
+                                            </div>
+                         
+                                         </div>`;
+                    }
+                    varinatColors.innerHTML = tempChocices;
+                  }
+                  if(option.name.trim().toLowerCase() === "Lens type" || option.name.trim()=== "نوع العدسة"){
+                    let tempLnsType = "";
+                    for(let choice of option.choices){
+                        tempLnsType += `<div class="variant-item-lens p-4 d-flex justify-content-center align-items-center ${product.selected_product.attributes[index].value == choice ? 'active':''}" data-value="${choice}" onclick="lensTypeClicked(event)">
+                                       ${choice}
+                                         </div>`;
+                    }
+                    varinatLensType.innerHTML = tempLnsType;
+                  }
+                  if(option.name.trim().toLowerCase() === " Lens thickness" || option.name.trim()=== "سماكة العدسة"){
+                    let tempLnsThick = "";
+                    for(let choice of option.choices){
+                        tempLnsThick += `<div class="variant-item-lens-thick p-4 d-flex justify-content-center align-items-center ${product.selected_product.attributes[index].value == choice ? 'active':''}" data-value="${choice}" onclick="lensThickClicked(event)">
+                                       ${choice}
+                                         </div>`;
+                    }
+                    varinatLensThickness.innerHTML = tempLnsThick;
+                  }
+                })
+            }
+        }
+         function colorClicked(event) {
+            event.preventDefault();
+            $('.color-variant').removeClass('active');
+            event.target.closest(".color-variant").classList.add('active');
+            // dispatch click event on the color variant original option.log
+            const item = document.querySelector(`#product-variants-options ul li[value="${event.target.dataset.value}"]`);
+            item.click();
+         }
+         function lensTypeClicked(event) {
+            event.preventDefault();
+            $('.variant-item-lens').removeClass('active');
+            event.target.closest(".variant-item-lens").classList.add('active');
+            // dispatch click event on the color variant original option.log
+            const item = document.querySelector(`#product-variants-options ul li[value="${event.target.dataset.value}"]`);
+            item.click();
+         }
+         function lensThickClicked(event) {
+            event.preventDefault();
+            $('.variant-item-lens-thick').removeClass('active');
+            event.target.closest(".variant-item-lens-thick").classList.add('active');
+            // dispatch click event on the color variant original option.log
+            const item = document.querySelector(`#product-variants-options ul li[value="${event.target.dataset.value}"]`);
+            item.click();
+         }
+        //  handle custom input fields 
+        function handleCLickChoice(event){
+            event.preventDefault();
+            event.target.closest(".modal_content").querySelectorAll(".custom_input_choice").forEach((a)=> a.classList.remove("active"));
+            event.target.closest(".custom_input_choice").classList.add('active');
+         }
+      function handleCustomInputFields() {
+            const customInputFieldContainer = document.querySelector(".custom_input_fields");
+            if (product.custom_input_fields.length > 0) {
+         
+                const fixedInputFields = ["مقاس النظر - العين اليمني", "مقاس النظر - العين اليسري", "المحور", "sight size - right eye","sight size - left eye", "deviation size", "the hub"];
+                const sigtSizes = product.custom_input_fields.filter((customField)=> customField.label.split("-")[0].trim() === "مقاس النظر" || customField.label.split("-")[0].trim() === "sight size");
+
+                if(sigtSizes?.length > 0){
+                    let tempSizeSight = "";
+                    sigtSizes.forEach((sightSize,index) => {
+                        let tempChoices = "";
+                        // const activeTab = document.querySelector(`.custom${sightSize.label}`);
+                        sightSize.choices.forEach((choice) => {
+                            tempChoices += `<div class="custom_input_choice p-4 d-flex gap-3 align-items-center radius20" onclick="handleCLickChoice(event)">
+                                                ${choice.ar}
+                                            </div>`
+                        })
+                        tempSizeSight += `<div class="sight_size">
+                                            <button class="custom_input_fixed custom${sightSize.label} radius20 border p-4" data-value="${sightSize.label}" type="button" data-bs-toggle="modal" data-bs-target="#fixedInput${index}">${sightSize.label.split("-")[1]}
+                                            </button>
+                                            <div class="modal modal_custom_input_field fade" id="fixedInput${index}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog  modal-dialog-centered">
+                                                  <div class="modal-content radius20">
+                                                        <h3 class="title py-3 text-center">${sightSize.label}</h3>
+                                                        <div class="modal_content d-flex flex-wrap gap-3 mt-3 mb-4 px-2">
+                                                            ${tempChoices}
+                                                        </div>
+                                                        <div class="footer_modal d-flex flex-wrap gap-3 mb-3 px-2">
+                                                            <button type="button" class="btn btn-primary confirm  radius30 flex-1" >{{ locals.product.confirm }}</button>
+                                                            <button type="button" class="btn flex-1 radius30 cansel" data-bs-dismiss="modal">{{ locals.product.cansel }}</button>
+                                                        </div>
+                                                  </div>                                                   
+                                                </div>
+                                             </div>
+                                          </div>`
+                    })
+                     const sightSize = `<div class="field">
+                                         <h2 class="field_label">${sigtSizes[0].label.split("-")[0]}</h2>
+                                         <div class="d-flex gap-3">
+                                           ${tempSizeSight}
+                                         </div>
+                                       </div>`;
+                     customInputFieldContainer.insertAdjacentHTML('beforeend', sightSize);
+
+                }
+
+
+
+
+              
+            }
+        }
+     
         function productAddToCart() {
             if(!$('.add-to-cart-progress').hasClass('d-none'))
                 return;
@@ -910,7 +1171,7 @@
                         selected_product.quantity = 100;
 
                     if(selected_product.quantity > 0) {
-                        $('.select-quantity-div').removeClass('d-none')
+                        // $('.select-quantity-div').removeClass('d-none')
                         var quantityMax = (selected_product.quantity > 100) ? 100 : selected_product.quantity;
                         selectQuantity = '<option value="1"selected>1</option>'
                         for(var i=2; i <= quantityMax; i++){
@@ -923,6 +1184,7 @@
                     $('.select-quantity').html(selectQuantity);
 
                     $('.product-buttons').removeClass('d-none');
+                    $('.containerAddToCartQuantity').removeClass('d-none');
                     $('.section-out-of-stock-notify-me').addClass('d-none');
 
                     $('.btn-add-to-cart span').html('{{ locals.add_to_cart }}');
@@ -942,6 +1204,8 @@
                     }
                     $('.select-quantity-div').addClass('d-none')
                     $('.product-buttons').addClass('d-none');
+                  $('.containerAddToCartQuantity').addClass('d-none');
+
                     $('.section-out-of-stock-notify-me').removeClass('d-none');
 
                     $('.btn-add-to-cart span').html('{{ locals.error_item_unavailable }}');
@@ -959,6 +1223,8 @@
                 // variant doesn't exist.
                 $('.select-quantity-div').addClass('d-none')
                 $('.product-buttons').addClass('d-none');
+                                  $('.containerAddToCartQuantity').addClass('d-none');
+
                 $('.section-out-of-stock-notify-me').removeClass('d-none');
 
                 $('.btn-add-to-cart span').html('{{ locals.error_item_unavailable }}');
@@ -1174,6 +1440,11 @@
                 });
             }
         }
+         document.addEventListener("DOMContentLoaded", function(){
+                        showRelatedProducts();
+                        handleVariations();
+                        handleCustomInputFields();
+          });
 
     </script>
 
