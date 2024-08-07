@@ -343,6 +343,7 @@
   "product": {
     "products": "products",
     "confirm": "confirm",
-    "cansel": "cansel"
+    "cansel": "cansel",
+    "attach": "ارفق"
   }
 }

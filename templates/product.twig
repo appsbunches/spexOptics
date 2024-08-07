@@ -144,7 +144,7 @@
         .grouped-product-table-row {
             border-bottom: 1px solid #f7f7f8;
         }
-
+      
     </style>
 {% endblock %}
 
@@ -334,7 +334,6 @@
                                 {% endif %}
                                 <div class="d-flex justify-content-between gap-3 flex-wrap">                                
                                    <h1 class="product_name flex-2">{{ product.name | raw }}</h1>
-                                   {% if product.selected_product.formatted_sale_price %} 
                                         <div class="d-flex product_formatted_price_con align-items-center gap-3 px-2">
                                             <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <g clip-path="url(#clip0_300_35172)">
@@ -354,7 +353,6 @@
 
                                                 <span class="product-formatted-price-discount" style="color:#f25f5f;">{% if product.selected_product.formatted_sale_price %}  &nbsp;  &nbsp;{{ locals.product_discount }}&nbsp;{{ product.discount_percentage }}%{% endif %}</span>
                                         </div>
-                                    {% endif %}
                                 </div>
 
                                 <div class="d-flex align-items-center flex-wrap gap-3 price_container mt-3">
@@ -443,7 +441,7 @@
                             <form id="product-form">
                                 <input id="product-id" type="hidden" value="{{ product.selected_product.id }}">
 
-                                <div class="size-box">
+                                <div class="size-box mb-4">
                                     <style>
                                         #product-variants-options div:has(ul[name^='Color' i]),
                                         #product-variants-options div:has(ul[name^='اللون']) {
@@ -462,16 +460,14 @@
 
                                         {% if product.has_variants %}
                                             {# Colors Variants #} 
-                                            <div class="variants_colors d-flex gap-3 mt-4">
-                                            
+                                            <div class="variants_colors d-flex flex-column mt-4">
                                                   
                                                      
                                             </div>
-                                            <div class="variants_lens_type  d-flex gap-3 mt-4">
-                                            
+                                            <div class="variants_lens_type flex-column d-flex mt-4">
                                             </div>
-                                            <div class="variants_lens_thickness  d-flex gap-3 mt-4">
-                                            
+                                            <div class="variants_lens_thickness flex-column d-flex mt-4">
+
                                             </div>
                                             {# Colors Variants #} 
                                         {% endif %}
@@ -479,8 +475,9 @@
                                     
                                      <div class="custom_input_fields d-flex flex-column gap-4 mt-4">
                                      
+                                  
                                      </div>
-                                    
+
                                     <!-- new custom fields update -->
                                     {% if product.has_custom_input_fields  %}
                                         <div class="d-none">
@@ -537,7 +534,7 @@
                             </form>
 
                             {# add to cart #}
-                              <div class="mt-auto containerAddToCartQuantity mt-auto {% if product.selected_product.is_infinite or product.selected_product.quantity > 0 %}d-block{% else %}d-none{% endif %}">
+                              <div class="mt-auto containerAddToCartQuantity  {% if product.selected_product.is_infinite or product.selected_product.quantity > 0 %}d-block{% else %}d-none{% endif %}">
                                 <div class="d-flex gap-3">
                                    
                                         {% if product.selected_product.is_infinite or product.selected_product.quantity > 0 %}
@@ -975,7 +972,9 @@ const product = {{  product | json_encode() | raw }};
                          
                                          </div>`;
                     }
-                    varinatColors.innerHTML = tempChocices;
+                    varinatColors.innerHTML = `<h2 class="variant_title">${option.name}</h2>
+                                               <div class="d-flex gap-3 mt-4">${tempChocices}</div>`;
+                    
                   }
                   if(option.name.trim().toLowerCase() === "Lens type" || option.name.trim()=== "نوع العدسة"){
                     let tempLnsType = "";
@@ -984,7 +983,8 @@ const product = {{  product | json_encode() | raw }};
                                        ${choice}
                                          </div>`;
                     }
-                    varinatLensType.innerHTML = tempLnsType;
+                    varinatLensType.innerHTML = `<h2 class="variant_title">${option.name}</h2>
+                                               <div class="d-flex gap-3 mt-4">${tempLnsType}</div>`;
                   }
                   if(option.name.trim().toLowerCase() === " Lens thickness" || option.name.trim()=== "سماكة العدسة"){
                     let tempLnsThick = "";
@@ -993,7 +993,8 @@ const product = {{  product | json_encode() | raw }};
                                        ${choice}
                                          </div>`;
                     }
-                    varinatLensThickness.innerHTML = tempLnsThick;
+                    varinatLensThickness.innerHTML = `<h2 class="variant_title">${option.name}</h2>
+                                               <div class="d-flex gap-3 mt-4">${tempLnsThick}</div>`;
                   }
                 })
             }
@@ -1028,12 +1029,50 @@ const product = {{  product | json_encode() | raw }};
             event.target.closest(".modal_content").querySelectorAll(".custom_input_choice").forEach((a)=> a.classList.remove("active"));
             event.target.closest(".custom_input_choice").classList.add('active');
          }
+         function handleConfirmClick(event) {
+            const modalId = event.target.getAttribute('data-modal-id');
+            const modal = document.querySelector(`#${modalId}`);
+            const activeChoice = modal.querySelector('.custom_input_choice.active');
+
+            // handle real option 
+            const inputCustomField =  event.target.getAttribute('data-name-custom-input-field');
+            const realInput = document.querySelector(`input[name="${inputCustomField}"]`);
+            const allInputs = realInput.closest("#product-custom-user-option-fields").querySelectorAll("input");
+
+            
+            if (activeChoice) {
+                const activeChoiceText = activeChoice.textContent.trim();
+                const buttonSightSize = modal.closest(".sight_size").querySelector(".custom_input_fixed");
+                buttonSightSize.textContent = activeChoiceText;
+               allInputs.forEach((input) => {
+                   if(input.name.trim().toLowerCase() === activeChoiceText.trim().toLowerCase()) {
+                       if(!input.checked){
+                           console.log("yes");
+                           console.log(input);
+
+                           input.click();
+                       }
+                   }else{
+                       if(input.checked){
+                           input.click();
+                       }
+                   }
+                    
+                });
+                // Close the modal
+                const bootstrapModal = bootstrap.Modal.getInstance(modal);
+                bootstrapModal.hide();
+            }
+        }
       function handleCustomInputFields() {
             const customInputFieldContainer = document.querySelector(".custom_input_fields");
             if (product.custom_input_fields.length > 0) {
          
-                const fixedInputFields = ["مقاس النظر - العين اليمني", "مقاس النظر - العين اليسري", "المحور", "sight size - right eye","sight size - left eye", "deviation size", "the hub"];
                 const sigtSizes = product.custom_input_fields.filter((customField)=> customField.label.split("-")[0].trim() === "مقاس النظر" || customField.label.split("-")[0].trim() === "sight size");
+                const deviationSizes = product.custom_input_fields.filter((customField)=> customField.label.split("-")[0].trim() === "مقاس الانحراف" || customField.label.split("-")[0].trim().toLowerCase() === "Deviation size");
+                const theHubs = product.custom_input_fields.filter((customField)=> customField.label.split("-")[0].trim() === "المحور" || customField.label.split("-")[0].trim().toLowerCase() === "the hub");
+                const fileInput = product.custom_input_fields.find((customField)=> customField.label.split("-")[0].trim() === "بيانات الوصفة الطبية" || customField.label.split("-")[0].trim().toLowerCase() === "Prescription data");
+
 
                 if(sigtSizes?.length > 0){
                     let tempSizeSight = "";
@@ -1056,7 +1095,7 @@ const product = {{  product | json_encode() | raw }};
                                                             ${tempChoices}
                                                         </div>
                                                         <div class="footer_modal d-flex flex-wrap gap-3 mb-3 px-2">
-                                                            <button type="button" class="btn btn-primary confirm  radius30 flex-1" >{{ locals.product.confirm }}</button>
+                                                            <button type="button" class="btn btn-primary confirm_custom_input_field  radius30 flex-1" data-name-custom-input-field = "${sightSize.label}" data-modal-id="fixedInput${index}">{{ locals.product.confirm }}</button>
                                                             <button type="button" class="btn flex-1 radius30 cansel" data-bs-dismiss="modal">{{ locals.product.cansel }}</button>
                                                         </div>
                                                   </div>                                                   
@@ -1066,18 +1105,124 @@ const product = {{  product | json_encode() | raw }};
                     })
                      const sightSize = `<div class="field">
                                          <h2 class="field_label">${sigtSizes[0].label.split("-")[0]}</h2>
-                                         <div class="d-flex gap-3">
+                                         <div class="d-flex gap-3 mt-3">
                                            ${tempSizeSight}
                                          </div>
                                        </div>`;
                      customInputFieldContainer.insertAdjacentHTML('beforeend', sightSize);
+                     
+                       // Attach event listener to confirm buttons
+                    document.querySelectorAll('.confirm_custom_input_field').forEach(button => {
+                        button.addEventListener('click', handleConfirmClick);
+                    });
+                }
+                if(deviationSizes?.length > 0){
+                    let tempSizeSight = "";
+                    console.log("devition size");
+                    console.log(deviationSizes);
+                    deviationSizes.forEach((devSize,index) => {
+                        let tempChoices = "";
+                        // const activeTab = document.querySelector(`.custom${devSize.label}`);
+                        devSize.choices.forEach((choice) => {
+                            tempChoices += `<div class="custom_input_choice p-4 d-flex gap-3 align-items-center radius20" onclick="handleCLickChoice(event)">
+                                                ${choice.ar}
+                                            </div>`
+                        })
+                        tempSizeSight += `<div class="sight_size">
+                                            <button class="custom_input_fixed custom${devSize.label} radius20 border p-4" data-value="${devSize.label}" type="button" data-bs-toggle="modal" data-bs-target="#defitionSize${index}">${devSize.label.split("-")[1]}
+                                            </button>
+                                            <div class="modal modal_custom_input_field fade" id="defitionSize${index}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog  modal-dialog-centered">
+                                                  <div class="modal-content radius20">
+                                                        <h3 class="title py-3 text-center">${devSize.label}</h3>
+                                                        <div class="modal_content d-flex flex-wrap gap-3 mt-3 mb-4 px-2">
+                                                            ${tempChoices}
+                                                        </div>
+                                                        <div class="footer_modal d-flex flex-wrap gap-3 mb-3 px-2">
+                                                            <button type="button" class="btn btn-primary confirm_custom_input_field  radius30 flex-1" data-name-custom-input-field = "${devSize.label}" data-modal-id="defitionSize${index}">{{ locals.product.confirm }}</button>
+                                                            <button type="button" class="btn flex-1 radius30 cansel" data-bs-dismiss="modal">{{ locals.product.cansel }}</button>
+                                                        </div>
+                                                  </div>                                                   
+                                                </div>
+                                             </div>
+                                          </div>`
+                    })
+                     const devitionSIze = `<div class="field">
+                                         <h2 class="field_label">${deviationSizes[0].label.split("-")[0]}</h2>
+                                         <div class="d-flex gap-3 mt-3">
+                                           ${tempSizeSight}
+                                         </div>
+                                       </div>`;
+                     customInputFieldContainer.insertAdjacentHTML('beforeend', devitionSIze);
+                     
+                       // Attach event listener to confirm buttons
+                    document.querySelectorAll('.confirm_custom_input_field').forEach(button => {
+                        button.addEventListener('click', handleConfirmClick);
+                    });
+                }
+                if(theHubs?.length > 0){
+                    let tempSizeSight = "";
+                    console.log("devition size");
+                    console.log(theHubs);
+                    theHubs.forEach((hub,index) => {
+                        let tempChoices = "";
+                        // const activeTab = document.querySelector(`.custom${devSize.label}`);
+                        hub.choices.forEach((choice) => {
+                            tempChoices += `<div class="custom_input_choice p-4 d-flex gap-3 align-items-center radius20" onclick="handleCLickChoice(event)">
+                                                ${choice.ar}
+                                            </div>`
+                        })
+                        tempSizeSight += `<div class="sight_size">
+                                            <button class="custom_input_fixed custom${hub.label} radius20 border p-4" data-value="${hub.label}" type="button" data-bs-toggle="modal" data-bs-target="#theHub${index}">${hub.label.split("-")[1]}
+                                            </button>
+                                            <div class="modal modal_custom_input_field fade" id="theHub${index}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog  modal-dialog-centered">
+                                                  <div class="modal-content radius20">
+                                                        <h3 class="title py-3 text-center">${hub.label}</h3>
+                                                        <div class="modal_content d-flex flex-wrap gap-3 mt-3 mb-4 px-2">
+                                                            ${tempChoices}
+                                                        </div>
+                                                        <div class="footer_modal d-flex flex-wrap gap-3 mb-3 px-2">
+                                                            <button type="button" class="btn btn-primary confirm_custom_input_field  radius30 flex-1" data-name-custom-input-field = "${hub.label}" data-modal-id="theHub${index}">{{ locals.product.confirm }}</button>
+                                                            <button type="button" class="btn flex-1 radius30 cansel" data-bs-dismiss="modal">{{ locals.product.cansel }}</button>
+                                                        </div>
+                                                  </div>                                                   
+                                                </div>
+                                             </div>
+                                          </div>`
+                    })
+                     const theHubRender = `<div class="field">
+                                         <h2 class="field_label">${theHubs[0].label.split("-")[0]}</h2>
+                                         <div class="d-flex gap-3 mt-3">
+                                           ${tempSizeSight}
+                                         </div>
+                                       </div>`;
+                     customInputFieldContainer.insertAdjacentHTML('beforeend', theHubRender);
+                     
+                       // Attach event listener to confirm buttons
+                    document.querySelectorAll('.confirm_custom_input_field').forEach(button => {
+                        button.addEventListener('click', handleConfirmClick);
+                    });
+                }
+                if(fileInput) {
+                    const fileInputTemp = `   <div class="custom-file-input-box">
+                                       <div class="title">${fileInput.label}</div>
+                                        <div class="custom-file-input radius20 px-3 mt-3">
+                                            <input type="file" id="fileInput" style="display: none;" data-name="${fileInput.label}" onchange="updateFileName()">
+                                            <div class="d-flex align-items-center justify-content-between gap-3 h-100">
+                                              <span id="fileName">${fileInput?.hint}</span>
+                                              <label for="${fileInput.id}" class="custom-file-label btn btn-primary radius20">{{ locals.product.attach }}</label>
+                                            </div>
+                                        </div>
+                                     </div>`;
+                     customInputFieldContainer.insertAdjacentHTML('beforeend', fileInputTemp);
+                     document.querySelector(`input[id="${fileInput.id}"]`).addEventListener("change",()=>{
+                        if (document.querySelector(`input[id='${fileInput.id}']`).files.length > 0) {
+                           document.getElementById("fileName").textContent = document.querySelector(`input[id='${fileInput.id}']`).files[0].name;
+                        }
+                     })
 
                 }
-
-
-
-
-              
             }
         }
      
@@ -1438,6 +1583,14 @@ const product = {{  product | json_encode() | raw }};
                         }
                     ]
                 });
+            }
+        }
+        function updateFileName(event) {
+            const fileInput = document.getElementById('fileInput');
+            const fileName = document.getElementById('fileName');
+
+            if (fileInput.files.length > 0) {
+                fileName.textContent = fileInput.files[0].name;
             }
         }
          document.addEventListener("DOMContentLoaded", function(){
