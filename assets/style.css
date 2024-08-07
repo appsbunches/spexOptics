@@ -2581,5 +2581,20 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
   font-weight: 400;
   color: #808080;
 }
+.product .custom_input_fields .doctor_help .title {
+  font-size: 14px;
+  font-weight: 400;
+  color: #121212;
+}
+.product .custom_input_fields .doctor_help .checkbox {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #333333;
+}
+.product .custom_input_fields .doctor_help span {
+  font-size: 12px;
+  font-weight: 400;
+  color: #808080;
+}
 
 /*********************** end style product *************************/

@@ -2620,6 +2620,23 @@ $main-transition: var(--main-transition);
         }
       }
     }
+    .doctor_help {
+      .title {
+        font-size: 14px;
+        font-weight: 400;
+        color: #121212;
+      }
+      .checkbox {
+        width: 20px;
+        height: 20px;
+        border: 1px solid #333333;
+      }
+      span {
+        font-size: 12px;
+        font-weight: 400;
+        color: #808080;
+      }
+    }
   }
 }
 /*********************** end style product *************************/

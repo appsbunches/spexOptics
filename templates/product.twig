@@ -334,6 +334,7 @@
                                 {% endif %}
                                 <div class="d-flex justify-content-between gap-3 flex-wrap">                                
                                    <h1 class="product_name flex-2">{{ product.name | raw }}</h1>
+                                    {% if product.selected_product.formatted_sale_price %} 
                                         <div class="d-flex product_formatted_price_con align-items-center gap-3 px-2">
                                             <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <g clip-path="url(#clip0_300_35172)">
@@ -351,8 +352,9 @@
                                                     </defs>
                                                 </svg>
 
-                                                <span class="product-formatted-price-discount" style="color:#f25f5f;">{% if product.selected_product.formatted_sale_price %}  &nbsp;  &nbsp;{{ locals.product_discount }}&nbsp;{{ product.discount_percentage }}%{% endif %}</span>
+                                                <span class="product-formatted-price-discount" style="color:#f25f5f;"> &nbsp;  &nbsp;{{ locals.product_discount }}&nbsp;{{ product.discount_percentage }}%</span>
                                         </div>
+                                        {% endif %}
                                 </div>
 
                                 <div class="d-flex align-items-center flex-wrap gap-3 price_container mt-3">
@@ -1064,6 +1066,19 @@ const product = {{  product | json_encode() | raw }};
                 bootstrapModal.hide();
             }
         }
+        function handleDoctorHelp  (event){
+            const nameDocHelp = event.target.getAttribute("data-name");
+            const realInput = document.querySelector(`input[name="${nameDocHelp}"]`);
+            if(event.target.checked){
+                if(realInput){
+                    realInput.value = "نعم"
+                }
+            }else{
+                 if(realInput){
+                    realInput.value = "لا"
+                }
+            }
+        }
       function handleCustomInputFields() {
             const customInputFieldContainer = document.querySelector(".custom_input_fields");
             if (product.custom_input_fields.length > 0) {
@@ -1072,6 +1087,7 @@ const product = {{  product | json_encode() | raw }};
                 const deviationSizes = product.custom_input_fields.filter((customField)=> customField.label.split("-")[0].trim() === "مقاس الانحراف" || customField.label.split("-")[0].trim().toLowerCase() === "Deviation size");
                 const theHubs = product.custom_input_fields.filter((customField)=> customField.label.split("-")[0].trim() === "المحور" || customField.label.split("-")[0].trim().toLowerCase() === "the hub");
                 const fileInput = product.custom_input_fields.find((customField)=> customField.label.split("-")[0].trim() === "بيانات الوصفة الطبية" || customField.label.split("-")[0].trim().toLowerCase() === "Prescription data");
+                const doctorHelp = product.custom_input_fields.find((customField)=> customField.label.split("-")[0].trim() === "اطلب مساعدة الطبيب" || customField.label.split("-")[0].trim().toLowerCase() === "Seek doctor's help");
 
 
                 if(sigtSizes?.length > 0){
@@ -1221,6 +1237,18 @@ const product = {{  product | json_encode() | raw }};
                            document.getElementById("fileName").textContent = document.querySelector(`input[id='${fileInput.id}']`).files[0].name;
                         }
                      })
+
+                }
+                if(doctorHelp) {
+                    const doctor_help = `<div class="doctor_help">
+                                       <div class="title">${doctorHelp.label}</div>
+                                        <div class="mt-3 d-flex gap-3 align-items-center">
+                                            <input type="checkbox" id="inputDoctorHelp" class="checkbox pointer" data-name="${doctorHelp.label}" onchange="handleDoctorHelp(event)">
+                                            <span>${doctorHelp?.hint}</span>
+                                        </div>
+                                     </div>`;
+                     customInputFieldContainer.insertAdjacentHTML('beforeend', doctor_help);
+                    
 
                 }
             }
