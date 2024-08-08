@@ -2397,6 +2397,16 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
 
 /*********************** end style cart_sidebar *************************/
 /*********************** start style product *************************/
+.product .share_title {
+  font-size: 14px;
+  font-weight: 400;
+  color: #333333;
+}
+@media screen and (max-width: 767px) {
+  .product .share_title {
+    font-size: 12px;
+  }
+}
 .product .col-product-info {
   border-color: rgba(238, 238, 238, 0.9333333333);
 }
@@ -2616,6 +2626,7 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
   border-radius: 20px;
   font-size: 18px;
   font-weight: 700;
+  box-shadow: none !important;
 }
 @media screen and (max-width: 768px) {
   .product .accordion-item .accordion-button {
@@ -2631,10 +2642,6 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
   font-weight: 400;
   color: #333333;
   line-height: 25px;
-}
-.product .accordion-item:last-of-type .accordion-button.collapsed {
-  border-bottom-left-radius: none !important;
-  border-bottom-right-radius: none !important;
 }
 
 .similar_products {
@@ -2678,6 +2685,11 @@ html[lang=en] .breadcrumb-item + .breadcrumb-item::before {
   border-radius: 50%;
   width: 38px;
   height: 38px;
+}
+
+.accordion-item:last-of-type .accordion-button.collapsed {
+  border-bottom-left-radius: none !important;
+  border-bottom-right-radius: none !important;
 }
 
 /*********************** end style product *************************/

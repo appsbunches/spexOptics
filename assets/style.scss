@@ -2430,6 +2430,14 @@ $main-transition: var(--main-transition);
 
 /*********************** start style product *************************/
 .product {
+  .share_title {
+    font-size: 14px;
+    font-weight: 400;
+    color: #333333;
+    @media screen and (max-width: 767px) {
+      font-size: 12px;
+    }
+  }
   .col-product-info {
     border-color: #eeeeeeee;
     .product_name {
@@ -2659,6 +2667,7 @@ $main-transition: var(--main-transition);
         height: 62px;
         font-size: 14px;
       }
+      box-shadow: none !important;
       &:focus {
         box-shadow: none;
       }
@@ -2669,10 +2678,6 @@ $main-transition: var(--main-transition);
       color: #333333;
       line-height: 25px;
     }
-  }
-  .accordion-item:last-of-type .accordion-button.collapsed {
-    border-bottom-left-radius: none !important;
-    border-bottom-right-radius: none !important;
   }
 }
 .similar_products {
@@ -2710,5 +2715,9 @@ $main-transition: var(--main-transition);
     width: 38px;
     height: 38px;
   }
+}
+.accordion-item:last-of-type .accordion-button.collapsed {
+  border-bottom-left-radius: none !important;
+  border-bottom-right-radius: none !important;
 }
 /*********************** end style product *************************/
