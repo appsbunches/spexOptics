@@ -1156,6 +1156,9 @@ $main-transition: var(--main-transition);
       background-color: rgba(169, 164, 144, 0.2);
       z-index: 1;
     }
+    @media screen and (max-width: 767px) {
+      background-size: 100% 100%;
+    }
   }
 }
 /*********************** End Main Slider  *************************/
@@ -1622,6 +1625,10 @@ $main-transition: var(--main-transition);
 /*********************** Start product card  *************************/
 .custom_products_list {
   .product-item {
+    .imageBox {
+      width: 100%;
+      height: 100%;
+    }
     .product-prev-price {
       color: #d7d7d7ee;
       font-size: 14px;
@@ -2637,6 +2644,71 @@ $main-transition: var(--main-transition);
         color: #808080;
       }
     }
+  }
+  .accordion-item {
+    border: 1px solid #eeeeeeee;
+    border-radius: 20px !important;
+    .accordion-button {
+      background-color: #fff;
+      color: #0a3254;
+      height: 62px;
+      border-radius: 20px;
+      font-size: 18px;
+      font-weight: 700;
+      @media screen and (max-width: 768px) {
+        height: 62px;
+        font-size: 14px;
+      }
+      &:focus {
+        box-shadow: none;
+      }
+    }
+    .accordion-body {
+      font-size: 14px;
+      font-weight: 400;
+      color: #333333;
+      line-height: 25px;
+    }
+  }
+  .accordion-item:last-of-type .accordion-button.collapsed {
+    border-bottom-left-radius: none !important;
+    border-bottom-right-radius: none !important;
+  }
+}
+.similar_products {
+  background-color: #f7f7f7;
+  .title {
+    font-size: 30px;
+    font-weight: 900;
+    color: #093254;
+    @media screen and (max-width: 767px) {
+      font-size: 20px;
+    }
+  }
+  .swiper-slide {
+    background-color: #fff;
+    height: 395px;
+    @media screen and (max-width: 767px) {
+      height: auto;
+    }
+    .imageBox {
+      height: 254px;
+      @media screen and (max-width: 767px) {
+        height: 148px;
+      }
+    }
+  }
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    color: #0a0c10 !important;
+    font-size: 12px !important;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    background-color: #fff;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
   }
 }
 /*********************** end style product *************************/

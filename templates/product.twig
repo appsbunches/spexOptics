@@ -639,19 +639,28 @@
         
             {# long description #}
             {% if product.description %}
-                <section id="product-description" class="mt-5">
-                    <div class="d-flex align-items-center">
-                        <div class="description-icon">
-                            <span class="icon-fact_check_black"></span>
-                        </div>
-                        <div class="description-title">
-                            {{ locals.product_description }}
-                        </div>
+            <div class="accordion" id="accordionLongDesc">
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                    <button class="accordion-button  d-flex align-items-center gap-2" id="AccordionButtonLongDesc" type="button" data-bs-toggle="collapse" data-bs-target="#longDescAccordian" aria-expanded="true" aria-controls="longDescAccordian">
+                            <span class="accordion-icon">
+                                   <svg width="17" height="2" viewBox="0 0 17 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M15.5 1H1.5" stroke="#0A3254" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                            </span>
+                       {{ locals.product_description }}
+                    </button>
+                    </h2>
+                    <div id="longDescAccordian" class="accordion-collapse collapse show" data-bs-parent="#accordionLongDesc">
+                    <div class="accordion-body">
+                       {{ product.description | raw }}
                     </div>
-                    <div class="description-paragrah text-justify description-text-clear">
-                        {{ product.description | raw }}
                     </div>
-                </section>
+                </div>
+
+            </div>
+              
             {% endif %}
 
             {# {% if product.has_variants %}
@@ -869,35 +878,7 @@
             </section>
              {% endif %} #}
 
-            {% if (product.related_products | length) >  0 %}
-                <section class="mt-5 mb-5">
-                    <div class="d-flex align-items-center">
-                        <div class="description-icon" style="font-size: 24px; height: 24px">
-                            <span class="icon-uniE011"></span>
-                        </div>
-                        <div class="description-title">
-                            <div class="">{{ locals.similar_products_title }}</div>
-                        </div>
-                    </div>
-                    <div class="description-paragrah">
-                        <div class="">
-                            <div class="products-slider-wrapper" style="position: relative">
-
-                                <div id="related-products" class="products-slider s-slider d-block">
-                                    {% for key,rProduct in product.related_products %}
-                                        <div class="prod-col">
-                                            {% include 'product-card.twig' with {'product' : rProduct, 'index': key} %}
-                                        </div>
-                                    {% endfor %}
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-            
-            {% endif %}
+           
 
         </div>
 
@@ -926,6 +907,32 @@
         </div>
         {% endif %}
     </section>
+     {% if (product.related_products | length) >  0 %}
+            <section class="similar_products mt-5 mb-5 py-5 ">
+              <div class="container">
+                <div class="d-flex justify-content-between gap-3 mb-5">
+                  <h2 class="title">{{ locals.product.similar_products }}</h2>
+                  <div class="d-flex gap-3">
+                     <div class="swiper-button-prev position-static mt-0 {% if session.lang.code == "ar" %}rotateIcon{% endif %}"></div>
+                     <div class="swiper-button-next position-static mt-0 {% if session.lang.code == "ar" %}rotateIcon{% endif %}"></div>
+                  </div>
+                </div>
+                <div class="swiper similar_products_swiper">
+                  <div class="swiper-wrapper custom_products_list ">
+                        {% for key,rProduct in product.related_products %}
+                                <div class="swiper-slide radius20 px-3">
+                                   {% include 'product-card.twig' with {'product' : rProduct, 'index': key} %}
+                                </div>
+                        {% endfor %}
+                  </div>
+                
+                </div>
+              </div>
+            </section>
+        
+
+            
+      {% endif %}
 {% endblock %}
 
 {% block footer %}
@@ -1081,7 +1088,7 @@ const product = {{  product | json_encode() | raw }};
         }
       function handleCustomInputFields() {
             const customInputFieldContainer = document.querySelector(".custom_input_fields");
-            if (product.custom_input_fields.length > 0) {
+            if (product.custom_input_fields?.length > 0) {
          
                 const sigtSizes = product.custom_input_fields.filter((customField)=> customField.label.split("-")[0].trim() === "مقاس النظر" || customField.label.split("-")[0].trim() === "sight size");
                 const deviationSizes = product.custom_input_fields.filter((customField)=> customField.label.split("-")[0].trim() === "مقاس الانحراف" || customField.label.split("-")[0].trim().toLowerCase() === "Deviation size");
@@ -1579,39 +1586,25 @@ const product = {{  product | json_encode() | raw }};
         };
 
         var showRelatedProducts = function () {
-            var arrowNextClass = (window.appDirection === 'ltr') ? 'icon-keyboard_arrow_right': 'icon-keyboard_arrow_left';
-            var arrowPrevClass = (window.appDirection === 'ltr') ? 'icon-keyboard_arrow_left' : 'icon-keyboard_arrow_right';
+              const swiperRelatedProducts = document.querySelector('.similar_products_swiper');
+                if(swiperRelatedProducts){
 
-            var screenWidth = window.screen.width;
-
-            var editingMode = {% if store.editing_mode %}true{% else %}false{% endif %};
-
-            if(screenWidth >= 768 || editingMode){
-                $('#related-products.products-slider').slick({
-                    slidesToShow: 5,
-                    slidesToScroll: 5,
-                    infinite: false,
-                    autoplay: false,
-                    arrows: true,
-                    dots: false,
-                    rtl: !(window.appDirection === 'ltr'),
-                    nextArrow:'<button class="slick-next slick-arrow" aria-label="Next" type="button" style=""><span class="'+arrowNextClass+'"></span></button>',
-                    prevArrow:'<button class="slick-prev slick-arrow" aria-label="Previous" type="button" style=""><span class="'+arrowPrevClass+'"></span></button>',
-                    responsive: [
-                        {
-                            breakpoint: 992,
-                            settings: {
-                                slidesToShow: 5,
-                                slidesToScroll: 5
-                            }
-                        },
-                        {
-                            breakpoint: 768,
-                            settings: "unslick"
+                let swiper = new Swiper('.similar_products_swiper', {
+                    slidesPerView:2,
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                    },
+                    spaceBetween: 30,
+                    loop: true,
+                    breakpoints: {
+                        768: {
+                            slidesPerView:  4.4,
+                            spaceBetween: 10
                         }
-                    ]
-                });
-            }
+                    }
+                   }); 
+                }
         }
         function updateFileName(event) {
             const fileInput = document.getElementById('fileInput');
@@ -1621,10 +1614,31 @@ const product = {{  product | json_encode() | raw }};
                 fileName.textContent = fileInput.files[0].name;
             }
         }
+        // handle accoridna
+        const handleAccordian = ()=>{
+             const accordionButton = document.getElementById('AccordionButtonLongDesc');
+
+            accordionButton.addEventListener('click', function() {
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                const iconContainer = this.querySelector('.accordion-icon');
+
+                if (isExpanded) {
+                    iconContainer.innerHTML = `<svg width="17" height="2" viewBox="0 0 17 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M15.5 1H1.5" stroke="#0A3254" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>`;
+                } else {
+                    iconContainer.innerHTML = `<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M15.5 8H1.5" stroke="#0A3254" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M9 1V15" stroke="#0A3254" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>`;
+                }
+            });
+        }
          document.addEventListener("DOMContentLoaded", function(){
                         showRelatedProducts();
                         handleVariations();
                         handleCustomInputFields();
+                        handleAccordian();
           });
 
     </script>
